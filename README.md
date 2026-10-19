@@ -10,7 +10,7 @@
 
 ## Репозиторий
 
-Репозиторий **приватный**: https://github.com/ToniQStudio/yb800-run-club. Сайт не опубликован: GitHub Pages, Vercel и другие публичные деплои не подключены. Для локального просмотра — `cd landing && npm run dev` (http://localhost:4173). Сырые исходники фото и папка `.shots` в репозиторий не входят.
+Репозиторий **приватный**: https://github.com/ToniQStudio/run-club. Сайт не опубликован: GitHub Pages, Vercel и другие публичные деплои не подключены. Для локального просмотра — `cd landing && npm run dev` (http://localhost:4173). Сырые исходники фото и папка `.shots` в репозиторий не входят.
 
 ## Кто в проекте
 
