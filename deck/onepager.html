@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ЮБ800 — коротко о клубе</title>
+  <style>
+    :root {
+      --ink: #111827;
+      --muted: #4b5563;
+      --accent: #15803d;
+      --line: #d1d5db;
+      --paper: #f9fafb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      display: flex;
+      flex-direction: column;
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 15mm 16mm 12mm;
+      background: var(--paper);
+    }
+
+    .top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12mm;
+      padding-bottom: 6mm;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .brand {
+      color: var(--accent);
+      font-size: 30pt;
+      font-weight: 800;
+      line-height: 0.9;
+      letter-spacing: -0.06em;
+    }
+
+    .brand-sub {
+      margin-top: 3mm;
+      color: var(--muted);
+      font-size: 9pt;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .top-meta {
+      color: var(--muted);
+      font-size: 8.5pt;
+      line-height: 1.5;
+      text-align: right;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h1 {
+      margin: 7mm 0 2mm;
+      font-size: 22pt;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .lead {
+      max-width: 160mm;
+      margin: 0 0 6mm;
+      color: var(--muted);
+      font-size: 10pt;
+      line-height: 1.45;
+    }
+
+    h2 {
+      margin: 6mm 0 2mm;
+      color: var(--accent);
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    p {
+      margin: 0;
+      font-size: 9.5pt;
+      line-height: 1.45;
+    }
+
+    .cols {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 10mm;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.8pt;
+    }
+
+    th,
+    td {
+      padding: 2.2mm 0;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 7.5pt;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    td:last-child,
+    th:last-child {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .price {
+      font-weight: 700;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3mm;
+      margin-top: 2mm;
+    }
+
+    .metric {
+      padding: 3mm;
+      border: 1px solid var(--line);
+      border-radius: 2mm;
+    }
+
+    .metric .value {
+      color: var(--accent);
+      font-size: 18pt;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .metric .label {
+      margin-top: 1.5mm;
+      color: var(--muted);
+      font-size: 7.5pt;
+      line-height: 1.3;
+    }
+
+    .note {
+      margin-top: 2mm;
+      color: var(--muted);
+      font-size: 7.5pt;
+    }
+
+    .role-list {
+      margin: 2mm 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .role-list li {
+      display: flex;
+      gap: 3mm;
+      padding: 1.6mm 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 9pt;
+    }
+
+    .role-list li::before {
+      content: "—";
+      color: var(--accent);
+    }
+
+    .pilot {
+      padding: 4mm;
+      border-left: 2px solid var(--accent);
+      background: #ffffff;
+    }
+
+    .pilot p {
+      font-size: 9pt;
+    }
+
+    .steps {
+      margin: 2mm 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 1.5mm;
+    }
+
+    .steps li {
+      display: flex;
+      justify-content: space-between;
+      gap: 4mm;
+      padding-bottom: 1.5mm;
+      border-bottom: 1px solid var(--line);
+      font-size: 8.8pt;
+    }
+
+    .steps .date {
+      color: var(--accent);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 10mm;
+      margin-top: auto;
+      padding-top: 3mm;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 7.5pt;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .principle {
+      margin-top: 8mm;
+      padding-top: 4mm;
+      border-top: 2px solid var(--ink);
+      font-size: 13pt;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    @media print {
+      .page {
+        margin: 0;
+        box-shadow: none;
+      }
+    }
+
+    @media screen {
+      .page {
+        box-shadow: 0 0 24px rgba(17, 24, 39, 0.08);
+        margin: 10mm auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="top">
+      <div>
+        <div class="brand">ЮБ800</div>
+        <div class="brand-sub">Беговой клуб Юрия Борзаковского</div>
+      </div>
+      <div class="top-meta">
+        Москва · Лужники<br>
+        21 ноября 2026<br>
+        Пилот 3 месяца
+      </div>
+    </div>
+
+    <h1>Коротко о клубе</h1>
+    <p class="lead">Клуб малых групп, где любители тренируются по системе олимпийского чемпиона и экс-главного тренера сборной России. Не школа бега и не фитнес: методология, сообщество и имя Борзаковского.</p>
+
+    <div class="cols">
+      <div>
+        <h2>Продукт</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Формат</th>
+              <th>Цена</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Клуб</strong><br>8 тренировок, группа до 15, тестирование</td>
+              <td class="price">9 900 ₽ / мес</td>
+            </tr>
+            <tr>
+              <td><strong>Мини-премиум</strong><br>Встреча с Юрием, закрытый чат</td>
+              <td class="price">17 500 ₽ / мес</td>
+            </tr>
+            <tr>
+              <td><strong>Персоналка</strong><br>1:1 с тренером-чемпионом</td>
+              <td class="price">5 000 ₽</td>
+            </tr>
+            <tr>
+              <td><strong>Пробная неделя</strong><br>Две тренировки и знакомство</td>
+              <td class="price">1 900 ₽</td>
+            </tr>
+            <tr>
+              <td><strong>Годовой абонемент</strong><br>Два месяца в подарок</td>
+              <td class="price">99 000 ₽</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Роль</h2>
+        <p><strong>8–10 часов в месяц.</strong> Две групповые тренировки, одна премиум-встреча, съёмка раз в две недели, консультации по методике.</p>
+        <p class="note">Операционка, продажи, площадка, тренеры и digital — на директоре. Ты не продаёшь и не админишь.</p>
+      </div>
+
+      <div>
+        <h2>Экономика</h2>
+        <div class="metrics">
+          <div class="metric">
+            <div class="value">70</div>
+            <div class="label">участников к концу года</div>
+          </div>
+          <div class="metric">
+            <div class="value">7,8</div>
+            <div class="label">млн ₽ выручки</div>
+          </div>
+          <div class="metric">
+            <div class="value">3,3</div>
+            <div class="label">млн ₽ прибыли</div>
+          </div>
+          <div class="metric">
+            <div class="value">7%</div>
+            <div class="label">роялти ≈ 515 тыс. ₽ за год</div>
+          </div>
+        </div>
+        <p class="note">План, не гарантия. Окупаемость — март 2027.</p>
+
+        <h2>Пилот</h2>
+        <div class="pilot">
+          <p><strong>3 месяца: декабрь–февраль.</strong> 7% с абонементов и премиума. 8–10 часов в месяц. Review на 25–35 участниках.</p>
+        </div>
+
+        <h2>Следующие шаги</h2>
+        <ul class="steps">
+          <li><span>Договор</span><span class="date">до 14 ноября</span></li>
+          <li><span>Съёмка</span><span class="date">до 1 ноября</span></li>
+          <li><span>Открытая пробежка</span><span class="date">21 ноября</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="principle">Не обязательно стартовать первым. Важно финишировать сильнее всех.</p>
+
+    <div class="bottom">
+      <span>ЮБ800 · Москва · Лужники</span>
+      <span>Предложение о партнёрстве · 18 октября 2026</span>
+    </div>
+  </main>
+</body>
+</html>

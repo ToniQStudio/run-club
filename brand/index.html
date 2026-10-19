@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ЮБ800 — строгий шрифтовой знак</title>
+  <style>
+    :root {
+      --ink: #030712;
+      --surface: #111827;
+      --paper: #f9fafb;
+      --muted: #9ca3af;
+      --accent: #ccff00;
+      --track: #1e5aa8;
+      --line: #1f2937;
+      --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--font);
+      line-height: 1.45;
+    }
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0 72px;
+    }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(32px, 6vw, 64px);
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+    }
+    .lead {
+      max-width: 68ch;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+    section {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
+    }
+    h2 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      letter-spacing: -0.03em;
+    }
+    .section-note {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+      padding: 40px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--ink);
+    }
+    .stage img { width: min(760px, 100%); height: auto; }
+    .grid-2 { display: grid; gap: 16px; }
+    @media (min-width: 760px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+    .card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 170px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface);
+    }
+    .card.light { background: var(--paper); }
+    .card.blue { background: var(--track); border-color: var(--track); }
+    .card img { max-width: 100%; height: auto; }
+    .sizes {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: 36px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface);
+    }
+    .sizes img { display: block; }
+    .sizes .s560 { width: 560px; }
+    .sizes .s280 { width: 280px; }
+    .sizes .s140 { width: 140px; }
+    .sizes .s70 { width: 70px; }
+    .swatches {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: 760px) { .swatches { grid-template-columns: repeat(4, 1fr); } }
+    .swatch {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface);
+    }
+    .swatch-color { height: 80px; margin-bottom: 14px; border-radius: 6px; }
+    .swatch code { display: block; font-family: ui-monospace, Menlo, monospace; font-size: 13px; }
+    .swatch span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; }
+    .note {
+      padding: 20px 22px;
+      border-left: 2px solid var(--accent);
+      background: var(--surface);
+    }
+    .note strong { display: block; margin-bottom: 6px; }
+    .note p { margin: 0; color: var(--muted); font-size: 14px; }
+    .header-mock {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 24px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--ink);
+    }
+    .header-mock img { height: 28px; width: auto; }
+    .header-mock span {
+      padding: 10px 16px;
+      border-radius: 6px;
+      background: var(--accent);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    footer {
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <p class="eyebrow">Бренд-борд · строгий знак</p>
+    <h1>ЮБ800<br><span style="color: var(--accent)">строгий знак</span></h1>
+    <p class="lead">Строгий шрифтовой знак без дополнительных символов. Буквы Ю, Б, 8, 0 собраны в кривых по геометрии Futura / Nike Futura ND: круглые овалы, прямые стойки, плотный ритм. Это оригинальные векторные формы, а не файл шрифта.</p>
+
+    <section>
+      <h2>Основной знак</h2>
+      <p class="section-note">Белый на графите. Без декора, без наклона, без дополнительных элементов.</p>
+      <div class="stage">
+        <img src="logo-wordmark-dark.svg" alt="ЮБ800 — строгий шрифтовой знак на тёмном фоне">
+      </div>
+    </section>
+
+    <section>
+      <h2>Версии</h2>
+      <p class="section-note">Светлая, синяя и акцентная. В акцентной версии «800» — лайм или дорожка, «ЮБ» остаётся основным цветом.</p>
+      <div class="grid-2">
+        <div class="card light"><img src="logo-wordmark-light.svg" alt="ЮБ800 — светлая версия"></div>
+        <div class="card blue"><img src="logo-wordmark-blue.svg" alt="ЮБ800 — версия на синем"></div>
+        <div class="card" style="background:#030712"><img src="logo-wordmark-accent-dark.svg" alt="ЮБ800 — акцентная версия на графите"></div>
+        <div class="card light"><img src="logo-wordmark-accent-light.svg" alt="ЮБ800 — акцентная версия на светлом"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Размеры</h2>
+      <p class="section-note">Проверка читаемости: 560 / 280 / 140 / 70 px по ширине.</p>
+      <div class="sizes">
+        <img class="s560" src="logo-wordmark-dark.svg" alt="ЮБ800, 560 px">
+        <img class="s280" src="logo-wordmark-dark.svg" alt="ЮБ800, 280 px">
+        <img class="s140" src="logo-wordmark-dark.svg" alt="ЮБ800, 140 px">
+        <img class="s70" src="logo-wordmark-dark.svg" alt="ЮБ800, 70 px">
+      </div>
+    </section>
+
+    <section>
+      <h2>Цвета</h2>
+      <div class="swatches">
+        <div class="swatch"><div class="swatch-color" style="background:#030712; border:1px solid #374151"></div><code>#030712</code><span>Графит</span></div>
+        <div class="swatch"><div class="swatch-color" style="background:#f9fafb"></div><code>#F9FAFB</code><span>Бумага</span></div>
+        <div class="swatch"><div class="swatch-color" style="background:#ccff00"></div><code>#CCFF00</code><span>Лайм · акцент</span></div>
+        <div class="swatch"><div class="swatch-color" style="background:#1e5aa8"></div><code>#1E5AA8</code><span>Дорожка</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Геометрия</h2>
+      <div class="note">
+        <strong>Nike Futura ND — проприетарный шрифт Nike.</strong>
+        <p>Мы не встраиваем файл шрифта, а повторили его пластику в кривых: Ю, Б, 8, 0. Поэтому знак масштабируется без установленного шрифта. Если нужна точная копия — пришлите файл Nike Futura ND, заменим формы.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Правила</h2>
+      <div class="note" style="margin-bottom:12px">
+        <strong>Охранное поле</strong>
+        <p>Минимум 16 единиц (толщина основной стойки) вокруг слова. Ничего не заходит в поле.</p>
+      </div>
+      <div class="note" style="margin-bottom:12px">
+        <strong>Минимальный размер</strong>
+        <p>70 px по ширине — только знак. Для шапки — от 120 px. Для печати — от 30 мм.</p>
+      </div>
+      <div class="note">
+        <strong>Не делать</strong>
+        <p>Не растягивать, не наклонять, не менять трекинг, не добавлять тени и градиенты, не заменять шрифт без пересборки.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>В шапке</h2>
+      <p class="section-note">Пример: знак 28 px по высоте, кнопка — лайм.</p>
+      <div class="header-mock">
+        <img src="logo-wordmark-dark.svg" alt="ЮБ800 в шапке">
+        <span>Пробежка 21 ноября</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Favicon</h2>
+      <p class="section-note">Строгая «800» из того же шрифта на графите. Проверка 96 / 48 / 32 / 16 px.</p>
+      <div class="sizes" style="align-items:center">
+        <img src="icon-800.svg" alt="Favicon 800, 96 px" style="width:96px">
+        <img src="icon-800.svg" alt="Favicon 800, 48 px" style="width:48px">
+        <img src="icon-800.svg" alt="Favicon 800, 32 px" style="width:32px">
+        <img src="icon-800.svg" alt="Favicon 800, 16 px" style="width:16px">
+      </div>
+    </section>
+
+    <footer>
+      Файлы: logo-wordmark-dark / light / blue / white / black, logo-wordmark-accent-dark / light / blue. Сборка: build_futura.py. Формы: Futura Bold / геометрия Nike Futura ND.
+    </footer>
+  </main>
+</body>
+</html>

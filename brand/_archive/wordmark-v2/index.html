@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ЮБ800 — шрифтовой знак</title>
+  <style>
+    :root {
+      --ink: #030712;
+      --surface: #111827;
+      --paper: #f9fafb;
+      --muted: #9ca3af;
+      --accent: #ccff00;
+      --track: #1e5aa8;
+      --line: #1f2937;
+      --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--font);
+      line-height: 1.45;
+    }
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0 72px;
+    }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(32px, 6vw, 64px);
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+    }
+    .lead {
+      max-width: 64ch;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+    section {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
+    }
+    h2 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      letter-spacing: -0.03em;
+    }
+    .section-note {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 260px;
+      padding: 40px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--ink);
+    }
+    .stage img { width: min(760px, 100%); height: auto; }
+    .grid-2 { display: grid; gap: 16px; }
+    @media (min-width: 760px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+    .card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 180px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface);
+    }
+    .card img { max-width: 100%; height: auto; }
+    .card.light { background: var(--paper); }
+    .card.blue { background: var(--track); border-color: var(--track); }
+    .card.checker {
+      background:
+        linear-gradient(45deg, #e5e7eb 25%, transparent 25%),
+        linear-gradient(-45deg, #e5e7eb 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #e5e7eb 75%),
+        linear-gradient(-45deg, transparent 75%, #e5e7eb 75%);
+      background-color: #f3f4f6;
+      background-size: 24px 24px;
+      background-position: 0 0, 0 12px, 12px -12px, -12px 0;
+      border-color: #d1d5db;
+    }
+    .mark-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 24px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface);
+    }
+    .mark-row.light { background: var(--paper); }
+    .mark-row img { display: block; }
+    .swatches {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: 760px) { .swatches { grid-template-columns: repeat(4, 1fr); } }
+    .swatch {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface);
+    }
+    .swatch-color { height: 90px; margin-bottom: 14px; border-radius: 6px; }
+    .swatch code {
+      display: block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 13px;
+    }
+    .swatch span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; }
+    .metric-row {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: 760px) { .metric-row { grid-template-columns: repeat(4, 1fr); } }
+    .metric {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface);
+    }
+    .metric b {
+      display: block;
+      color: var(--accent);
+      font-size: 26px;
+      letter-spacing: -0.03em;
+    }
+    .metric span { color: var(--muted); font-size: 12px; }
+    .rules { display: grid; gap: 12px; }
+    .rule {
+      padding: 18px 20px;
+      border-left: 2px solid var(--accent);
+      background: var(--surface);
+    }
+    .rule strong { display: block; margin-bottom: 4px; }
+    .rule p { margin: 0; color: var(--muted); font-size: 14px; }
+    .apps { display: grid; gap: 16px; }
+    @media (min-width: 760px) { .apps { grid-template-columns: 1fr 1.3fr; } }
+    .app-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      min-height: 280px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface);
+    }
+    .avatar {
+      display: grid;
+      width: 128px;
+      height: 128px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--ink);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .avatar img { width: 128px; height: 128px; }
+    .bib {
+      position: relative;
+      width: 260px;
+      padding: 18px 18px 22px;
+      border-radius: 8px;
+      background: var(--paper);
+      color: var(--ink);
+      text-align: center;
+    }
+    .bib::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 10px;
+      border-radius: 8px 8px 0 0;
+      background: var(--accent);
+    }
+    .bib-logo { width: 190px; margin: 8px auto 8px; }
+    .bib-number {
+      font-family: "Arial Black", "Helvetica Neue", Arial, sans-serif;
+      font-size: 96px;
+      line-height: 0.9;
+      letter-spacing: -0.07em;
+    }
+    .bib-name {
+      margin-top: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .caption {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    footer {
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <p class="eyebrow">Бренд-борд · шрифтовой знак</p>
+    <h1>ЮБ800<br><span style="color: var(--accent)">без символа</span></h1>
+    <p class="lead">Монолиния, построенная на одной сетке: «Ю» — стойка, овал и перекладина; «Б» — стойка, верхняя планка и чаша; «800» — две петли и два овала. Шрифт не нужен: всё в кривых.</p>
+
+    <section>
+      <h2>Основной знак</h2>
+      <p class="section-note">Горизонтальная версия для сайта, документов и соцсетей. «ЮБ» — бумага, «800» — лайм #CCFF00.</p>
+      <div class="stage">
+        <img src="wordmark-horizontal-dark.svg" alt="ЮБ800 — горизонтальный шрифтовой знак на тёмном фоне">
+      </div>
+    </section>
+
+    <section>
+      <h2>Версии</h2>
+      <p class="section-note">Светлая, синяя и монохромные. На белом «800» становится дорожкой #1E5AA8: лайм на белом не читается.</p>
+      <div class="grid-2">
+        <div class="card light"><img src="wordmark-horizontal-light.svg" alt="ЮБ800 — светлая версия"></div>
+        <div class="card blue"><img src="wordmark-horizontal-blue.svg" alt="ЮБ800 — версия на синем"></div>
+        <div class="card" style="background:#030712"><img src="wordmark-horizontal-white.svg" alt="ЮБ800 — белая монохромная версия"></div>
+        <div class="card checker"><img src="wordmark-horizontal-black.svg" alt="ЮБ800 — чёрная монохромная версия"></div>
+      </div>
+      <div class="grid-2" style="margin-top:16px">
+        <div class="card" style="background:#030712"><img src="wordmark-compact-dark.svg" alt="ЮБ800 — компактная версия"></div>
+        <div class="card light"><img src="wordmark-compact-light.svg" alt="ЮБ800 — компактная светлая версия"></div>
+      </div>
+      <div class="grid-2" style="margin-top:16px">
+        <div class="card" style="background:#030712"><img src="wordmark-stacked-dark.svg" alt="ЮБ800 — вертикальная версия" style="width:240px"></div>
+        <div class="card light"><img src="wordmark-stacked-light.svg" alt="ЮБ800 — вертикальная светлая версия" style="width:240px"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Иконка</h2>
+      <p class="section-note">Для favicon и аватара используем первые две буквы слова — «ЮБ». Это не отдельный символ, а кроп логотипа.</p>
+      <div class="mark-row">
+        <img src="wordmark-icon-dark.svg" alt="Иконка ЮБ800 на графите" style="width:128px">
+        <img src="wordmark-icon-blue.svg" alt="Иконка ЮБ800 на синем" style="width:96px">
+        <img src="wordmark-icon-dark.svg" alt="Иконка ЮБ800, 48 px" style="width:48px">
+        <img src="wordmark-icon-dark.svg" alt="Иконка ЮБ800, 32 px" style="width:32px">
+      </div>
+      <div class="mark-row light" style="margin-top:16px">
+        <img src="wordmark-icon-light.svg" alt="Иконка ЮБ800 на светлом" style="width:96px">
+        <span style="color:#4b5563; font-size:14px">На светлом фоне — графит. Лайм не используем для текста на белом.</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Геометрия</h2>
+      <div class="metric-row">
+        <div class="metric"><b>16 / 100</b><span>Толщина линии к высоте буквы</span></div>
+        <div class="metric"><b>496</b><span>Ширина слова при высоте 100</span></div>
+        <div class="metric"><b>8</b><span>Единиц между «800»</span></div>
+        <div class="metric"><b>16</b><span>Единиц между «Ю» и «Б»</span></div>
+      </div>
+      <p class="section-note" style="margin-top:16px">Все буквы построены на одной сетке 100. «Ю» и «Б» — штриховые формы; «800» — овалы и две петли. Поэтому знак можно пересобрать в любом размере без потери пропорций.</p>
+    </section>
+
+    <section>
+      <h2>Цвета</h2>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="swatch-color" style="background:#030712; border:1px solid #374151"></div>
+          <code>#030712</code><span>Графит · фон</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#f9fafb"></div>
+          <code>#F9FAFB</code><span>Бумага · текст</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#ccff00"></div>
+          <code>#CCFF00</code><span>Лайм · «800» и акценты</span>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#1e5aa8"></div>
+          <code>#1E5AA8</code><span>Дорожка · светлая версия</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Правила</h2>
+      <div class="rules">
+        <div class="rule">
+          <strong>Охранное поле</strong>
+          <p>Минимум 16 единиц (толщина линии) вокруг слова. Ничего не заходит в это поле.</p>
+        </div>
+        <div class="rule">
+          <strong>Минимальные размеры</strong>
+          <p>Полный горизонтальный — от 320 px. Компактный — от 120 px. Иконка — от 32 px.</p>
+        </div>
+        <div class="rule">
+          <strong>Не делать</strong>
+          <p>Не растягивать, не наклонять, не менять толщину линии, не добавлять тени и градиенты, не ставить на пёстрый фон без подложки.</p>
+        </div>
+        <div class="rule">
+          <strong>Цвет «800»</strong>
+          <p>На графите — #CCFF00. На белом — #1E5AA8. На синем — #CCFF00. В монохроме — один цвет.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Применение</h2>
+      <div class="apps">
+        <div class="app-card">
+          <div class="avatar"><img src="wordmark-icon-dark.svg" alt="Аватар ЮБ800"></div>
+          <span class="caption">Аватар · «ЮБ»</span>
+        </div>
+        <div class="app-card">
+          <div class="bib">
+            <img class="bib-logo" src="wordmark-horizontal-light.svg" alt="ЮБ800">
+            <div class="bib-number">800</div>
+            <div class="bib-name">Юрий Борзаковский · клуб</div>
+          </div>
+          <span class="caption">Стартовый номер · пример</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Файлы: wordmark-horizontal-dark / light / blue / white / black, wordmark-compact-dark / light / blue / white / black, wordmark-stacked-dark / light, wordmark-icon-dark / light / blue. Шрифтовая часть — только дескриптор, переведён в кривые.
+    </footer>
+  </main>
+</body>
+</html>

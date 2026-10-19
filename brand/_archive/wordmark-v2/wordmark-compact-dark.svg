@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="116" viewBox="0 0 520 116" role="img" aria-label="ЮБ800">
+
+<g transform="translate(8 8)"><g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16">
+  <g stroke="#f9fafb">
+  <path d="M 8 0 V 100"/>
+  <path d="M 8 50 H 48"/>
+  <ellipse cx="70" cy="50" rx="38" ry="42"/>
+  <g transform="translate(132 0)">
+    <path d="M 8 0 V 100"/>
+    <path d="M 8 8 H 84"/>
+    <path d="M 8 42 H 54 A 29 29 0 0 1 54 100 H 8"/>
+  </g>
+</g>
+  <g transform="translate(240 0)"><g stroke="#ccff00">
+  <ellipse cx="40" cy="28" rx="23" ry="20"/>
+  <ellipse cx="40" cy="72" rx="27" ry="20"/>
+  <ellipse cx="128" cy="50" rx="31" ry="42"/>
+  <ellipse cx="216" cy="50" rx="31" ry="42"/>
+</g></g>
+</g></g>
+</svg>

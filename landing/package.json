@@ -1,0 +1,8 @@
+{
+  "name": "yb800-landing",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "MOCK_TELEGRAM=1 node dev-server.mjs"
+  }
+}

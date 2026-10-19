@@ -1,0 +1,24 @@
+# System
+.DS_Store
+**/.DS_Store
+**/.shots/
+**/node_modules/
+node_modules/
+**/.env
+**/.env.local
+.env
+.env.local
+**/.vercel/
+.vercel/
+**/__pycache__/
+__pycache__/
+*.log
+
+# Raw source/reference images (not used by the site; the site assets live in landing/assets)
+/bg.jpg
+/bg2.png
+/bg4.svg
+/bg5.svg
+/istockphoto-*.jpg
+/yury-borzakovsky*.jpg
+/ub.png
