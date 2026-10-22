@@ -15,9 +15,10 @@
 3. `DECISIONS.md` — журнал решений и их причин.
 4. `landing/README.md` — как устроен сайт и как его проверять.
 5. `05_digital.md` — цифровой контур.
-6. `10_research/2026-10-18_benchmark_zamesin_book_club.md` — бенчмарк книжного клуба и Telegram-бота.
-7. `10_research/2026-10-18_borzakovskiy_brand.md` — факты, смыслы, нейминг.
-8. `docs/journal/` — хронология сессий и handoff.
+6. `11_crm.md` — CRM, Lead Intake API, сайт/Telegram/MAX.
+7. `10_research/2026-10-18_benchmark_zamesin_book_club.md` — бенчмарк книжного клуба и Telegram-бота.
+8. `10_research/2026-10-18_borzakovskiy_brand.md` — факты, смыслы, нейминг.
+9. `docs/journal/` — хронология сессий и handoff.
 
 ## Карта репозитория
 
@@ -30,8 +31,8 @@ AGENTS.md                 — правила для агентов
 10_research/              — интервью, term sheet, бренд, бенчмарк
 brand/                    — wordmark, track-эмблема, бренд-борд
 deck/                     — презентация и one-pager
-landing/                  — сайт: HTML/CSS/JS, API заявки, ассеты
-landing/api/lead.js       — serverless-отправка заявки в Telegram
+landing/                  — сайт: HTML/CSS/JS, форма, ассеты
+crm/                      — Lead Intake API, CRM-адаптеры, Dockerfile
 docs/journal/             — дневник сессий и handoff
 ```
 
@@ -43,6 +44,16 @@ npm run dev
 ```
 
 Сайт: `http://localhost:4173`. Dev-сервер слушает только `127.0.0.1` — не локальную сеть и не интернет.
+
+Заявки локально:
+
+```bash
+cd crm
+cp .env.example .env
+npm run dev
+```
+
+Intake: `http://127.0.0.1:4174`. Форма на сайте по умолчанию отправляет на этот адрес.
 
 Проверки (из `landing/README.md`):
 
