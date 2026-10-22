@@ -8,6 +8,8 @@
     return;
   }
 
+  var leadEndpoint = form.getAttribute("data-endpoint") || "/api/leads";
+
   var nameInput = document.getElementById("name");
   var contactInput = document.getElementById("contact");
   var consentInput = document.getElementById("consent");
@@ -51,13 +53,13 @@
   function validateContact() {
     var value = contactInput.value.trim();
     var isPhone = /^[+\d][\d\s\-()]{5,}$/.test(value);
-    var isTelegram = /^@[a-zA-Z0-9_]{4,}$/.test(value) || /^https?:\/\/t\.me\/[a-zA-Z0-9_]{4,}$/.test(value);
+    var isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
-    if (!isPhone && !isTelegram) {
+    if (!isPhone && !isEmail) {
       return setError(
         contactInput,
         contactError,
-        "Оставьте телефон или Telegram: +7 999 000-00-00 или @username."
+        "Оставьте телефон или email: +7 999 000-00-00 или name@example.com."
       );
     }
     return setError(contactInput, contactError, "");
@@ -126,15 +128,26 @@
 
     var params = new URLSearchParams(window.location.search);
     var source = params.get("utm_source") || window.location.pathname;
+    var utm = {};
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach(function (key) {
+      var value = params.get(key);
+      if (value) {
+        utm[key] = value;
+      }
+    });
 
-    fetch("/api/lead", {
+    fetch(leadEndpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        channel: "site",
         name: nameInput.value.trim(),
         contact: contactInput.value.trim(),
         consent: true,
-        source: source
+        consent_version: form.getAttribute("data-consent-version") || "2026-10-22",
+        source: source,
+        page: window.location.pathname,
+        utm: utm
       })
     })
       .then(function (response) {
@@ -145,7 +158,7 @@
       })
       .then(function () {
         form.reset();
-        status.textContent = "Вы записаны. Пришлём точку сбора и время в Telegram.";
+        status.textContent = "Вы записаны. Пришлём точку сбора и время.";
         status.classList.add("is-success");
         track("form_submit");
       })

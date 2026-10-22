@@ -31,8 +31,8 @@ AGENTS.md                 — правила для агентов
 10_research/              — интервью, term sheet, бренд, бенчмарк
 brand/                    — wordmark, track-эмблема, бренд-борд
 deck/                     — презентация и one-pager
-landing/                  — сайт: HTML/CSS/JS, API заявки, ассеты
-landing/api/lead.js       — serverless-отправка заявки в Telegram
+landing/                  — сайт: HTML/CSS/JS, форма, ассеты
+crm/                      — Lead Intake API, CRM-адаптеры, Dockerfile
 docs/journal/             — дневник сессий и handoff
 ```
 
@@ -44,6 +44,16 @@ npm run dev
 ```
 
 Сайт: `http://localhost:4173`. Dev-сервер слушает только `127.0.0.1` — не локальную сеть и не интернет.
+
+Заявки локально:
+
+```bash
+cd crm
+cp .env.example .env
+npm run dev
+```
+
+Intake: `http://127.0.0.1:4174`. Форма на сайте по умолчанию отправляет на этот адрес.
 
 Проверки (из `landing/README.md`):
 

@@ -449,14 +449,14 @@
           </ul>
         </div>
 
-        <form class="lead-form" id="lead-form" novalidate>
+        <form class="lead-form" id="lead-form" data-endpoint="http://localhost:4174/api/leads" data-consent-version="2026-10-22" novalidate>
           <div class="field">
             <label for="name">Имя</label>
             <input id="name" name="name" type="text" autocomplete="name" required minlength="2" maxlength="80" aria-describedby="name-error">
             <p class="field-error" id="name-error" hidden></p>
           </div>
           <div class="field">
-            <label for="contact">Телефон или Telegram</label>
+            <label for="contact">Телефон или email</label>
             <input id="contact" name="contact" type="text" autocomplete="tel" required maxlength="120" aria-describedby="contact-error">
             <p class="field-error" id="contact-error" hidden></p>
           </div>

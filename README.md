@@ -49,6 +49,7 @@
 - [09_content.md](09_content.md) — контент и воронка.
 - [11_crm.md](11_crm.md) — CRM, приём заявок из сайта/Telegram/MAX, данные в РФ.
 - [landing/](landing/) — лендинг: тексты, вёрстка, форма, инструкция по запуску.
+- [crm/](crm/) — единый Lead Intake API для сайта/Telegram/MAX и адаптеры Bitrix24/EspoCRM.
 - [deck/](deck/) — презентация на 7 слайдов и one-pager к встрече: HTML и PDF.
 - [brand/](brand/) — wordmark ЮБ800 и вторичная горизонтальная трек-эмблема.
 - [10_research/](10_research/) — материалы для встречи и запуска:
