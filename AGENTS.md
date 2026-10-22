@@ -15,9 +15,10 @@
 3. `DECISIONS.md` — журнал решений и их причин.
 4. `landing/README.md` — как устроен сайт и как его проверять.
 5. `05_digital.md` — цифровой контур.
-6. `10_research/2026-10-18_benchmark_zamesin_book_club.md` — бенчмарк книжного клуба и Telegram-бота.
-7. `10_research/2026-10-18_borzakovskiy_brand.md` — факты, смыслы, нейминг.
-8. `docs/journal/` — хронология сессий и handoff.
+6. `11_crm.md` — CRM, Lead Intake API, сайт/Telegram/MAX.
+7. `10_research/2026-10-18_benchmark_zamesin_book_club.md` — бенчмарк книжного клуба и Telegram-бота.
+8. `10_research/2026-10-18_borzakovskiy_brand.md` — факты, смыслы, нейминг.
+9. `docs/journal/` — хронология сессий и handoff.
 
 ## Карта репозитория
 
@@ -101,6 +102,7 @@ html-validate index.html privacy.html
 - Нет подтверждённого зала и двух тренеров; дедлайн 25 октября.
 - Встреча с Борзаковским 21–22 октября ещё не проведена.
 - Telegram-бот не подключён: нужны `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID`.
+- CRM не выбрана; текущая форма работает на Vercel и не подходит для хранения ПДн по 152-ФЗ. См. `11_crm.md`.
 - Права на фото hero и фон `bg5` не подтверждены.
 - Юрлицо, домен и оплата не оформлены.
 - Точный Nike Futura ND недоступен; wordmark собран в кривых.
