@@ -1,6 +1,15 @@
 const MAX_NAME = 80;
 const MAX_CONTACT = 120;
 
+function isPhone(value) {
+  const digits = value.replace(/\D/g, "");
+  return digits.length >= 10 && digits.length <= 15 && /^[+\d][\d\s\-()]*$/.test(value);
+}
+
+function isEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+}
+
 function escapeHtml(value) {
   return String(value)
     .replaceAll("&", "&amp;")
@@ -38,8 +47,8 @@ function validateLead(body) {
   if (name.length < 2 || name.length > MAX_NAME) {
     return { ok: false, error: "Проверьте имя." };
   }
-  if (contact.length < 5 || contact.length > MAX_CONTACT) {
-    return { ok: false, error: "Проверьте контакт." };
+  if (contact.length < 5 || contact.length > MAX_CONTACT || (!isPhone(contact) && !isEmail(contact))) {
+    return { ok: false, error: "Проверьте телефон или почту." };
   }
   if (!consent) {
     return { ok: false, error: "Нужно согласие на обработку данных." };
@@ -68,7 +77,7 @@ export default async function handler(req, res) {
   }
 
   const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID;
+  const chatId = process.env.TELEGRAM_CHAT_ID || process.env.MANAGER_CHAT_ID;
 
   if (!token || !chatId) {
     res.status(500).json({ ok: false, error: "Приём заявок не настроен." });
@@ -77,11 +86,11 @@ export default async function handler(req, res) {
 
   const { name, contact, source } = result.lead;
   const text = [
-    "<b>Заявка на пробежку ЮБ800</b>",
+    "<b>Заявка с сайта ЮБ800</b>",
     "",
     `<b>Имя:</b> ${escapeHtml(name)}`,
-    `<b>Контакт:</b> ${escapeHtml(contact)}`,
-    source ? `<b>Страница:</b> ${escapeHtml(source)}` : ""
+    `<b>Телефон или почта:</b> ${escapeHtml(contact)}`,
+    source ? `<b>Источник:</b> ${escapeHtml(source)}` : ""
   ]
     .filter(Boolean)
     .join("\n");

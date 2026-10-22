@@ -1,0 +1,24 @@
+[Unit]
+Description=YB800 Telegram bot
+Documentation=file:///opt/yb800-bot/README.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=yb800bot
+Group=yb800bot
+WorkingDirectory=/opt/yb800-bot
+EnvironmentFile=/opt/yb800-bot/.env
+ExecStart=/usr/bin/node /opt/yb800-bot/index.js
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/yb800-bot/data
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

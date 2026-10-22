@@ -29,6 +29,42 @@ function jsonResponse(res, status, data) {
 const server = createServer(async (req, res) => {
   const url = new URL(req.url || "/", `http://${req.headers.host || "localhost"}`);
 
+  if (url.pathname === "/api/leads") {
+    if (req.method !== "POST") {
+      jsonResponse(res, 405, { ok: false, error: "Метод не поддерживается." });
+      return;
+    }
+
+    let raw = "";
+    let size = 0;
+    req.on("data", (chunk) => {
+      size += chunk.length;
+      if (size > 32 * 1024) {
+        jsonResponse(res, 413, { ok: false, error: "Слишком большая заявка." });
+        req.destroy();
+        return;
+      }
+      raw += chunk;
+    });
+    req.on("end", async () => {
+      const target = process.env.LEAD_INTAKE_URL || "http://127.0.0.1:4174/api/leads";
+      try {
+        const upstream = await fetch(target, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: raw
+        });
+        const text = await upstream.text();
+        res.statusCode = upstream.status;
+        res.setHeader("Content-Type", upstream.headers.get("content-type") || "application/json; charset=utf-8");
+        res.end(text);
+      } catch {
+        jsonResponse(res, 502, { ok: false, error: "Lead intake недоступен. Запустите crm/." });
+      }
+    });
+    return;
+  }
+
   if (url.pathname === "/api/lead") {
     if (req.method !== "POST") {
       jsonResponse(res, 405, { ok: false, error: "Метод не поддерживается." });

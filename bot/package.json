@@ -1,0 +1,14 @@
+{
+  "name": "yb800-bot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Telegram-бот клуба ЮБ800",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "node --test"
+  }
+}

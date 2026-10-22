@@ -22,3 +22,7 @@ __pycache__/
 /istockphoto-*.jpg
 /yury-borzakovsky*.jpg
 /ub.png
+
+# Telegram bot runtime data
+/bot/.env
+/bot/data/
