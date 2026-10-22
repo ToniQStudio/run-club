@@ -825,6 +825,22 @@ input {
   font-weight: 600;
 }
 
+.format-notes {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 65ch;
+  margin-top: var(--space-6);
+}
+
+.format-notes p {
+  color: var(--color-text-secondary);
+  font-size: 0.9375rem;
+}
+
+.format-notes strong {
+  color: var(--color-text);
+}
+
 .text-link {
   margin-top: auto;
   padding-top: var(--space-4);
