@@ -72,9 +72,10 @@ npm run dev
 
 С 22 октября 2026 форма отправляет заявку не в `/api/lead`, а в единый intake `crm/`:
 
-- локальный адрес — `http://localhost:4174/api/leads` (задан в `data-endpoint` формы);
-- запуск: `cd ../crm && cp .env.example .env && npm run dev`;
-- для production заменить `data-endpoint` на адрес intake в РФ;
+- форма отправляет на same-origin `/api/leads`;
+- локальный `dev-server.mjs` проксирует `/api/leads` в `LEAD_INTAKE_URL` (по умолчанию `http://127.0.0.1:4174/api/leads`);
+- запуск intake: `cd ../crm && cp .env.example .env && npm run dev`;
+- для production поставить reverse proxy `/api/leads` на intake в РФ или заменить `data-endpoint` на его адрес;
 - `api/lead.js` оставлен как legacy и формой не используется;
 - данные пользователей не должны приниматься Vercel-функцией.
 

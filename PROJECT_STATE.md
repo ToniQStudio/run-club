@@ -91,7 +91,7 @@
 
 ### CRM и заявки
 
-Первый слой уже сделан: `crm/` — единый Lead Intake API (`POST /api/leads`) с mock-режимом, адаптерами Bitrix24/EspoCRM, аудитом согласий и опциональным Telegram-уведомлением. Форма сайта отправляет в него; локально — `http://localhost:4174/api/leads`.
+Первый слой уже сделан: `crm/` — единый Lead Intake API (`POST /api/leads`) с mock-режимом, адаптерами Bitrix24/EspoCRM, аудитом согласий и опциональным Telegram-уведомлением. Форма сайта отправляет в него same-origin `/api/leads`; локальный `dev-server` проксирует в `http://127.0.0.1:4174/api/leads`.
 
 Бесплатный старт — **Bitrix24 Free** (РФ); если упрётся в лимиты — EspoCRM на VPS РФ; платный простой вариант — amoCRM. CRM ещё не выбрана; Bitrix24-адаптер готов, нужен портал и webhook. Подробно: [crm/README.md](crm/README.md), [11_crm.md](11_crm.md).
 
