@@ -12,7 +12,7 @@
 
 ## Репозиторий
 
-Репозиторий **приватный**: https://github.com/ToniQStudio/run-club. Публичный предпросмотр: https://toniqstudio.github.io/yb800-site/ (отдельный публичный репозиторий, только статика; форма не отправляет без CRM). Для локального просмотра — `cd landing && npm run dev` (http://localhost:4173). Сырые исходники фото и папка `.shots` в репозиторий не входят.
+Репозиторий **приватный**: https://github.com/ToniQStudio/run-club. Публичный предпросмотр: https://toniqstudio.github.io/run-club/ (репозиторий публичный, GitHub Pages; форма не отправляет без CRM). Для локального просмотра — `cd landing && npm run dev` (http://localhost:4173). Сырые исходники фото и папка `.shots` в репозиторий не входят.
 
 ## Кто в проекте
 

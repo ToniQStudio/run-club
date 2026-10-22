@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ybrc.ru/sitemap.xml
+Sitemap: https://toniqstudio.github.io/run-club/sitemap.xml
