@@ -886,27 +886,12 @@ input {
 }
 
 .format-additional {
-  color: var(--color-text);
-  font-size: 0.9375rem;
-  font-weight: 700;
-}
-
-.format-offer {
-  padding: var(--space-4);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: var(--color-surface);
-}
-
-.format-offer h3 {
-  margin: 0 0 var(--space-1);
-  color: var(--color-text);
-  font-size: var(--fs-lg);
-}
-
-.format-offer p {
   color: var(--color-text-secondary);
   font-size: 0.9375rem;
+}
+
+.format-additional strong {
+  color: var(--color-text);
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
