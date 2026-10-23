@@ -681,6 +681,7 @@ input {
 #formats {
   position: relative;
   overflow: hidden;
+  overflow: clip;
   background: var(--color-bg);
 }
 
@@ -1428,6 +1429,7 @@ details p {
 .signup {
   position: relative;
   overflow: hidden;
+  overflow: clip;
   padding-block: clamp(5rem, 8vw, 7rem);
   background-color: var(--color-bg);
   background-image:
