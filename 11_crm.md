@@ -147,7 +147,7 @@ MAX-бот ──────┘           │
 
 ## 6. Lead Intake API
 
-Единый endpoint, например `https://leads.yb800.ru/api/leads` или функция в Yandex Cloud.
+Единый endpoint, например `https://leads.run800.ru/api/leads` или функция в Yandex Cloud.
 
 Вход:
 
@@ -188,7 +188,7 @@ MAX-бот ──────┘           │
 Защита:
 
 - серверный ключ, не токен в браузере;
-- CORS только для `yb800.ru`;
+- CORS только для `run800.ru`;
 - honeypot + rate limit + капча при спаме;
 - идемпотентность по `external_id`;
 - логи без телефона/почты в открытом виде.

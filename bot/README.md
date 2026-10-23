@@ -51,7 +51,7 @@
 ```
 BOT_TOKEN=123456789:токен
 MANAGER_CHAT_ID=-1001234567890
-PRIVACY_URL=https://ybrc.ru/privacy.html
+PRIVACY_URL=https://run800.ru/privacy.html
 DATA_DIR=./data
 ```
 

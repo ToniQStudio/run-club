@@ -142,7 +142,7 @@ t.me/YB800_bot?start=site
 
 - Кнопка «Войти» → бот `?start=login`.
 - Бот проверяет `subscription_until`; если активна — создаёт одноразовый токен на 15 минут.
-- Ссылка `https://ybrc.ru/auth/confirm?token=...` → сервер проверяет, ставит HttpOnly/Secure/SameSite=Lax cookie → `/me`.
+- Ссылка `https://run800.ru/auth/confirm?token=...` → сервер проверяет, ставит HttpOnly/Secure/SameSite=Lax cookie → `/me`.
 - `/api/auth/session` возвращает пользователя; выход — `DELETE`.
 - Токен хранить только хешем, привязывать к `tg_id`, одноразовый, с rate limit.
 - Паролей нет. Телефон и другие данные не передаются в URL.

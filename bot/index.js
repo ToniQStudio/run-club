@@ -22,7 +22,7 @@ import { escapeHtml, leadToManagerMessage, saveLead } from "./src/storage.js";
 
 const token = process.env.BOT_TOKEN;
 const managerChatId = process.env.MANAGER_CHAT_ID || "";
-const privacyUrl = process.env.PRIVACY_URL || "https://ybrc.ru/privacy.html";
+const privacyUrl = process.env.PRIVACY_URL || "https://run800.ru/privacy.html";
 const dataDir = process.env.DATA_DIR || path.resolve(process.cwd(), "data");
 
 if (!token) {
@@ -291,7 +291,7 @@ async function submit(chatId, from) {
         "Мы свяжемся с вами в Telegram или по указанному контакту.",
         "Если хотите что-то добавить — ответьте здесь.",
         "",
-        "Вернуться на сайт: https://ybrc.ru/"
+        "Вернуться на сайт: https://run800.ru/"
       ].join("\n")
     );
   } catch (error) {
