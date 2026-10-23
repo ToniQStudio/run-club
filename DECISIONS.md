@@ -12,15 +12,15 @@
 
 ## 2026-10-23 — имя бота: run800, username пока @YB800_bot
 
-**Решение:** отображаемое имя бота изменено на **`run800`**. Username остаётся **`@YB800_bot`**, поэтому ссылки `t.me/YB800_bot?start=site` и QR на сайте не меняются и продолжают работать. Смена username на `@run800_bot` — отдельное действие в BotFather; до неё ссылки и QR не трогаем.
+**Решение:** отображаемое имя бота изменено на **`run800`**. Username остаётся **`@YB800_bot`**, поэтому ссылки `t.me/YB800_bot?start=site` и QR на сайте не меняются и продолжают работать. Смена username на `@run800_bot` — отдельная задача: BotFather не меняет username существующего бота, нужен новый бот или запрос в `@BotSupport`; до этого ссылки и QR не трогаем.
 
 **Почему:** имя и username — разные поля. Имя меняется без ломки ссылок; username меняет адрес и требует обновления всех ссылок и QR.
 
 **Не делаем:** не считать `run800` в имени бота новым username; не менять ссылки и QR, пока username фактически не сменён.
 
-## 2026-10-23 — username Telegram-бота: планируется @run800_bot
+## 2026-10-23 — username Telegram-бота: вариант нового бота @run800_bot
 
-**Решение:** переименовать бота с `@YB800_bot` на `@run800_bot` под домен `run800.ru`. Username меняется только через BotFather; токен, `chat_id` и данные сохраняются. До проверки доступности и смены username ссылки и QR на сайте не трогаем. После смены: обновить ссылки в `landing/index.html`, `landing/copy.md`, `landing/README.md`, `landing/TELEGRAM_SETUP.md`, `PROJECT_STATE.md`, `AGENTS.md`, `bot/README.md`; пересобрать `landing/assets/telegram-qr.svg`; проверить `getMe` и `/start`.
+**Решение:** целевой username — `@run800_bot`. В BotFather нельзя изменить username существующего бота: в `Edit Bot` доступны имя, описание, аватар и команды, но не username. Варианты: оставить `@YB800_bot`, создать нового бота `@run800_bot` (быстро и бесплатно), запросить смену у `@BotSupport` (долго, без гарантии) или купить коллекционный username на Fragment (платно). До фактического переезда ссылки и QR на сайте не трогаем. После переезда: заменить `BOT_TOKEN` на VPS, обновить ссылки в `landing/index.html`, `landing/copy.md`, `landing/README.md`, `landing/TELEGRAM_SETUP.md`, `PROJECT_STATE.md`, `AGENTS.md`, `bot/README.md`; пересобрать `landing/assets/telegram-qr.svg`; проверить `getMe` и `/start`.
 
 **Почему:** домен и бот должны читаться и диктоваться одинаково. Бренд клуба остаётся ЮБ800, а username — латинский адрес под домен. Запасные варианты: `run800club_bot`, `run800moscow_bot`.
 

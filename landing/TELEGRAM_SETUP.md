@@ -6,7 +6,7 @@
 
 Текущая схема: основной вход — форма на сайте (имя + телефон или почта). В поп-апе под формой — два QR и переходы в Telegram и MAX. Telegram-бот — альтернативный канал знакомства и записи. MAX ведёт на `https://max.ru`; бот клуба готовится, QR пока временный.
 
-Бот создан и задеплоен: имя `run800`, username `@YB800_bot`, ссылка `https://t.me/YB800_bot?start=site`. `MANAGER_CHAT_ID` настроен. Username пока не менялся, поэтому ссылки и QR на сайте корректны. Если нужен адрес `@run800_bot` — это отдельная смена username в BotFather. Для заявок с формы на Vercel задать `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID` (либо `MANAGER_CHAT_ID`). Код бота — в `../bot/`, запуск и systemd-шаблон — в `../bot/README.md`.
+Бот создан и задеплоен: имя `run800`, username `@YB800_bot`, ссылка `https://t.me/YB800_bot?start=site`. `MANAGER_CHAT_ID` настроен. Username пока не менялся, поэтому ссылки и QR на сайте корректны. Если нужен адрес `@run800_bot` — это отдельная задача: BotFather не меняет username существующего бота, нужен новый бот или запрос в `@BotSupport`. Для заявок с формы на Vercel задать `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID` (либо `MANAGER_CHAT_ID`). Код бота — в `../bot/`, запуск и systemd-шаблон — в `../bot/README.md`.
 
 ## Что должен уметь бот
 
@@ -25,10 +25,10 @@
 1. Откройте @BotFather.
 2. `/newbot`.
 3. Имя: `run800`.
-4. Username: текущий `@YB800_bot`; если меняем — `run800_bot` (проверить свободный; запасные — `run800club_bot`, `run800moscow_bot`).
+4. Username: если создаём нового бота — `run800_bot` (проверить свободный; запасные — `run800club_bot`, `run800moscow_bot`). У текущего бота username `@YB800_bot`.
 5. Сохранить токен в менеджере секретов, не в репозитории.
 
-У существующего бота имя `run800`, username `@YB800_bot`. Смена username делается в BotFather: `/mybots` → бот → `Edit Bot` → `Edit Username`. Токен и `chat_id` сохраняются. После смены старые ссылки `t.me/YB800_bot` перестают работать, а старый username освобождается.
+У существующего бота имя `run800`, username `@YB800_bot`. В BotFather нельзя изменить username существующего бота: в `Edit Bot` доступны имя, описание, аватар и команды, но не username. Если нужен адрес `@run800_bot` — создать нового бота через `/newbot` или запросить смену у `@BotSupport`. При создании нового бота токен меняется; `chat_id` менеджера можно оставить прежним.
 
 ## Обновить ссылку и QR
 
@@ -40,7 +40,7 @@
 https://t.me/YB800_bot?start=site
 ```
 
-После смены username на `@run800_bot`:
+Если создаём нового бота с `@run800_bot`:
 
 ```
 https://t.me/run800_bot?start=site
@@ -48,14 +48,16 @@ https://t.me/run800_bot?start=site
 
 Остальные CTA на сайте открывают форму, а не Telegram.
 
-После смены username:
+Если создаём нового бота:
 
-1. Заменить URL в `landing/index.html` — кнопка и два блока с QR.
-2. Обновить `landing/copy.md`, `landing/README.md`, `PROJECT_STATE.md`, `AGENTS.md`, `bot/README.md`.
-3. Пересобрать `assets/telegram-qr.svg` под новый URL.
-4. Проверить через `getMe`, что username новый, а карточка и QR открывают одного и того же бота.
-5. Прогнать `/start` и тестовую заявку end-to-end.
-6. Не добавлять deep links, пока сценарии бота не готовы; сейчас выбран один общий вход.
+1. Создать бота, получить токен, заменить `BOT_TOKEN` в `.env` на VPS и перезапустить `yb800-bot`.
+2. Заменить URL в `landing/index.html` — кнопка и два блока с QR.
+3. Обновить `landing/copy.md`, `landing/README.md`, `PROJECT_STATE.md`, `AGENTS.md`, `bot/README.md`.
+4. Пересобрать `assets/telegram-qr.svg` под новый URL.
+5. Проверить через `getMe`, что username новый, а карточка и QR открывают одного и того же бота.
+6. Прогнать `/start` и тестовую заявку end-to-end.
+7. Старого бота оставить как «переехали» или удалить; старые ссылки и QR обновить.
+8. Не добавлять deep links, пока сценарии бота не готовы; сейчас выбран один общий вход.
 
 ## Что проверить
 
