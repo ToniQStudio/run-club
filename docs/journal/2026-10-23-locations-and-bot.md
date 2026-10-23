@@ -11,12 +11,11 @@
 
 ## Бот
 
-- Имя бота изменено на `run800`. Username остаётся `@YB800_bot`; ссылки и QR на сайте не менялись и работают.
-- Проверено через публичную страницу `t.me/YB800_bot`: отображается имя `run800`, адрес `@YB800_bot`.
-- В BotFather нельзя изменить username существующего бота: в `Edit Bot` есть имя, описание, аватар и команды, но не username. Если нужен `@run800_bot` — создать нового бота через `/newbot` (быстро и бесплатно) или запросить смену у `@BotSupport` (долго, без гарантии).
-- При создании нового бота: заменить `BOT_TOKEN` на VPS, обновить три ссылки в `landing/index.html`, тексты и документацию, пересобрать `telegram-qr.svg`, проверить `getMe` и `/start`.
-- Публичная страница `t.me/run800_bot` сейчас не отдаётся — вероятно, username свободен; точную проверку даст BotFather.
-- Запасные варианты: `run800club_bot`, `run800moscow_bot`.
+- Старый бот `@YB800_bot` удалён. Новый бот: имя `run800`, username `@run800_bot`, id `8923990959`.
+- Новый токен проверен через `getMe` (`ok: true`) и сохранён в `/opt/yb800-bot/.env` на VPS; сервис `yb800-bot` перезапущен и активен.
+- Ссылки в `landing/index.html` (3), `landing/copy.md`, `landing/README.md`, `landing/TELEGRAM_SETUP.md`, `PROJECT_STATE.md`, `AGENTS.md`, `bot/README.md` переведены на `@run800_bot`.
+- QR `landing/assets/telegram-qr.svg` пересобран под `https://t.me/run800_bot?start=site`.
+- В BotFather нельзя изменить username существующего бота, поэтому переезд сделан через нового бота. Старый `@YB800_bot` удалён.
 
 ## Проверено
 
@@ -24,12 +23,15 @@
 - `landing/styles.css` ссылается на `open-run-event.jpg` / `.webp`; старые файлы удалены.
 - `node --check bot/src/scenario.js` — без ошибок.
 - `node --test bot/test/scenario.test.js` — 9/9.
-- Публичная страница `t.me/YB800_bot`: имя `run800`, username `@YB800_bot`.
+- `getMe` нового токена: `ok: true`, username `run800_bot`, имя `run800`, id `8923990959`.
+- Сервис `yb800-bot` на VPS активен после перезапуска.
+- Все актуальные ссылки и QR на сайте ведут на `@run800_bot`.
 
 ## Не проверено / осталось
 
-- Username `@run800_bot` не менялся; при необходимости создать нового бота или запросить смену у `@BotSupport`.
-- QR `landing/assets/telegram-qr.svg` ведёт на `@YB800_bot` — это корректно, пока username не изменён. После смены username пересобрать.
+- `/start` и тестовая заявка в новом боте end-to-end ещё не прогнаны через Telegram.
+- В BotFather не заполнены About, Description, Botpic и Privacy Policy — тексты готовы в `bot/README.md`.
+- Физическое сканирование нового QR с телефона не проверялось.
 - PDF дека и one-pager пересобраны 23.10 после замены локации. Экономика в них ещё старая (9 900 / 17 500 / 1 900 / 99 000 ₽, роялти 7%) — обновить отдельно.
 - `landing/assets/og.png` перерисован из `brand/og-strict.html`.
 - Фон `open-run-event` — прежний кадр; заменить на нейтральный после съёмки.
