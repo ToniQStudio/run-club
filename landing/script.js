@@ -1,41 +1,6 @@
 (function () {
   "use strict";
 
-  var legacyAnchors = {
-    formats: "formats-top",
-    team: "team-top",
-    training: "training-top",
-    faq: "faq-top",
-    event: "event-top"
-  };
-
-  function scrollLegacyAnchor() {
-    var hash = window.location.hash.replace(/^#/, "");
-    var targetId = legacyAnchors[hash];
-    if (!targetId) {
-      return;
-    }
-    var target = document.getElementById(targetId);
-    if (!target) {
-      return;
-    }
-    var root = document.documentElement;
-    var previousBehavior = root.style.scrollBehavior;
-    root.style.scrollBehavior = "auto";
-    target.scrollIntoView({ block: "start" });
-    root.style.scrollBehavior = previousBehavior;
-    if (window.history && window.history.replaceState) {
-      window.history.replaceState(null, "", "#" + targetId);
-    }
-  }
-
-  if (document.readyState === "complete") {
-    scrollLegacyAnchor();
-  } else {
-    window.addEventListener("load", scrollLegacyAnchor);
-  }
-  window.addEventListener("hashchange", scrollLegacyAnchor);
-
   var items = document.querySelectorAll("[data-reveal]");
   if (!items.length) {
     return;

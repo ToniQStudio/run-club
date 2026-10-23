@@ -129,7 +129,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--header-h) + 1px + var(--space-4));
+  scroll-padding-top: calc(var(--header-h) + 1px);
 }
 
 body {
@@ -681,7 +681,6 @@ input {
 #formats {
   position: relative;
   overflow: hidden;
-  overflow: clip;
   background: var(--color-bg);
 }
 
@@ -1429,7 +1428,6 @@ details p {
 .signup {
   position: relative;
   overflow: hidden;
-  overflow: clip;
   padding-block: clamp(5rem, 8vw, 7rem);
   background-color: var(--color-bg);
   background-image:
