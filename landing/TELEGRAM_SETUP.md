@@ -6,7 +6,7 @@
 
 Текущая схема: основной вход — форма на сайте (имя + телефон или почта). В поп-апе под формой — два QR и переходы в Telegram и MAX. Telegram-бот — альтернативный канал знакомства и записи. MAX ведёт на `https://max.ru`; бот клуба готовится, QR пока временный.
 
-Бот создан и задеплоен: `@YB800_bot`, ссылка `https://t.me/YB800_bot?start=site`. `MANAGER_CHAT_ID` настроен. Планируется переименование username на `@run800_bot` под домен `run800.ru`; до смены username ссылки и QR на сайте не меняем. Для заявок с формы на Vercel задать `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID` (либо `MANAGER_CHAT_ID`). Код бота — в `../bot/`, запуск и systemd-шаблон — в `../bot/README.md`.
+Бот создан и задеплоен: имя `run800`, username `@YB800_bot`, ссылка `https://t.me/YB800_bot?start=site`. `MANAGER_CHAT_ID` настроен. Username пока не менялся, поэтому ссылки и QR на сайте корректны. Если нужен адрес `@run800_bot` — это отдельная смена username в BotFather. Для заявок с формы на Vercel задать `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID` (либо `MANAGER_CHAT_ID`). Код бота — в `../bot/`, запуск и systemd-шаблон — в `../bot/README.md`.
 
 ## Что должен уметь бот
 
@@ -24,23 +24,23 @@
 
 1. Откройте @BotFather.
 2. `/newbot`.
-3. Имя: `ЮБ800` или `run800 — беговой клуб`.
-4. Username: `run800_bot` (проверить свободный; запасные — `run800club_bot`, `run800moscow_bot`).
+3. Имя: `run800`.
+4. Username: текущий `@YB800_bot`; если меняем — `run800_bot` (проверить свободный; запасные — `run800club_bot`, `run800moscow_bot`).
 5. Сохранить токен в менеджере секретов, не в репозитории.
 
-У существующего бота сейчас `@YB800_bot`. Переименование делается в BotFather: `/mybots` → бот → `Edit Bot` → `Edit Username`. Токен и `chat_id` сохраняются. После смены старые ссылки `t.me/YB800_bot` перестают работать, а старый username освобождается.
+У существующего бота имя `run800`, username `@YB800_bot`. Смена username делается в BotFather: `/mybots` → бот → `Edit Bot` → `Edit Username`. Токен и `chat_id` сохраняются. После смены старые ссылки `t.me/YB800_bot` перестают работать, а старый username освобождается.
 
 ## Обновить ссылку и QR
 
 Ссылка используется в трёх местах: кнопка «Оставить заявку» в блоке «Вступить в клуб», карточка Telegram и QR в поп-апе и финальном блоке.
 
-Текущая ссылка:
+Текущая ссылка (username `@YB800_bot`, имя `run800`):
 
 ```
 https://t.me/YB800_bot?start=site
 ```
 
-После переименования:
+После смены username на `@run800_bot`:
 
 ```
 https://t.me/run800_bot?start=site

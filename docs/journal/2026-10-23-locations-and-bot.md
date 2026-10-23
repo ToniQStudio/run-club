@@ -6,16 +6,16 @@
 - Заголовок события 21 ноября: «21 ноября. Москва» вместо «21 ноября. Лужники».
 - Фоновое фото блока 21 ноября переименовано: `landing/assets/luzhniki-event.*` → `open-run-event.*`. CSS и документация обновлены.
 - В `00_brief.md`, `06_launch.md`, `08_partners.md`, `README.md`, `PROJECT_STATE.md`, `AGENTS.md`, `landing/copy.md`, `landing/index.html`, `landing/README.md`, `bot/src/scenario.js`, `deck/index.html`, `deck/onepager.html`, `deck/README.md`, `brand/og-strict.html` и скриптах `10_research/` заменены упоминания Лужников на Москву и разные локации.
-- `DECISIONS.md`: добавлены решения о локациях и о плане переименования бота; исторические записи не переписаны.
+- `DECISIONS.md`: добавлены решения о локациях, имени бота `run800` и плане смены username; исторические записи не переписаны.
 - Статус репозитория и предпросмотра синхронизирован с фактом: репозиторий публичный, GitHub Pages — предпросмотр, `run800.ru` не подключён.
 
 ## Бот
 
-- Текущий username — `@YB800_bot`. Планируется `@run800_bot`.
-- Username меняется только через BotFather: `/mybots` → бот → `Edit Bot` → `Edit Username`. Токен и `chat_id` сохраняются.
-- До смены username ссылки и QR на сайте не меняем: иначе они начнут вести на несуществующий адрес.
-- После смены: обновить три ссылки в `landing/index.html`, тексты и документацию, пересобрать `telegram-qr.svg`, проверить `getMe` и `/start`.
-- Проверить доступность `@run800_bot` из рабочей среды не удалось: `t.me` не отвечает. Нужна ручная проверка в Telegram.
+- Имя бота изменено на `run800`. Username остаётся `@YB800_bot`; ссылки и QR на сайте не менялись и работают.
+- Проверено через публичную страницу `t.me/YB800_bot`: отображается имя `run800`, адрес `@YB800_bot`.
+- Если нужен username `@run800_bot`, это отдельная смена в BotFather: `/mybots` → бот → `Edit Bot` → `Edit Username`. Токен и `chat_id` сохраняются.
+- После смены username: обновить три ссылки в `landing/index.html`, тексты и документацию, пересобрать `telegram-qr.svg`, проверить `getMe` и `/start`.
+- Публичная страница `t.me/run800_bot` сейчас не отдаётся — вероятно, username свободен; точную проверку даст BotFather.
 - Запасные варианты: `run800club_bot`, `run800moscow_bot`.
 
 ## Проверено
@@ -24,11 +24,12 @@
 - `landing/styles.css` ссылается на `open-run-event.jpg` / `.webp`; старые файлы удалены.
 - `node --check bot/src/scenario.js` — без ошибок.
 - `node --test bot/test/scenario.test.js` — 9/9.
+- Публичная страница `t.me/YB800_bot`: имя `run800`, username `@YB800_bot`.
 
 ## Не проверено / осталось
 
-- `@run800_bot` не проверен в Telegram; переименование не выполнено.
-- QR `landing/assets/telegram-qr.svg` всё ещё ведёт на `@YB800_bot` — пересобрать после смены username.
+- Username `@run800_bot` не менялся; при необходимости сменить в BotFather.
+- QR `landing/assets/telegram-qr.svg` ведёт на `@YB800_bot` — это корректно, пока username не изменён. После смены username пересобрать.
 - PDF дека и one-pager пересобраны 23.10 после замены локации. Экономика в них ещё старая (9 900 / 17 500 / 1 900 / 99 000 ₽, роялти 7%) — обновить отдельно.
 - `landing/assets/og.png` перерисован из `brand/og-strict.html`.
 - Фон `open-run-event` — прежний кадр; заменить на нейтральный после съёмки.

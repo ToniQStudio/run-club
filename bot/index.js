@@ -493,7 +493,7 @@ async function main() {
     ])
     .catch((error) => console.warn(`setMyCommands failed: ${error.message}`));
 
-  console.log("YB800 bot started");
+  console.log("run800 bot started");
   await poll();
 }
 

@@ -1,5 +1,5 @@
 [Unit]
-Description=YB800 Telegram bot
+Description=run800 Telegram bot (ЮБ800)
 Documentation=file:///opt/yb800-bot/README.md
 After=network-online.target
 Wants=network-online.target

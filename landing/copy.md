@@ -278,7 +278,7 @@
 
 **Форма на сайте — основной вход.** Имя, контакт и согласие собираются в модальном окне; заявка уходит в `api/lead.js` и Telegram-чат менеджера.
 
-- **Telegram-бот:** `https://t.me/YB800_bot?start=site`; username подтверждён. Планируется `https://t.me/run800_bot?start=site` после смены username в BotFather.
+- **Telegram-бот:** имя `run800`, username `@YB800_bot`; ссылка `https://t.me/YB800_bot?start=site` подтверждена. Если username сменится на `@run800_bot`, обновить ссылку и QR.
 - **MAX:** `https://max.ru` — временная ссылка на мессенджер; QR группы заменить после запуска бота.
 - **Deep links:** пока один общий вход; сценарии выбираются в боте.
 
