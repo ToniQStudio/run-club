@@ -21,6 +21,7 @@
   <link rel="preload" as="image" href="assets/hero-card-4x3.webp" type="image/webp" media="(max-width: 1023px)" fetchpriority="high">
   <link rel="preload" href="assets/fonts/jost.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="mobile.css" media="(max-width: 575px)">
   <script>document.documentElement.classList.add("js");</script>
   <script type="application/ld+json">
     {
@@ -59,7 +60,7 @@
       </nav>
       <a class="button button-small button-primary" href="#join" data-lead-open aria-haspopup="dialog" aria-controls="lead-dialog" data-lead-source="Шапка сайта">
         <span class="header-cta-full">Вступить в клуб</span>
-        <span class="header-cta-short">В клуб</span>
+        <span class="header-cta-short">Вступить в клуб</span>
       </a>
     </div>
   </header>
@@ -83,6 +84,10 @@
           <div class="hero-copy">
             <h1>Беговой клуб<br><span class="accent">Юрия <br class="h1-tablet-break">Борзаковского</span></h1>
             <p class="lead">Система олимпийского чемпиона и малая группа<br>Тренер видит ваш прогресс — от первого километра до личного рекорда</p>
+            <div class="hero-credentials" aria-label="Роли Юрия Борзаковского">
+              <p class="hero-credential"><strong>Главный тренер сборной России по лёгкой атлетике</strong></p>
+              <p class="hero-credential"><strong>Спортивный директор ВФЛА</strong></p>
+            </div>
             <div class="hero-actions">
               <a class="button button-primary" href="#join" data-lead-open aria-haspopup="dialog" aria-controls="lead-dialog" data-lead-source="Первый экран">Вступить в клуб</a>
             </div>
@@ -165,7 +170,7 @@
             <h3>Пробная неделя</h3>
             <p class="price">2&nbsp;500&nbsp;₽</p>
             <p>Две тренировки в&nbsp;группе, знакомство, чат клуба, тестирование и&nbsp;рекомендации тренера</p>
-            <a class="text-link" href="#join" data-lead-open aria-haspopup="dialog" aria-controls="lead-dialog" data-lead-source="Форматы · Пробная неделя">Попробовать неделю <span aria-hidden="true">›</span></a>
+            <a class="text-link" href="#join" data-lead-open aria-haspopup="dialog" aria-controls="lead-dialog" data-lead-source="Форматы · Пробная неделя">Вступить в клуб <span aria-hidden="true">›</span></a>
           </article>
           <article class="card format-card format-card-primary format-card-featured" data-reveal>
             <p class="card-kicker">Групповой формат</p>
@@ -180,7 +185,7 @@
             <h3>Премиум</h3>
             <p class="price">40&nbsp;000&nbsp;₽ <span>/ 4 недели</span></p>
             <p>Четыре тренировки с&nbsp;Юрием Борзаковским — раз в&nbsp;неделю, разбор и&nbsp;персональный план, закрытый чат</p>
-            <a class="text-link" href="#join" data-lead-open aria-haspopup="dialog" aria-controls="lead-dialog" data-lead-source="Форматы · Премиум">Узнать про&nbsp;премиум <span aria-hidden="true">›</span></a>
+            <a class="text-link" href="#join" data-lead-open aria-haspopup="dialog" aria-controls="lead-dialog" data-lead-source="Форматы · Премиум">Вступить в клуб <span aria-hidden="true">›</span></a>
           </article>
         </div>
 
@@ -188,17 +193,17 @@
         <div class="formats-secondary">
           <article class="card format-card format-card-secondary" data-reveal>
             <p class="card-kicker">Вход</p>
-            <h3>Открытая пробежка</h3>
+            <h3>Открытая тренировка</h3>
             <p class="price">Бесплатно</p>
             <p>3–5 км в&nbsp;своём темпе и&nbsp;полноценная тренировка: разминка, техника, основной блок и&nbsp;заминка. Плюс знакомство с&nbsp;тренерами и&nbsp;клубом</p>
-            <a class="text-link" href="#join" data-lead-open aria-haspopup="dialog" aria-controls="lead-dialog" data-lead-source="Форматы · Открытая пробежка">Попробовать бесплатно <span aria-hidden="true">›</span></a>
+            <a class="text-link" href="#join" data-lead-open aria-haspopup="dialog" aria-controls="lead-dialog" data-lead-source="Форматы · Открытая тренировка">Вступить в клуб <span aria-hidden="true">›</span></a>
           </article>
           <article class="card format-card format-card-secondary" data-reveal>
             <p class="card-kicker">Индивидуально</p>
             <h3>Персональная тренировка</h3>
             <p class="price">5&nbsp;000&nbsp;₽</p>
             <p>Работа над&nbsp;техникой, темпом и&nbsp;планом один на&nbsp;один с&nbsp;тренером</p>
-            <a class="text-link" href="#join" data-lead-open aria-haspopup="dialog" aria-controls="lead-dialog" data-lead-source="Форматы · Персональная тренировка">Записаться персонально <span aria-hidden="true">›</span></a>
+            <a class="text-link" href="#join" data-lead-open aria-haspopup="dialog" aria-controls="lead-dialog" data-lead-source="Форматы · Персональная тренировка">Вступить в клуб <span aria-hidden="true">›</span></a>
           </article>
         </div>
 
@@ -256,7 +261,11 @@
           <p class="eyebrow">Команда</p>
           <h2>Кто будет рядом</h2>
           <h3 class="team-name team-name-accent">Юрий Борзаковский</h3>
-          <p>Олимпийский чемпион Афин-2004 на 800&nbsp;м. Чемпион мира в помещении. 12&#8209;кратный чемпион России. Экс-главный тренер сборной России по лёгкой атлетике, спортивный директор ВФЛА</p>
+          <div class="team-roles" aria-label="Роли Юрия Борзаковского">
+            <p class="team-role"><strong>Главный тренер сборной России по лёгкой атлетике</strong></p>
+            <p class="team-role"><strong>Спортивный директор ВФЛА</strong></p>
+          </div>
+          <p>Олимпийский чемпион Афин-2004 на 800&nbsp;м. Чемпион мира в помещении. 12&#8209;кратный чемпион России</p>
           <div class="coaches-note">
             <h3>Тренеры клуба</h3>
             <p>Призёры и чемпионы России по лёгкой атлетике с образованием и опытом работы с любителями. Работают по методике клуба</p>
@@ -554,7 +563,7 @@
             <li>Разбор и ответы на вопросы</li>
             <li>Дальше — решение, подходит ли клуб</li>
           </ul>
-          <a class="text-link" href="#join" data-lead-open aria-haspopup="dialog" aria-controls="lead-dialog" data-lead-source="Открытая тренировка 21 ноября" data-lead-format="open">Записаться на открытую тренировку <span aria-hidden="true">›</span></a>
+          <a class="text-link" href="#join" data-lead-open aria-haspopup="dialog" aria-controls="lead-dialog" data-lead-source="Открытая тренировка 21 ноября" data-lead-format="open">Вступить в клуб <span aria-hidden="true">›</span></a>
           <div class="event-qr">
             <a class="event-qr-link" href="join.html?source=qr_open_run" aria-label="Открыть быструю запись на открытую тренировку">
               <img src="assets/open-run-qr.svg?v=1" alt="" width="120" height="120" loading="lazy" decoding="async">
@@ -571,7 +580,7 @@
           <p class="eyebrow">Присоединиться</p>
           <h2>Вступить в клуб</h2>
           <p class="section-lead">Оставьте заявку на сайте или начните знакомство в мессенджере. Ответим на вопросы и поможем выбрать формат. Без обязательств</p>
-          <a class="button button-primary" href="https://t.me/run800_bot?start=site" target="_blank" rel="noopener" data-lead-open aria-haspopup="dialog" aria-controls="lead-dialog" data-lead-source="Блок «Вступить в клуб»">Оставить заявку</a>
+          <a class="button button-primary" href="https://t.me/run800_bot?start=site" target="_blank" rel="noopener" data-lead-open aria-haspopup="dialog" aria-controls="lead-dialog" data-lead-source="Блок «Вступить в клуб»">Вступить в клуб</a>
           <p class="form-note">Имя и телефон или почта. Менеджер ответит в течение дня</p>
         </div>
         <div class="join-channels" data-reveal>
@@ -616,6 +625,10 @@
     </div>
   </footer>
 
+  <div class="mobile-sticky-cta" aria-label="Быстрая заявка">
+    <a class="button button-primary" href="#join" data-lead-open aria-haspopup="dialog" aria-controls="lead-dialog" data-lead-source="Мобильная закреплённая кнопка">Вступить в клуб</a>
+  </div>
+
   <!-- [html-validate-disable-next no-redundant-role] -->
   <dialog class="lead-dialog" id="lead-dialog" role="dialog" aria-modal="true" aria-labelledby="lead-dialog-title" aria-describedby="lead-dialog-desc">
     <div class="lead-dialog-panel">
@@ -652,7 +665,7 @@
           <label for="lead-company">Не заполняйте это поле</label>
           <input id="lead-company" name="company" type="text" tabindex="-1" autocomplete="off">
         </div>
-        <button class="button button-primary button-full lead-dialog-submit" type="submit">Отправить заявку</button>
+        <button class="button button-primary button-full lead-dialog-submit" type="submit">Вступить в клуб</button>
         <p class="form-status lead-dialog-status" id="lead-status" role="status" aria-live="polite"></p>
       </form>
       <div class="lead-dialog-success" id="lead-success" role="status" tabindex="-1" hidden>
@@ -661,7 +674,7 @@
         </span>
         <p class="lead-dialog-success-title" id="lead-success-title">Заявка отправлена</p>
         <p class="lead-dialog-success-text" id="lead-success-text">Менеджер свяжется с&nbsp;вами в&nbsp;течение дня</p>
-        <button class="button button-secondary button-full" type="button" id="lead-again">Отправить ещё</button>
+        <button class="button button-secondary button-full" type="button" id="lead-again">Вступить в клуб</button>
       </div>
       <div class="lead-channels">
         <div class="lead-channel-grid">

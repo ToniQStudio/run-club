@@ -1,0 +1,137 @@
+@media (max-width: 575px) {
+  body {
+    padding-bottom: calc(78px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .nav,
+  .proof,
+  #paths,
+  #how,
+  #coaches,
+  #support,
+  #system,
+  #training,
+  #faq,
+  #event,
+  .team-coaches {
+    display: none !important;
+  }
+
+  .hero-picture {
+    aspect-ratio: 16 / 9;
+  }
+
+  .hero-copy {
+    padding: var(--space-5) var(--page-pad) var(--space-8);
+  }
+
+  .hero-copy h1 {
+    margin-bottom: var(--space-6);
+    font-size: clamp(2.15rem, 10.5vw, 2.9rem);
+  }
+
+  .hero .lead {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .hero-credentials {
+    gap: var(--space-1);
+    margin-top: var(--space-4);
+  }
+
+  .hero-credential {
+    padding-left: var(--space-2-5);
+    font-size: 0.9375rem;
+  }
+
+  .hero-actions {
+    margin-top: var(--space-6);
+  }
+
+  .hero-actions .button,
+  .join-copy .button,
+  .mobile-sticky-cta .button {
+    width: 100%;
+  }
+
+  .micro {
+    margin-top: var(--space-3);
+  }
+
+  .section {
+    padding-block: var(--space-8);
+  }
+
+  .section-head {
+    margin-bottom: var(--space-6);
+  }
+
+  #formats .section-head {
+    margin-bottom: var(--space-5);
+  }
+
+  .formats-primary {
+    gap: var(--space-3);
+  }
+
+  .format-card {
+    padding: var(--space-5);
+  }
+
+  #formats .section-lead,
+  #formats .section-note,
+  #formats .format-notes,
+  .format-card .format-extra {
+    display: none !important;
+  }
+
+  .join {
+    padding-block: var(--space-8);
+  }
+
+  .join-grid {
+    gap: var(--space-4);
+  }
+
+  .join-channels {
+    display: none;
+  }
+
+  .join-copy .button {
+    margin-top: var(--space-5);
+  }
+
+  .site-footer {
+    padding: var(--space-6) var(--page-pad) calc(78px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .footer-brand,
+  .footer-nav {
+    display: none;
+  }
+
+  .footer-legal {
+    justify-self: start;
+    text-align: left;
+  }
+
+  .mobile-sticky-cta {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 40;
+    display: flex;
+    padding: var(--space-3) var(--page-pad) calc(var(--space-3) + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid var(--color-border);
+    background: rgba(3, 7, 18, 0.94);
+    backdrop-filter: blur(var(--blur));
+    -webkit-backdrop-filter: blur(var(--blur));
+  }
+}
