@@ -52,7 +52,7 @@
 
 ## 1.2. Профиль бота
 
-В BotFather у бота пустые About, Description, Botpic и Privacy Policy. Заполнить:
+About и Description заполнены через Bot API, Commands — 4 команды. В BotFather осталось заполнить Botpic и Privacy Policy. Тексты для справки:
 
 - **Name:** `run800`.
 - **About (до 120 символов):** `Беговой клуб Юрия Борзаковского. Малые группы 10–15 человек, тренировки в разных локациях Москвы.`
