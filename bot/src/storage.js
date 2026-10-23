@@ -22,19 +22,20 @@ export async function saveLead(lead, dataDir) {
 
 export function leadToManagerMessage(lead) {
   const username = lead.telegramUsername ? `@${escapeHtml(lead.telegramUsername)}` : "не указан";
-  const contact = escapeHtml(lead.contact);
-  const name = escapeHtml(lead.name);
+  const contact = lead.contact ? escapeHtml(lead.contact) : "не оставлен";
 
   return [
     "<b>Новая заявка в ЮБ800</b>",
     "",
     `<b>Формат:</b> ${escapeHtml(lead.formatLabel)}`,
-    `<b>Путь:</b> ${escapeHtml(lead.pathLabel)}`,
-    `<b>Имя:</b> ${name}`,
+    `<b>Имя:</b> ${escapeHtml(lead.name)}`,
     `<b>Контакт:</b> ${contact}`,
     `<b>Telegram:</b> ${username}`,
+    lead.passId ? `<b>Пропуск:</b> <code>${escapeHtml(lead.passId)}</code>` : "",
     `<b>Согласие:</b> да, ${escapeHtml(lead.consentAt)}`,
-    `<b>Источник:</b> Telegram-бот`,
+    `<b>Источник:</b> ${escapeHtml(lead.source)}`,
     `<b>ID заявки:</b> <code>${escapeHtml(lead.id)}</code>`
-  ].join("\n");
+  ]
+    .filter(Boolean)
+    .join("\n");
 }

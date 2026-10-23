@@ -138,6 +138,7 @@ function validate(body) {
   const company = text(body.company, 200);
   const format = text(body.format, 40) || "request";
   const contactOptional = format === "open";
+  const notify = body.notify !== false;
   const { phone, email } = resolveContact(body);
 
   if (company) {
@@ -162,6 +163,7 @@ function validate(body) {
   return {
     ok: true,
     spam: false,
+    notify,
     lead: {
       channel,
       source: text(body.source, 200) || channel,
@@ -407,7 +409,9 @@ const server = createServer(async (req, res) => {
     providerId: result.providerId
   }).catch(() => {});
 
-  await notifyTelegram(validation.lead, id, result.providerId);
+  if (validation.notify !== false) {
+    await notifyTelegram(validation.lead, id, result.providerId);
+  }
 
   console.log(`Lead ${id}: channel=${validation.lead.channel} source=${validation.lead.source} provider=${CRM_PROVIDER}`);
   json(res, 201, { ok: true, id, provider: CRM_PROVIDER, providerId: result.providerId });

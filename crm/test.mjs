@@ -77,7 +77,8 @@ try {
     consent: true,
     consent_version: "2026-10-22",
     source: "qr_open_run",
-    page: "/join.html"
+    page: "/join.html",
+    notify: false
   });
   assert.equal(openNoContact.status, 201);
   assert.equal(openNoContact.data.ok, true);
