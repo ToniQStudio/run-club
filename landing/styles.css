@@ -129,7 +129,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--header-h) + var(--space-4));
+  scroll-padding-top: calc(var(--header-h) + 1px);
 }
 
 body {
