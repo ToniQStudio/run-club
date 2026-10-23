@@ -7,7 +7,7 @@
 - Добавлена быстрая страница `landing/join.html`: имя, формат, контакт (для open — по желанию), согласие. Источник передаётся через `?source=...`.
 - В блоке 21 ноября на главной добавлен QR на `join.html?source=qr_open_run`; QR кликабельный, с подписью «Наведите камеру — быстрая запись».
 - Добавлена печатная A5-страница `landing/qr-open-run.html` с крупным QR.
-- Сгенерированы `landing/assets/open-run-qr.svg` и `.png`. Сейчас QR ведёт на GitHub Pages; после подключения `run800.ru` пересобрать.
+- Сгенерированы `landing/assets/open-run-qr.svg` и `.png`; QR ведёт на `https://run800.ru/join.html?source=qr_open_run`.
 - CRM принимает `format` и `contact_optional`. Для `format: "open"` контакт можно не передавать; для платных форматов без контакта возвращается 400.
 - Обновлены `lead-form.js` и модальная форма: для open меняются заголовок, описание, подпись поля и успешное состояние; контакт не required.
 - Обновлены `landing/README.md`, `landing/copy.md`, `PROJECT_STATE.md`, `AGENTS.md`, `DECISIONS.md`, `crm/README.md`.
@@ -28,5 +28,5 @@
 - Полный axe/Lighthouse для `join.html` и `qr-open-run.html` не перезапускался.
 - QR физически не сканировался с iOS/Android; нужно проверить.
 - После подключения `run800.ru` пересобрать `open-run-qr.svg` / `.png` и обновить URL в `qr-open-run.html`.
-- Проверить реальную заявку из `join.html` через production intake/CRM, а не только mock. QR сейчас ведёт на GitHub Pages, где `/api/leads` нет: перед печатью подключить endpoint в РФ и пересобрать QR.
+- Проверить реальную заявку из `join.html` через production intake/CRM, а не только mock. QR ведёт на `run800.ru`, intake `run800-crm` развёрнут; после переключения DNS проверить HTTPS и заявку.
 - Решить, нужна ли отдельная ссылка «QR для печати» на сайте; пока страница доступна по прямому адресу.

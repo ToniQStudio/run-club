@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://toniqstudio.github.io/run-club/sitemap.xml
+Sitemap: https://run800.ru/sitemap.xml

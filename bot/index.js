@@ -22,7 +22,7 @@ import { escapeHtml, leadToManagerMessage, saveLead } from "./src/storage.js";
 
 const token = process.env.BOT_TOKEN;
 const managerChatId = process.env.MANAGER_CHAT_ID || "";
-const privacyUrl = process.env.PRIVACY_URL || "https://toniqstudio.github.io/run-club/privacy.html";
+const privacyUrl = process.env.PRIVACY_URL || "https://run800.ru/privacy.html";
 const dataDir = process.env.DATA_DIR || path.resolve(process.cwd(), "data");
 
 if (!token) {
