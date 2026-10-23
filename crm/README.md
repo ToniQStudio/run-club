@@ -50,18 +50,22 @@ Content-Type: application/json
 {
   "channel": "site",
   "name": "Имя",
-  "contact": "+79990000000",
+  "format": "open",
+  "contact_optional": true,
+  "contact": "",
   "consent": true,
   "consent_version": "2026-10-22",
-  "source": "instagram",
-  "page": "/",
+  "source": "qr_open_run",
+  "page": "/join.html",
   "utm": {
-    "utm_source": "instagram",
-    "utm_medium": "social",
+    "utm_source": "qr",
+    "utm_medium": "offline",
     "utm_campaign": "open-run"
   }
 }
 ```
+
+`format` — `open`, `trial`, `club`, `premium`, `personal` или `request`. Для `format: "open"` контакт можно не передавать; `contact_optional` сохраняется в лиде как признак. Для платных форматов нужен телефон, email, Telegram ID или MAX ID — `contact_optional: true` их не заменяет.
 
 `contact` может быть телефоном или email. Для ботов можно передать отдельно `phone`, `email`, `telegram_id`, `telegram_username`, `max_id`.
 

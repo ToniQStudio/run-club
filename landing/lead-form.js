@@ -20,12 +20,18 @@
   var nameError = document.getElementById("lead-name-error");
   var contactError = document.getElementById("lead-contact-error");
   var consentError = document.getElementById("lead-consent-error");
+  var contactLabel = document.getElementById("lead-contact-label");
+  var dialogTitle = document.getElementById("lead-dialog-title");
+  var dialogDesc = document.getElementById("lead-dialog-desc");
+  var successTitle = document.getElementById("lead-success-title");
+  var successText = document.getElementById("lead-success-text");
 
   var isSending = false;
   var submitLabel = submitButton.textContent;
   var triggers = document.querySelectorAll("[data-lead-open]");
   var lastTrigger = triggers.length ? triggers[0] : null;
   var leadSource = window.location.pathname;
+  var currentFormat = "request";
   var leadEndpoint = form.getAttribute("data-endpoint") || "/api/leads";
   var consentVersion = form.getAttribute("data-consent-version") || "2026-10-22";
 
@@ -68,13 +74,47 @@
     return setError(nameInput, nameError, "");
   }
 
+  function isContactOptional() {
+    return currentFormat === "open";
+  }
+
+  function applyFormat() {
+    var optional = isContactOptional();
+    contactInput.required = !optional;
+    contactInput.setAttribute("placeholder", optional ? "Можно не заполнять" : "Телефон или почта");
+    if (contactLabel) {
+      contactLabel.textContent = optional ? "Телефон или почта — по желанию" : "Телефон или почта";
+    }
+    if (dialogTitle) {
+      dialogTitle.textContent = optional ? "Запись на открытую тренировку" : "Заявка в клуб";
+    }
+    if (dialogDesc) {
+      dialogDesc.textContent = optional
+        ? "Оставьте имя — телефон или почту можно не указывать. Точку сбора опубликуем на сайте; если оставите контакт, напомним."
+        : "Оставьте имя и телефон или почту — ответим на вопросы и поможем выбрать формат";
+    }
+    if (successTitle) {
+      successTitle.textContent = optional ? "Вы записаны" : "Заявка отправлена";
+    }
+    if (successText) {
+      successText.textContent = optional
+        ? "Ждём вас 21 ноября. Точку сбора опубликуем на сайте; если оставили контакт — напомним."
+        : "Менеджер свяжется с вами в течение дня";
+    }
+  }
+
   function validateContact() {
     var value = contactInput.value.trim();
+    if (!value && isContactOptional()) {
+      return setError(contactInput, contactError, "");
+    }
     if (!isPhone(value) && !isEmail(value)) {
       return setError(
         contactInput,
         contactError,
-        "Оставьте телефон или почту: +7 999 000-00-00 или name@mail.ru."
+        isContactOptional()
+          ? "Проверьте телефон или почту — или оставьте поле пустым."
+          : "Оставьте телефон или почту: +7 999 000-00-00 или name@mail.ru."
       );
     }
     return setError(contactInput, contactError, "");
@@ -124,7 +164,7 @@
     form.hidden = true;
     success.hidden = false;
     success.focus();
-    track("form_submit");
+    track("form_submit", { format: currentFormat });
   }
 
   function showForm() {
@@ -133,6 +173,7 @@
     form.hidden = false;
     form.reset();
     showStatus("", "");
+    applyFormat();
     if (dialog.open) {
       nameInput.focus();
     }
@@ -146,7 +187,9 @@
       lastTrigger = trigger;
     }
     leadSource = (lastTrigger && lastTrigger.getAttribute("data-lead-source")) || window.location.pathname;
-    track("form_open", { source: leadSource });
+    currentFormat = (lastTrigger && lastTrigger.getAttribute("data-lead-format")) || "request";
+    applyFormat();
+    track("form_open", { source: leadSource, format: currentFormat });
     if (dialog.classList.contains("is-sent")) {
       showForm();
     }
@@ -272,7 +315,8 @@
 
     var params = new URLSearchParams(window.location.search);
     var utmSource = params.get("utm_source");
-    var source = (utmSource ? utmSource + " · " : "") + (leadSource || window.location.pathname);
+    var sourceParam = params.get("source");
+    var source = sourceParam || ((utmSource ? utmSource + " · " : "") + (leadSource || window.location.pathname));
     var utm = {};
     ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach(function (key) {
       var value = params.get(key);
@@ -287,6 +331,8 @@
       body: JSON.stringify({
         channel: "site",
         name: nameInput.value.trim(),
+        format: currentFormat,
+        contact_optional: isContactOptional(),
         contact: contactInput.value.trim(),
         consent: true,
         consent_version: consentVersion,

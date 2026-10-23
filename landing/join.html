@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Быстрая запись — ЮБ800</title>
+  <meta name="description" content="Запись на открытую тренировку и в клуб ЮБ800. Имя, контакт — по желанию.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/jost.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="join-page">
+  <header class="join-header">
+    <a class="join-brand" href="./" aria-label="ЮБ800 — на главную">
+      <img src="assets/logo.svg" alt="ЮБ800" width="347" height="112">
+    </a>
+    <a class="join-back" href="./">На главную</a>
+  </header>
+
+  <main class="join-main">
+    <section class="join-card" aria-labelledby="join-title">
+      <p class="eyebrow">Быстрая запись</p>
+      <h1 id="join-title">Открытая тренировка 21 ноября</h1>
+      <p class="join-lead" id="join-lead">Оставьте имя. Телефон или почту можно не указывать — если оставите, напомним время и точку сбора. Без контакта точку сбора смотрите на сайте.</p>
+
+      <form class="join-form" id="join-form" data-endpoint="/api/leads" data-consent-version="2026-10-22" novalidate>
+        <fieldset class="join-formats">
+          <legend>Формат</legend>
+
+          <label class="format-option">
+            <input type="radio" name="format" value="open" checked>
+            <span>
+              <strong>Открытая тренировка</strong>
+              <small>Бесплатно · 21 ноября · Москва</small>
+            </span>
+          </label>
+
+          <label class="format-option">
+            <input type="radio" name="format" value="trial">
+            <span>
+              <strong>Пробная неделя</strong>
+              <small>2 500 ₽ · две тренировки</small>
+            </span>
+          </label>
+
+          <label class="format-option">
+            <input type="radio" name="format" value="club">
+            <span>
+              <strong>Клуб</strong>
+              <small>12 000 ₽ · 8 тренировок за 4 недели</small>
+            </span>
+          </label>
+
+          <label class="format-option">
+            <input type="radio" name="format" value="premium">
+            <span>
+              <strong>Премиум с Юрием</strong>
+              <small>40 000 ₽ · 4 недели</small>
+            </span>
+          </label>
+
+          <label class="format-option">
+            <input type="radio" name="format" value="personal">
+            <span>
+              <strong>Персональная тренировка</strong>
+              <small>5 000 ₽ · один на один</small>
+            </span>
+          </label>
+        </fieldset>
+
+        <div class="field">
+          <label for="join-name">Имя или никнейм</label>
+          <input id="join-name" name="name" type="text" autocomplete="name" required minlength="2" maxlength="80" aria-describedby="join-name-error">
+          <p class="field-error" id="join-name-error" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="join-contact" id="join-contact-label">Телефон или почта — по желанию</label>
+          <input id="join-contact" name="contact" type="text" autocomplete="email" maxlength="120" placeholder="Можно не заполнять" aria-describedby="join-contact-error">
+          <p class="field-error" id="join-contact-error" hidden></p>
+        </div>
+
+        <label class="checkbox">
+          <input id="join-consent" name="consent" type="checkbox" required aria-describedby="join-consent-error">
+          <span class="checkbox-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>
+          </span>
+          <span class="checkbox-text">Согласен на&nbsp;обработку данных по&nbsp;<a href="privacy.html">политике</a></span>
+        </label>
+        <p class="field-error" id="join-consent-error" hidden></p>
+
+        <div class="field field-hp" aria-hidden="true">
+          <label for="join-company">Не заполняйте это поле</label>
+          <input id="join-company" name="company" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button class="button button-primary button-full" type="submit" id="join-submit">Записаться</button>
+        <p class="form-status" id="join-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="join-success" id="join-success" role="status" tabindex="-1" hidden>
+        <span class="join-success-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>
+        </span>
+        <h2 id="join-success-title">Вы записаны</h2>
+        <p id="join-success-text">Ждём вас 21 ноября. Точку сбора опубликуем на сайте; если оставили контакт — напомним.</p>
+        <a class="button button-secondary button-full" href="./">На главную</a>
+      </div>
+
+      <p class="join-note">Без обязательств. Если передумаете — просто напишите нам.</p>
+    </section>
+
+    <p class="join-legal">ЮБ800 · Москва · <a href="privacy.html">Политика обработки данных</a></p>
+  </main>
+
+  <script src="join.js" defer></script>
+</body>
+</html>

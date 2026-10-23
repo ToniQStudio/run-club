@@ -69,17 +69,45 @@ try {
   assert.equal(valid.data.ok, true);
   assert.equal(valid.data.provider, "mock");
 
+  const openNoContact = await postLead({
+    channel: "site",
+    name: "Бегун Без Контакта",
+    format: "open",
+    contact_optional: true,
+    consent: true,
+    consent_version: "2026-10-22",
+    source: "qr_open_run",
+    page: "/join.html"
+  });
+  assert.equal(openNoContact.status, 201);
+  assert.equal(openNoContact.data.ok, true);
+
   const leads = (await readFile(join(dataDir, "leads.ndjson"), "utf8"))
     .trim()
     .split("\n")
     .map((line) => JSON.parse(line));
-  assert.equal(leads.length, 1);
+  assert.equal(leads.length, 2);
   assert.equal(leads[0].name, "Тест Тестов");
   assert.equal(leads[0].email, "test@example.com");
   assert.equal(leads[0].consentVersion, "2026-10-22");
+  assert.equal(leads[0].format, "request");
+  assert.equal(leads[1].name, "Бегун Без Контакта");
+  assert.equal(leads[1].format, "open");
+  assert.equal(leads[1].contactOptional, true);
+  assert.equal(leads[1].phone, "");
+  assert.equal(leads[1].email, "");
 
   const noConsent = await postLead({ channel: "site", name: "Без согласия", contact: "+79990000000" });
   assert.equal(noConsent.status, 400);
+
+  const paidNoContact = await postLead({
+    channel: "site",
+    name: "Платный Без Контакта",
+    format: "club",
+    contact_optional: true,
+    consent: true
+  });
+  assert.equal(paidNoContact.status, 400);
 
   const honeypot = await postLead({
     channel: "site",

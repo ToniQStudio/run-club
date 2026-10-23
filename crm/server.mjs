@@ -136,6 +136,8 @@ function validate(body) {
   const name = text(body.name, 80);
   const consent = body.consent === true;
   const company = text(body.company, 200);
+  const format = text(body.format, 40) || "request";
+  const contactOptional = format === "open";
   const { phone, email } = resolveContact(body);
 
   if (company) {
@@ -147,7 +149,7 @@ function validate(body) {
   if (!consent) {
     return { ok: false, error: "Нужно согласие на обработку персональных данных." };
   }
-  if (!phone && !email && !text(body.telegram_id, 40) && !text(body.max_id, 80)) {
+  if (!phone && !email && !text(body.telegram_id, 40) && !text(body.max_id, 80) && !contactOptional) {
     return { ok: false, error: "Нужен телефон, email, Telegram ID или MAX ID." };
   }
 
@@ -165,6 +167,8 @@ function validate(body) {
       source: text(body.source, 200) || channel,
       page: text(body.page, 200),
       name,
+      format,
+      contactOptional,
       phone,
       email,
       contact: text(body.contact, 120),
@@ -193,6 +197,8 @@ function description(lead) {
   return [
     `Канал: ${lead.channel}`,
     `Источник: ${lead.source}`,
+    `Формат: ${lead.format || "request"}`,
+    `Контакт: ${lead.phone || lead.email || lead.telegramId || lead.maxId || "не оставлен"}`,
     lead.page ? `Страница: ${lead.page}` : "",
     `UTM: ${utm}`,
     lead.telegramId ? `Telegram ID: ${lead.telegramId}` : "",
@@ -214,7 +220,7 @@ async function createBitrixLead(lead, id) {
     TITLE: `ЮБ800 — ${lead.name}`,
     NAME: lead.name,
     SOURCE_ID: lead.channel === "site" ? "WEB" : "OTHER",
-    SOURCE_DESCRIPTION: `${lead.channel}: ${lead.source}`,
+    SOURCE_DESCRIPTION: `${lead.channel}: ${lead.source} · ${lead.format || "request"}`,
     COMMENTS: description(lead),
     ...(lead.phone ? { PHONE: [{ VALUE: lead.phone, VALUE_TYPE: "WORK" }] } : {}),
     ...(lead.email ? { EMAIL: [{ VALUE: lead.email, VALUE_TYPE: "WORK" }] } : {})
@@ -288,7 +294,7 @@ function escapeHtml(value) {
 
 async function notifyTelegram(lead, id, providerId) {
   if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) return;
-  const contact = [lead.phone, lead.email].filter(Boolean).join(" · ") || lead.telegramId || lead.maxId || "—";
+  const contact = [lead.phone, lead.email].filter(Boolean).join(" · ") || lead.telegramId || lead.maxId || "не оставлен";
   const lines = [
     "<b>Новая заявка ЮБ800</b>",
     `Канал: ${escapeHtml(lead.channel)}`,

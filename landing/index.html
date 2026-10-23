@@ -540,9 +540,10 @@
           <h2>21 ноября.<br>Москва</h2>
           <p class="section-lead">Открытая тренировка для всех: новичков, любителей и опытных. 3–5 км в своём темпе, знакомство с тренерами и клубом. Бесплатно и без обязательств</p>
           <ul class="signup-list">
-            <li>Бесплатно и без обязательств</li>
+            <li>Бесплатно и без обязательств</li>
             <li>Группа до 15 человек</li>
-            <li>Для новичков и опытных</li>
+            <li>Для новичков и опытных</li>
+            <li>Точку сбора объявим заранее</li>
           </ul>
         </div>
         <div class="event-aside" data-reveal>
@@ -553,7 +554,13 @@
             <li>Разбор и ответы на вопросы</li>
             <li>Дальше — решение, подходит ли клуб</li>
           </ul>
-          <a class="text-link" href="#join" data-lead-open aria-haspopup="dialog" aria-controls="lead-dialog" data-lead-source="Открытая тренировка 21 ноября">Записаться на открытую тренировку <span aria-hidden="true">›</span></a>
+          <a class="text-link" href="#join" data-lead-open aria-haspopup="dialog" aria-controls="lead-dialog" data-lead-source="Открытая тренировка 21 ноября" data-lead-format="open">Записаться на открытую тренировку <span aria-hidden="true">›</span></a>
+          <div class="event-qr">
+            <a class="event-qr-link" href="join.html?source=qr_open_run" aria-label="Открыть быструю запись на открытую тренировку">
+              <img src="assets/open-run-qr.svg?v=1" alt="" width="120" height="120" loading="lazy" decoding="async">
+            </a>
+            <p>Наведите камеру — быстрая запись</p>
+          </div>
         </div>
       </div>
     </section>
@@ -629,7 +636,7 @@
           <p class="field-error" id="lead-name-error" hidden></p>
         </div>
         <div class="field">
-          <label for="lead-contact">Телефон или почта</label>
+          <label for="lead-contact" id="lead-contact-label">Телефон или почта</label>
           <input id="lead-contact" name="contact" type="text" autocomplete="email" required maxlength="120" aria-describedby="lead-contact-error">
           <p class="field-error" id="lead-contact-error" hidden></p>
         </div>
@@ -652,8 +659,8 @@
         <span class="lead-dialog-success-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>
         </span>
-        <p class="lead-dialog-success-title">Заявка отправлена</p>
-        <p class="lead-dialog-success-text">Менеджер свяжется с&nbsp;вами в&nbsp;течение дня</p>
+        <p class="lead-dialog-success-title" id="lead-success-title">Заявка отправлена</p>
+        <p class="lead-dialog-success-text" id="lead-success-text">Менеджер свяжется с&nbsp;вами в&nbsp;течение дня</p>
         <button class="button button-secondary button-full" type="button" id="lead-again">Отправить ещё</button>
       </div>
       <div class="lead-channels">
