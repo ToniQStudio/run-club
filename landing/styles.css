@@ -496,6 +496,23 @@ input {
   margin-top: 0;
 }
 
+.hero-credentials-bottom .hero-credential,
+.hero-credentials-bottom .hero-credential strong {
+  color: var(--color-text-secondary);
+}
+
+.hero-credentials-bottom .hero-credential {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1.35;
+  text-shadow: 0 1px var(--space-2) rgba(3, 7, 18, 0.85);
+}
+
+.hero-credentials-bottom .hero-credential strong {
+  font-weight: 600;
+}
+
 @media (max-width: 1199px) {
   .hero-credentials-bottom {
     position: static;
