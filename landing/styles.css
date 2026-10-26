@@ -830,66 +830,17 @@ input {
   background: var(--color-accent);
 }
 
-.cycle-year {
-  display: grid;
-  gap: var(--space-2);
-  margin-top: var(--space-6);
-  padding: var(--space-5);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: var(--color-surface);
-}
-
-.cycle-year .eyebrow {
-  margin-bottom: 0;
-}
-
-.cycle-year-track {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-2);
-  margin: var(--space-2) 0;
-}
-
-.cycle-year-track span {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  color: var(--color-text);
-  font-size: var(--fs-sm);
-  font-weight: 600;
-}
-
-.cycle-year-track span:not(:last-child)::after {
-  content: "→";
-  margin-left: var(--space-1);
-  color: var(--color-accent);
-  font-weight: 700;
-}
-
-.cycle-year > p:last-child {
+.cycle-year-note {
   max-width: 70ch;
+  margin-top: var(--space-6);
   color: var(--color-text-secondary);
   font-size: var(--fs-sm);
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .partner-note {
-  margin-top: var(--space-4);
-  padding: var(--space-5);
-  border: 1px solid var(--color-border);
-  border-left: 2px solid var(--color-accent);
-  border-radius: var(--radius-lg);
-  background: var(--color-surface);
-}
-
-.partner-note .eyebrow {
-  margin-bottom: var(--space-2);
-}
-
-.partner-note > p:last-child {
   max-width: 72ch;
+  margin-top: var(--space-4);
   color: var(--color-text-secondary);
   font-size: var(--fs-sm);
   line-height: 1.45;
