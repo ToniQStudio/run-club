@@ -443,24 +443,51 @@ input {
 }
 
 .hero-logo-wrap {
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-5);
 }
 
 .hero-logo {
   display: block;
-  width: min(460px, 100%);
+  width: min(230px, 100%);
   height: auto;
+}
+
+.hero-name {
+  margin: 0 0 var(--space-4);
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.hero-product {
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid rgba(249, 250, 251, 0.18);
+}
+
+.hero-product .eyebrow {
+  margin-bottom: var(--space-2);
+}
+
+.hero-product .lead {
+  max-width: 38ch;
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+}
+
+.hero-product .hero-actions {
+  margin-top: var(--space-5);
 }
 
 @media (max-width: 1199px) {
   .hero-logo {
-    width: min(380px, 100%);
+    width: min(190px, 100%);
   }
 }
 
 @media (max-width: 767px) {
   .hero-logo {
-    width: min(280px, 100%);
+    width: min(140px, 100%);
   }
 }
 
