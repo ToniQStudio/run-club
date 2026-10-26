@@ -12,6 +12,10 @@
 
   var nameInput = document.getElementById("lead-name");
   var contactInput = document.getElementById("lead-contact");
+  var goalInput = document.getElementById("lead-goal");
+  var experienceInput = document.getElementById("lead-experience");
+  var limitsInput = document.getElementById("lead-limits");
+  var timeInput = document.getElementById("lead-time");
   var consentInput = document.getElementById("lead-consent");
   var companyInput = document.getElementById("lead-company");
   var submitButton = form.querySelector('button[type="submit"]');
@@ -86,20 +90,20 @@
       contactLabel.textContent = optional ? "Телефон или почта — по желанию" : "Телефон или почта";
     }
     if (dialogTitle) {
-      dialogTitle.textContent = optional ? "Запись на открытую тренировку" : "Заявка в клуб";
+      dialogTitle.textContent = optional ? "Запись на открытую тренировку" : "Заявка в Сборную";
     }
     if (dialogDesc) {
       dialogDesc.textContent = optional
         ? "Оставьте имя — телефон или почту можно не указывать. Точку сбора опубликуем на сайте; если оставите контакт, напомним."
-        : "Оставьте имя и телефон или почту — ответим на вопросы и поможем выбрать формат";
+        : "Оставьте имя и телефон или почту — расскажем про стартовый цикл, тест и базу";
     }
     if (successTitle) {
       successTitle.textContent = optional ? "Вы записаны" : "Заявка отправлена";
     }
     if (successText) {
       successText.textContent = optional
-        ? "Ждём вас 21 ноября. Точку сбора опубликуем на сайте; если оставили контакт — напомним."
-        : "Менеджер свяжется с вами в течение дня";
+        ? "Ждём вас на открытой тренировке 21 ноября. Точку сбора опубликуем на сайте; если оставили контакт — напомним."
+        : "Свяжемся с вами в течение дня";
     }
   }
 
@@ -325,6 +329,13 @@
       }
     });
 
+    var details = [
+      goalInput && goalInput.value ? "Цель: " + goalInput.value : "",
+      experienceInput && experienceInput.value ? "Опыт: " + experienceInput.value : "",
+      limitsInput && limitsInput.value.trim() ? "Ограничения: " + limitsInput.value.trim() : "",
+      timeInput && timeInput.value ? "Удобное время: " + timeInput.value : ""
+    ].filter(Boolean).join("\n");
+
     fetch(leadEndpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -338,6 +349,7 @@
         consent_version: consentVersion,
         source: source,
         page: window.location.pathname,
+        message: details,
         utm: utm
       })
     })
