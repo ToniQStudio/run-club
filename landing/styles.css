@@ -442,16 +442,6 @@ input {
   letter-spacing: -0.045em;
 }
 
-.hero-logo-wrap {
-  margin-bottom: var(--space-5);
-}
-
-.hero-logo {
-  display: block;
-  width: min(230px, 100%);
-  height: auto;
-}
-
 .hero-name {
   margin: 0 0 var(--space-4);
   font-size: clamp(2rem, 3vw, 2.75rem);
@@ -477,18 +467,6 @@ input {
 
 .hero-product .hero-actions {
   margin-top: var(--space-5);
-}
-
-@media (max-width: 1199px) {
-  .hero-logo {
-    width: min(190px, 100%);
-  }
-}
-
-@media (max-width: 767px) {
-  .hero-logo {
-    width: min(140px, 100%);
-  }
 }
 
 .h1-tablet-break {
