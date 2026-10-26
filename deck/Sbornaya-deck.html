@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Сборная ЮБ800 — продающая презентация</title>
+  <style>
+    @font-face {
+      font-family: "Jost";
+      src: url("../landing/assets/fonts/jost.woff2") format("woff2");
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #030712;
+      --surface: #0b1220;
+      --surface-2: #111827;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --muted-2: #6b7280;
+      --accent: #ccff00;
+      --accent-soft: rgba(204, 255, 0, 0.12);
+      --blue: #1e5aa8;
+      --border: #1f2937;
+      --border-strong: #374151;
+      --danger: #f87171;
+      --ok: #ccff00;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #111;
+      color: var(--text);
+      font-family: "Jost", "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+
+    .deck {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      padding: 24px 0;
+    }
+
+    .slide {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 1280px;
+      height: 720px;
+      padding: 54px 64px 44px;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 60% 55% at 88% 8%, rgba(30, 90, 168, 0.22), transparent 65%),
+        linear-gradient(180deg, #030712 0%, #050b16 100%);
+      break-after: page;
+      page-break-after: always;
+    }
+
+    .slide:last-child {
+      break-after: auto;
+      page-break-after: auto;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent 85%);
+    }
+
+    .slide > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 30px;
+      color: var(--muted-2);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .top strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 14px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    ul,
+    ol {
+      margin: 0;
+    }
+
+    ul,
+    ol {
+      padding: 0;
+      list-style: none;
+    }
+
+    h2 {
+      max-width: 22ch;
+      margin-bottom: 22px;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+    }
+
+    h3 {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+
+    p,
+    li {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.45;
+    }
+
+    strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .accent {
+      color: var(--accent);
+    }
+
+    .lead {
+      max-width: 64ch;
+      color: var(--muted);
+      font-size: 21px;
+      line-height: 1.4;
+    }
+
+    .small {
+      color: var(--muted-2);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: auto;
+      padding-top: 18px;
+      color: var(--muted-2);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer span:last-child {
+      color: var(--muted);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: rgba(11, 18, 32, 0.86);
+    }
+
+    .card.accent-card {
+      border-color: var(--accent);
+      box-shadow: inset 0 0 0 1px rgba(204, 255, 0, 0.12);
+    }
+
+    .card h3 {
+      margin: 10px 0 8px;
+    }
+
+    .card p {
+      font-size: 15px;
+      line-height: 1.42;
+    }
+
+    .num {
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .big-num {
+      color: var(--accent);
+      font-size: 64px;
+      font-weight: 700;
+      line-height: 0.92;
+      letter-spacing: -0.06em;
+    }
+
+    .mid-num {
+      color: var(--accent);
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 11px;
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .pill.lime {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(204, 255, 0, 0.08);
+    }
+
+    .pill.blue {
+      border-color: rgba(30, 90, 168, 0.8);
+      color: #9cc7ff;
+      background: rgba(30, 90, 168, 0.16);
+    }
+
+    .pill.red {
+      border-color: rgba(248, 113, 113, 0.5);
+      color: #fca5a5;
+      background: rgba(248, 113, 113, 0.08);
+    }
+
+    .money {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .money th {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border-strong);
+      color: var(--muted-2);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    .money td {
+      padding: 9px 10px;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .money td:not(:first-child),
+    .money th:not(:first-child) {
+      text-align: right;
+    }
+
+    .money tr.total td {
+      border-top: 1px solid var(--accent);
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .money tr.total td:nth-child(n + 2) {
+      color: var(--accent);
+    }
+
+    .callout {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 18px;
+      padding: 16px 20px;
+      border-left: 3px solid var(--accent);
+      background: rgba(204, 255, 0, 0.06);
+    }
+
+    .callout p {
+      color: var(--text);
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .callout span {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Title */
+
+    .title-slide {
+      padding: 54px 64px 44px;
+      background:
+        linear-gradient(90deg, rgba(3, 7, 18, 0.97) 0%, rgba(3, 7, 18, 0.82) 44%, rgba(3, 7, 18, 0.3) 100%),
+        url("../landing/assets/hero-card-16x9.jpg") center / cover no-repeat;
+    }
+
+    .title-slide::before {
+      background: none;
+    }
+
+    .title-lockup {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+      max-width: 760px;
+    }
+
+    .title-lockup h1 {
+      font-size: 112px;
+      font-weight: 700;
+      line-height: 0.82;
+      letter-spacing: -0.08em;
+    }
+
+    .title-lockup h1 span {
+      color: var(--accent);
+    }
+
+    .title-sub {
+      margin-top: 24px;
+      color: var(--text);
+      font-size: 31px;
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    .title-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .title-meta strong {
+      color: var(--accent);
+    }
+
+    .title-badge {
+      display: inline-flex;
+      align-self: flex-start;
+      margin-top: 28px;
+      padding: 8px 12px;
+      border: 1px solid rgba(204, 255, 0, 0.45);
+      border-radius: 999px;
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .watermark {
+      position: absolute;
+      right: 40px;
+      bottom: -45px;
+      z-index: 0;
+      color: rgba(204, 255, 0, 0.07);
+      font-size: 340px;
+      font-weight: 700;
+      line-height: 0.8;
+      letter-spacing: -0.1em;
+      pointer-events: none;
+    }
+
+    /* Comparison */
+
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 8px;
+    }
+
+    .compare-panel {
+      padding: 20px 22px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: rgba(11, 18, 32, 0.72);
+    }
+
+    .compare-panel.lime {
+      border-color: rgba(204, 255, 0, 0.55);
+      background: rgba(204, 255, 0, 0.055);
+    }
+
+    .compare-panel h3 {
+      margin-bottom: 14px;
+      font-size: 17px;
+    }
+
+    .compare-panel li {
+      position: relative;
+      padding: 7px 0 7px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 15px;
+    }
+
+    .compare-panel li:first-child {
+      border-top: 0;
+    }
+
+    .compare-panel li::before {
+      content: "";
+      position: absolute;
+      top: 14px;
+      left: 0;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--muted-2);
+    }
+
+    .compare-panel.lime li::before {
+      background: var(--accent);
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .stat {
+      padding: 16px 18px;
+      border-top: 1px solid var(--border-strong);
+    }
+
+    .stat .mid-num {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .stat p {
+      font-size: 13px;
+    }
+
+    /* Product */
+
+    .product-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 26px;
+      margin-top: 6px;
+    }
+
+    .price-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      background: rgba(204, 255, 0, 0.06);
+    }
+
+    .price-panel .big-num {
+      margin: 14px 0 4px;
+      font-size: 56px;
+    }
+
+    .price-panel p {
+      font-size: 14px;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 16px;
+      margin-top: 8px;
+    }
+
+    .feature-list li {
+      position: relative;
+      padding: 12px 0 12px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+      line-height: 1.3;
+    }
+
+    .feature-list li::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      left: 0;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* Ladder */
+
+    .ladder {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .ladder-card {
+      position: relative;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: rgba(11, 18, 32, 0.82);
+    }
+
+    .ladder-card.featured {
+      border-color: var(--accent);
+    }
+
+    .ladder-card h3 {
+      margin: 8px 0 10px;
+      font-size: 18px;
+    }
+
+    .ladder-card p {
+      font-size: 13px;
+    }
+
+    .ladder-card .price {
+      display: block;
+      margin-top: 14px;
+      color: var(--accent);
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      right: -13px;
+      z-index: 2;
+      color: var(--accent);
+      font-size: 20px;
+      transform: translateY(-50%);
+    }
+
+    /* Photo side */
+
+    .split-photo {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 26px;
+      align-items: stretch;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .photo {
+      min-height: 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .photo-yuri {
+      background-image: linear-gradient(180deg, transparent 55%, rgba(3, 7, 18, 0.7)), url("../landing/assets/team-yuri.jpg");
+    }
+
+    .photo-event {
+      background-image: linear-gradient(180deg, transparent 40%, rgba(3, 7, 18, 0.9)), url("../landing/assets/location-run.jpg");
+    }
+
+    .stat-list {
+      display: grid;
+      gap: 0;
+      margin-top: 14px;
+    }
+
+    .stat-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      padding: 10px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .stat-list strong {
+      min-width: 88px;
+      color: var(--accent);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    /* Team table */
+
+    .roles-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 4px;
+    }
+
+    .roles-table td {
+      padding: 9px 10px;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+      vertical-align: top;
+    }
+
+    .roles-table td:first-child {
+      width: 24%;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .roles-table td:last-child {
+      width: 40%;
+      color: var(--muted);
+    }
+
+    /* Timeline */
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .timeline-card {
+      padding: 16px 14px;
+      border-top: 1px solid var(--border-strong);
+    }
+
+    .timeline-card h3 {
+      margin: 8px 0;
+      font-size: 16px;
+    }
+
+    .timeline-card p {
+      font-size: 13px;
+    }
+
+    .timeline-date {
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* Funnel */
+
+    .funnel {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 30px;
+      margin-top: 10px;
+    }
+
+    .funnel-bars {
+      display: grid;
+      gap: 10px;
+    }
+
+    .funnel-bar {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 44px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: rgba(11, 18, 32, 0.75);
+      font-size: 14px;
+    }
+
+    .funnel-bar span:last-child {
+      color: var(--accent);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .funnel-bar:nth-child(2) { margin-left: 4%; }
+    .funnel-bar:nth-child(3) { margin-left: 8%; }
+    .funnel-bar:nth-child(4) { margin-left: 12%; }
+    .funnel-bar:nth-child(5) { margin-left: 16%; }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .metric {
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: rgba(11, 18, 32, 0.75);
+    }
+
+    .metric strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--accent);
+      font-size: 25px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .metric span {
+      color: var(--muted-2);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Digital cards */
+
+    .digital-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .digital-card {
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: rgba(11, 18, 32, 0.82);
+    }
+
+    .digital-card h3 {
+      margin: 8px 0 6px;
+      font-size: 17px;
+    }
+
+    .digital-card p {
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .product-status {
+      display: inline-block;
+      margin-bottom: 2px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .status-live { color: var(--accent); background: rgba(204, 255, 0, 0.1); }
+    .status-local { color: #9cc7ff; background: rgba(30, 90, 168, 0.2); }
+    .status-mock { color: #fbbf24; background: rgba(251, 191, 36, 0.12); }
+    .status-todo { color: var(--muted); background: rgba(156, 163, 175, 0.1); }
+
+    .roadmap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .phase {
+      padding: 18px 20px;
+      border-left: 2px solid var(--accent);
+      background: rgba(11, 18, 32, 0.8);
+    }
+
+    .phase h3 {
+      margin-bottom: 7px;
+      font-size: 18px;
+    }
+
+    .phase p {
+      font-size: 13px;
+    }
+
+    /* Risks */
+
+    .risk-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 4px;
+    }
+
+    .risk-table td {
+      padding: 9px 10px;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+      vertical-align: top;
+    }
+
+    .risk-table td:first-child {
+      width: 38%;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .risk-table td:last-child::before {
+      content: "→";
+      margin-right: 8px;
+      color: var(--accent);
+    }
+
+    /* Plan */
+
+    .quarters {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .quarter {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: rgba(11, 18, 32, 0.8);
+    }
+
+    .quarter h3 {
+      color: var(--accent);
+      font-size: 20px;
+      letter-spacing: -0.03em;
+    }
+
+    .quarter p {
+      margin-top: 8px;
+      font-size: 13px;
+    }
+
+    .quarter .target {
+      display: block;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* Decisions */
+
+    .decisions {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      margin-top: 8px;
+    }
+
+    .decision-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .decision-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      padding: 13px 0;
+      border-top: 1px solid var(--border);
+      color: var(--text);
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .decision-list li span {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .budget-panel {
+      padding: 22px;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      background: rgba(204, 255, 0, 0.06);
+    }
+
+    .budget-panel h3 {
+      margin-bottom: 12px;
+    }
+
+    .budget-panel li {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 0;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    .budget-panel li:first-of-type {
+      border-top: 0;
+    }
+
+    .budget-panel li span:last-child {
+      color: var(--text);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .budget-total {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    /* Final */
+
+    .final {
+      justify-content: center;
+      background:
+        radial-gradient(ellipse 60% 70% at 86% 30%, rgba(204, 255, 0, 0.13), transparent 65%),
+        linear-gradient(180deg, #030712, #050b16);
+    }
+
+    .final h2 {
+      max-width: 10ch;
+      font-size: 92px;
+      line-height: 0.85;
+      letter-spacing: -0.07em;
+    }
+
+    .final .final-sub {
+      max-width: 46ch;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 22px;
+      line-height: 1.35;
+    }
+
+    .final-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 26px;
+      margin-top: 32px;
+      color: var(--muted-2);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .final-meta strong {
+      color: var(--accent);
+    }
+
+    @page {
+      size: 1280px 720px;
+      margin: 0;
+    }
+
+    @media print {
+      html,
+      body {
+        background: #030712;
+      }
+
+      .deck {
+        display: block;
+        padding: 0;
+      }
+
+      .slide {
+        margin: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck">
+
+    <section class="slide title-slide">
+      <div class="top">
+        <span><strong>ЮБ800</strong> · Москва</span>
+        <span>Продающая презентация · 2026</span>
+      </div>
+      <div class="title-lockup">
+        <p class="kicker">Первый состав · 10 человек</p>
+        <h1>Сборная<br><span>ЮБ800</span></h1>
+        <p class="title-sub">Не беговой клуб. Сборная.</p>
+        <div class="title-meta">
+          <span>Стартовый цикл <strong>14 900 ₽</strong></span>
+          <span>4 недели</span>
+          <span>Москва</span>
+        </div>
+        <span class="title-badge">Тесты · тренировки · команда · старты</span>
+      </div>
+      <div class="watermark">800</div>
+      <div class="footer">
+        <span>run800.ru</span>
+        <span>01 / 20</span>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="top">
+        <span><strong>Сборная ЮБ800</strong></span>
+        <span>01 · Суть</span>
+      </div>
+      <p class="kicker">Один продукт. Одна команда</p>
+      <h2>Один продукт. Одна команда. Один результат.</h2>
+      <div class="grid-3">
+        <div class="card">
+          <p class="num">Что продаём</p>
+          <h3>Стартовый цикл</h3>
+          <p>4 недели, 8 тренировок, диагностика и финальный тест. <strong>14 900 ₽.</strong></p>
+        </div>
+        <div class="card">
+          <p class="num">Кому</p>
+          <h3>Амбициозным любителям</h3>
+          <p>5–21 км, личный рекорд и старты. Новичкам тоже можно — уровень не фильтр.</p>
+        </div>
+        <div class="card accent-card">
+          <p class="num">Почему мы</p>
+          <h3>Методика и команда</h3>
+          <p>Система Юрия Борзаковского, тесты, старты и люди рядом.</p>
+        </div>
+      </div>
+      <div class="callout">
+        <p>Не абонемент на пробежки — место в команде.</p>
+        <span>Сборная, а не клуб</span>
+      </div>
+      <div class="footer"><span>Позиционирование</span><span>02 / 20</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top">
+        <span><strong>Сборная ЮБ800</strong></span>
+        <span>02 · Рынок</span>
+      </div>
+      <p class="kicker">Рынок вырос, предложения одинаковые</p>
+      <h2>Все продают тренировки.<br>Мы продаём команду.</h2>
+      <div class="compare">
+        <div class="compare-panel">
+          <h3>Что предлагает рынок</h3>
+          <ul>
+            <li>Массовые клубы: бесплатно или дёшево, 5–10 км, сообщество</li>
+            <li>Платные школы: <strong>6 900–19 900 ₽/мес</strong>, группы, марафон</li>
+            <li>«Бег для всех», процесс, а не результат</li>
+            <li>Разные дистанции — один и тот же формат</li>
+          </ul>
+        </div>
+        <div class="compare-panel lime">
+          <h3>Что предлагаем мы</h3>
+          <ul>
+            <li>Категория «клуб-сборная»: система, а не абонемент</li>
+            <li>Тесты под цель: скорость, выносливость, дистанция</li>
+            <li>Старты, командный зачёт и сезон</li>
+            <li>Методика олимпийского чемпиона</li>
+          </ul>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><span class="mid-num">6 900–19 900 ₽</span><p>месяц у больших беговых школ</p></div>
+        <div class="stat"><span class="mid-num">5–21 км</span><p>массовый рынок любителей</p></div>
+        <div class="stat"><span class="mid-num">0</span><p>прямых конкурентов с позиционированием «клуб-сборная»</p></div>
+      </div>
+      <p class="small">Ориентиры: публичные тарифы I Love Supersport, RunUp, RunLab, DEVI Club, 2026. «0» — отсутствие прямого позиционирования, а не отсутствие конкурентов вообще.</p>
+      <div class="footer"><span>Возможность</span><span>03 / 20</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top">
+        <span><strong>Сборная ЮБ800</strong></span>
+        <span>03 · Позиционирование</span>
+      </div>
+      <p class="kicker">Не беговой клуб. Сборная</p>
+      <h2>Сборная — это формат,<br>а не вывеска.</h2>
+      <div class="grid-3">
+        <div class="card">
+          <p class="num">01 · Доступ</p>
+          <h3>Берём всех</h3>
+          <p>Тест определяет стартовый уровень и цель. Отбора по подготовке нет.</p>
+        </div>
+        <div class="card">
+          <p class="num">02 · Система</p>
+          <h3>Тренируем как спортсменов</h3>
+          <p>Тест → план → тренировки → повторный тест → старт. Без хаоса и случайных нагрузок.</p>
+        </div>
+        <div class="card accent-card">
+          <p class="num">03 · Команда</p>
+          <h3>Собираем команду</h3>
+          <p>Общий чат, тестовые дни, старты, командный зачёт и экипировка.</p>
+        </div>
+      </div>
+      <div class="callout">
+        <p>800 метров — фирменный тест скорости. 5, 10 и 21 км — дистанции, к которым готовим.</p>
+        <span>Один бренд</span>
+      </div>
+      <div class="footer"><span>Категория</span><span>04 / 20</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top">
+        <span><strong>Сборная ЮБ800</strong></span>
+        <span>04 · Продукт</span>
+      </div>
+      <p class="kicker">Первый шаг</p>
+      <h2>Стартовый цикл: 4 недели</h2>
+      <div class="product-layout">
+        <div class="price-panel">
+          <div>
+            <p class="num">Стоимость</p>
+            <div class="big-num">14 900 ₽</div>
+            <p>8 тренировок · 2 теста · разбор</p>
+          </div>
+          <div style="margin-top: 18px;">
+            <p class="small">Аренда дорожки или манежа оплачивается отдельно.</p>
+            <p class="small" style="margin-top: 8px;">Первый состав — 10 человек. Старт 24 ноября.</p>
+          </div>
+        </div>
+        <div>
+          <p class="num" style="margin-bottom: 8px;">Что входит</p>
+          <ul class="feature-list">
+            <li>8 групповых тренировок</li>
+            <li>Входная диагностика</li>
+            <li>Финальный тест под цель</li>
+            <li>Видеоразбор техники</li>
+            <li>Письменный план на следующий цикл</li>
+            <li>Один общий контакт с Юрием</li>
+            <li>Чат Сборной</li>
+            <li>Расписание стартов</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer"><span>Продукт №1</span><span>05 / 20</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top">
+        <span><strong>Сборная ЮБ800</strong></span>
+        <span>05 · LTV</span>
+      </div>
+      <p class="kicker">Не разовая продажа</p>
+      <h2>От первого цикла — к сезону</h2>
+      <div class="ladder">
+        <div class="ladder-card">
+          <p class="num">Вход</p>
+          <h3>Открытая тренировка</h3>
+          <p>Бесплатно. Диагностический вход и знакомство.</p>
+          <span class="price">0 ₽</span>
+          <span class="arrow">→</span>
+        </div>
+        <div class="ladder-card featured">
+          <p class="num">Первый продукт</p>
+          <h3>Стартовый цикл</h3>
+          <p>4 недели, тесты, план и команда.</p>
+          <span class="price">14 900 ₽</span>
+          <span class="arrow">→</span>
+        </div>
+        <div class="ladder-card">
+          <p class="num">Продолжение</p>
+          <h3>Цикл Сборной</h3>
+          <p>Следующий 4-недельный цикл без полной диагностики.</p>
+          <span class="price">14 900 ₽</span>
+          <span class="arrow">→</span>
+        </div>
+        <div class="ladder-card accent-card">
+          <p class="num">Удержание</p>
+          <h3>Годовая Сборная</h3>
+          <p>12 циклов + 1 в подарок. Предложение после первого цикла.</p>
+          <span class="price">178 800 ₽</span>
+        </div>
+      </div>
+      <div class="callout">
+        <p>LTV растёт с 14 900 до 178 800 ₽ — без нового лида.</p>
+        <span>Удержание</span>
+      </div>
+      <div class="footer"><span>Экономика клиента</span><span>06 / 20</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top">
+        <span><strong>Сборная ЮБ800</strong></span>
+        <span>06 · Клиент</span>
+      </div>
+      <p class="kicker">Кому это надо</p>
+      <h2>Новичкам, любителям,<br>бывшим спортсменам</h2>
+      <div class="grid-3">
+        <div class="card">
+          <p class="num">Новички</p>
+          <h3>Первый километр</h3>
+          <p>С нуля, без страха и сравнения. Техника, безопасная нагрузка, первый результат.</p>
+        </div>
+        <div class="card">
+          <p class="num">Любители 5–21 км</p>
+          <h3>Личный рекорд</h3>
+          <p>Уже бегают, но нужна система: темп, объём, восстановление и старты.</p>
+        </div>
+        <div class="card">
+          <p class="num">Бывшие спортсмены</p>
+          <h3>Снова в команде</h3>
+          <p>Вернуться к тренировкам и соревнованиям, почувствовать структуру и азарт.</p>
+        </div>
+      </div>
+      <div class="callout">
+        <p><strong>Ядро — амбициозные любители 25–45.</strong> Новичков не отсеиваем: состав не регламентируем.</p>
+        <span>Берём всех</span>
+      </div>
+      <div class="footer"><span>Сегменты</span><span>07 / 20</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top">
+        <span><strong>Сборная ЮБ800</strong></span>
+        <span>07 · Ров</span>
+      </div>
+      <p class="kicker">Почему это сложно скопировать</p>
+      <h2>Юрий — не лицо,<br>а система.</h2>
+      <div class="split-photo">
+        <div>
+          <ul class="stat-list">
+            <li><strong>2004</strong><span>Олимпийское золото Афин на 800 м</span></li>
+            <li><strong>1:42,47</strong><span>Рекорд России на 800 м</span></li>
+            <li><strong>2001</strong><span>Чемпион мира в помещении</span></li>
+            <li><strong>12</strong><span>раз чемпион России</span></li>
+            <li><strong>6 лет</strong><span>Главный тренер сборной России</span></li>
+          </ul>
+          <p class="small" style="margin-top: 14px;">Один из шести олимпийских чемпионов России в мужской лёгкой атлетике и единственный — в беговых дисциплинах.</p>
+        </div>
+        <div class="photo photo-yuri"></div>
+      </div>
+      <div class="callout">
+        <p>Задаёт методику, тесты и ключевые тренировки. Ежедневно с группой работает штаб — система не зависит от одного человека.</p>
+        <span>Автор методики</span>
+      </div>
+      <div class="footer"><span>Уникальность</span><span>08 / 20</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top">
+        <span><strong>Сборная ЮБ800</strong></span>
+        <span>08 · Команда</span>
+      </div>
+      <p class="kicker">Кто что делает</p>
+      <h2>Команда первого потока</h2>
+      <table class="roles-table">
+        <tr><td>Юрий</td><td>Методика, тесты, ключевые тренировки, разборы, лицо Сборной</td><td>Не ведёт каждую тренировку</td></tr>
+        <tr><td>Главный тренер</td><td>Ежедневные тренировки, планы, обратная связь, работа с разными уровнями</td><td>Ключевая операционная роль</td></tr>
+        <tr><td>Помощник</td><td>ОФП, техника, страховка, помощь на тренировках</td><td>Можно совмещать с главным тренером на старте</td></tr>
+        <tr><td>Администратор</td><td>Заявки, расписание, оплаты, онбординг, удержание, чат</td><td>Первый поток можно вести вручную</td></tr>
+        <tr><td>Контент / SMM</td><td>Съёмка тестов и тренировок, кейсы, Telegram, сайт</td><td>Подрядчик или внутренний человек</td></tr>
+        <tr><td>Продажи / партнёры</td><td>Первые 10, корпоративные контакты, партнёрская сеть</td><td>На старте — собственник</td></tr>
+        <tr><td>Тех / CRM</td><td>Сайт, бот, CRM, аналитика, оплаты</td><td>Сейчас — внутренние силы</td></tr>
+        <tr><td>Врач / физио / массаж</td><td>Допуск, профилактика, восстановление</td><td>Партнёры, не штат</td></tr>
+      </table>
+      <div class="callout">
+        <p>Минимальный состав первого потока: Юрий + главный тренер + администратор. Остальное — подрядчики.</p>
+        <span>Компактная команда</span>
+      </div>
+      <div class="footer"><span>Роли</span><span>09 / 20</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top">
+        <span><strong>Сборная ЮБ800</strong></span>
+        <span>09 · Юнит-экономика</span>
+      </div>
+      <p class="kicker">Один поток</p>
+      <h2>Экономика одного потока</h2>
+      <table class="money">
+        <thead><tr><th>Показатель</th><th>10 человек</th><th>12 человек</th><th>15 человек</th></tr></thead>
+        <tbody>
+          <tr><td>Выручка</td><td>149 000 ₽</td><td>178 800 ₽</td><td>223 500 ₽</td></tr>
+          <tr><td>Эквайринг + УСН 9%</td><td>−13 410 ₽</td><td>−16 092 ₽</td><td>−20 115 ₽</td></tr>
+          <tr><td>Тренер: 8 × 5 000 ₽</td><td>−40 000 ₽</td><td>−40 000 ₽</td><td>−40 000 ₽</td></tr>
+          <tr><td>Доход до доп. расходов</td><td>95 590 ₽</td><td>122 708 ₽</td><td>163 385 ₽</td></tr>
+          <tr><td>Юрий, тесты, маркетинг, админ</td><td>−45 000 ₽</td><td>−45 000 ₽</td><td>−45 000 ₽</td></tr>
+          <tr class="total"><td>Вклад за 4 недели</td><td>50 590 ₽</td><td>77 708 ₽</td><td>118 385 ₽</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <p>Аренда — pass-through. Налоги 9%. Тренер 5 000 ₽ за сессию. Доп. расходы 45 000 ₽: Юрий, тесты, маркетинг, админ.</p>
+        <span>Без фикс. расходов</span>
+      </div>
+      <div class="footer"><span>Модель, не гарантия</span><span>10 / 20</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top">
+        <span><strong>Сборная ЮБ800</strong></span>
+        <span>10 · Масштаб</span>
+      </div>
+      <p class="kicker">Что происходит при росте</p>
+      <h2>10 — пилот. 50 — бизнес.</h2>
+      <table class="money">
+        <thead><tr><th>Показатель за 4 недели</th><th>25 человек · 2 группы</th><th>50 человек · 4 группы</th></tr></thead>
+        <tbody>
+          <tr><td>Выручка</td><td>372 500 ₽</td><td>745 000 ₽</td></tr>
+          <tr><td>Налоги 9%</td><td>−33 525 ₽</td><td>−67 050 ₽</td></tr>
+          <tr><td>Тренеры</td><td>−80 000 ₽</td><td>−160 000 ₽</td></tr>
+          <tr><td>Вклад до доп. расходов</td><td>258 975 ₽</td><td>517 950 ₽</td></tr>
+          <tr><td>Доп. расходы</td><td>−90 000 ₽</td><td>−180 000 ₽</td></tr>
+          <tr><td>Вклад</td><td>168 975 ₽</td><td>337 950 ₽</td></tr>
+          <tr><td>Фиксированные расходы</td><td>−150 000 ₽</td><td>−150 000 ₽</td></tr>
+          <tr class="total"><td>Прибыль за 4 недели</td><td>18 975 ₽</td><td>187 950 ₽</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <p>За 13 циклов: <strong>25 человек</strong> — около 247 тыс. ₽ прибыли; <strong>50 человек</strong> — около 2,44 млн ₽.</p>
+        <span>Сценарий</span>
+      </div>
+      <p class="small">Фиксированные 150 000 ₽ за 4 недели — допущение из текущей модели (50 000 ₽ фикс + 100 000 ₽ директор). Это план, не гарантия.</p>
+      <div class="footer"><span>Масштаб</span><span>11 / 20</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top">
+        <span><strong>Сборная ЮБ800</strong></span>
+        <span>11 · Доходы команды</span>
+      </div>
+      <p class="kicker">Кто сколько зарабатывает</p>
+      <h2>Модель вознаграждения</h2>
+      <table class="roles-table">
+        <tr><td>Юрий</td><td>20–30 тыс. ₽ за цикл как методист и ключевые сессии; Private (будущий слой) — 50% от 39 900 ₽</td><td>Не оклад за каждую тренировку</td></tr>
+        <tr><td>Главный тренер</td><td>5 000 ₽ / сессия; 40 000 ₽ / цикл / группа</td><td>4 группы — 160 000 ₽ / цикл</td></tr>
+        <tr><td>Помощник</td><td>2 000–2 500 ₽ / сессия; 16–20 тыс. ₽ / цикл / группа</td><td>Подключается по нагрузке</td></tr>
+        <tr><td>Администратор</td><td>30–50 тыс. ₽ / месяц на старте; 60–80 тыс. ₽ при 50 участниках</td><td>Заявки, оплаты, расписание, удержание</td></tr>
+        <tr><td>Контент / SMM</td><td>20–40 тыс. ₽ / месяц; 40–60 тыс. ₽ при 50</td><td>Съёмка, кейсы, каналы</td></tr>
+        <tr><td>Продажи / партнёры</td><td>5 000 ₽ за сделку или 10% первого цикла</td><td>На старте — собственник</td></tr>
+        <tr><td>Тех / CRM</td><td>0 сейчас; 30–60 тыс. ₽ / месяц позже</td><td>Сайт, бот, CRM, аналитика</td></tr>
+        <tr><td>Собственник</td><td>Остаток: на 10 — 20–50 тыс. ₽ до фикса (пилот); на 50 — 150–250 тыс. ₽ после фикса</td><td>Если совмещает роли — доход заменяет часть ставок</td></tr>
+      </table>
+      <p class="small">Это модель и диапазоны, а не обещание. Ставки фиксируем после первого потока; часть ролей на старте совмещается. На 10 участниках фиксированные расходы ещё не покрываются — это пилот, а не прибыльный бизнес.</p>
+      <div class="footer"><span>Доходы</span><span>12 / 20</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top">
+        <span><strong>Сборная ЮБ800</strong></span>
+        <span>12 · Запуск</span>
+      </div>
+      <p class="kicker">Как получаем первых 10</p>
+      <h2>Первый поток — вручную</h2>
+      <div class="timeline">
+        <div class="timeline-card"><p class="timeline-date">до 15.11</p><h3>Подготовка</h3><p>База, партнёры, оффер, личные приглашения.</p></div>
+        <div class="timeline-card"><p class="timeline-date">21.11</p><h3>Открытая тренировка</h3><p>Диагностический вход, мини-тест, разбор.</p></div>
+        <div class="timeline-card"><p class="timeline-date">24.11</p><h3>Старт цикла</h3><p>10 человек, 4 недели, тесты и тренировки.</p></div>
+        <div class="timeline-card"><p class="timeline-date">20.12</p><h3>Финал</h3><p>Финальный тест, кейсы, контент, рекомендации.</p></div>
+        <div class="timeline-card"><p class="timeline-date">январь</p><h3>Второй поток</h3><p>15–20 человек, уже с доказательствами.</p></div>
+      </div>
+      <div class="callout">
+        <p><strong>30–40 личных разговоров → 10 оплат.</strong> Каналы: личная сеть Юрия и команды, бывшие спортсмены, партнёры, Telegram, открытая тренировка.</p>
+        <span>Без рекламы</span>
+      </div>
+      <div class="footer"><span>Запуск</span><span>13 / 20</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top">
+        <span><strong>Сборная ЮБ800</strong></span>
+        <span>13 · Воронка</span>
+      </div>
+      <p class="kicker">Что считаем</p>
+      <h2>Воронка первого потока</h2>
+      <div class="funnel">
+        <div class="funnel-bars">
+          <div class="funnel-bar"><span>Личные контакты</span><span>30–40</span></div>
+          <div class="funnel-bar"><span>Открытая тренировка</span><span>15–20</span></div>
+          <div class="funnel-bar"><span>Оплата стартового цикла</span><span>10</span></div>
+          <div class="funnel-bar"><span>Доходят до финала</span><span>7</span></div>
+          <div class="funnel-bar"><span>Кейсы и рекомендации</span><span>3–5</span></div>
+        </div>
+        <div>
+          <div class="metric-grid">
+            <div class="metric"><strong>&lt; 5 000 ₽</strong><span>CAC на старте</span></div>
+            <div class="metric"><strong>14 900–178 800 ₽</strong><span>LTV</span></div>
+            <div class="metric"><strong>70%</strong><span>цель удержания</span></div>
+            <div class="metric"><strong>10</strong><span>первый состав</span></div>
+          </div>
+          <p class="small" style="margin-top: 16px;">Реклама — только после доказательства оффера. Сначала личные продажи, кейсы и контент.</p>
+        </div>
+      </div>
+      <div class="footer"><span>Метрики</span><span>14 / 20</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top">
+        <span><strong>Сборная ЮБ800</strong></span>
+        <span>14 · Цифра сейчас</span>
+      </div>
+      <p class="kicker">Что уже есть</p>
+      <h2>Цифровые продукты сегодня</h2>
+      <div class="digital-grid">
+        <div class="digital-card"><span class="product-status status-local">Локально</span><h3>Новый сайт</h3><p>Полная версия «Сборной» готова локально. На production пока старый сайт.</p></div>
+        <div class="digital-card"><span class="product-status status-live">Работает</span><h3>run800.ru</h3><p>Домен, HTTPS, Caddy, форма заявки и CRM-intake на VPS.</p></div>
+        <div class="digital-card"><span class="product-status status-mock">Тест</span><h3>CRM</h3><p>Единый intake, mock-режим, адаптеры Bitrix24 и EspoCRM, аудит согласий.</p></div>
+        <div class="digital-card"><span class="product-status status-local">Локально</span><h3>Telegram-бот</h3><p>Новый сценарий в коде; на VPS пока старый. Нужна переупаковка под Сборную.</p></div>
+        <div class="digital-card"><span class="product-status status-live">Работает</span><h3>Канал и группа</h3><p>@yb800run, @yb800club, staff-группа с темами «Заявки», «Расписание», «Контент», «Операционка».</p></div>
+        <div class="digital-card"><span class="product-status status-local">Локально</span><h3>QR / join.html</h3><p>Быстрая запись обновлена: открытая тренировка и стартовый цикл.</p></div>
+      </div>
+      <p class="small">Для Сборной не нужно нативное приложение: сайт + Telegram/MAX + CRM закрывают вход, запись, оплату и коммуникацию.</p>
+      <div class="footer"><span>Цифра сейчас</span><span>15 / 20</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top">
+        <span><strong>Сборная ЮБ800</strong></span>
+        <span>15 · Digital roadmap</span>
+      </div>
+      <p class="kicker">Что будет</p>
+      <h2>Дорожная карта digital</h2>
+      <div class="roadmap">
+        <div class="phase"><p class="num">0–1 месяц</p><h3>Запуск</h3><p>Задеплоить сайт и бот, включить CRM live, аналитику, оплату или бронь.</p></div>
+        <div class="phase"><p class="num">1–3 месяца</p><h3>Личный кабинет</h3><p>Профиль, цикл, посещения, паспорт тестов, план, напоминания, оплата.</p></div>
+        <div class="phase"><p class="num">3–6 месяцев</p><h3>Команда и данные</h3><p>Рейтинг, командный зачёт, библиотека контента, корпоративный кабинет.</p></div>
+        <div class="phase"><p class="num">6–12 месяцев</p><h3>Масштаб</h3><p>Годовая подписка, партнёрский API, мобильная веб-версия, отчёты для B2B.</p></div>
+      </div>
+      <div class="callout">
+        <p>Без PWA, mini app и нативного приложения. Один веб-вход и мессенджеры.</p>
+        <span>Принцип</span>
+      </div>
+      <div class="footer"><span>Цифра далее</span><span>16 / 20</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top">
+        <span><strong>Сборная ЮБ800</strong></span>
+        <span>16 · Риски</span>
+      </div>
+      <p class="kicker">Что может сломаться</p>
+      <h2>Риски и ответы</h2>
+      <table class="risk-table">
+        <tr><td>Зависимость от Юрия</td><td>Штаб, методика, ключевые сессии; Юрий не ежедневный тренер</td></tr>
+        <tr><td>Первый поток не заполнится</td><td>Ручной набор, личная сеть, партнёры, открытая тренировка</td></tr>
+        <tr><td>Нет своей базы</td><td>Партнёрская дорожка/манеж с фиксированным окном</td></tr>
+        <tr><td>Партнёры не подтверждены</td><td>Публикуем только подписанные условия; остальное — «формируется»</td></tr>
+        <tr><td>Низкое удержание</td><td>Тесты, план, команда, старты, второй цикл, годовая опция</td></tr>
+        <tr><td>Кассовый разрыв</td><td>4-недельные циклы, предоплата, годовое предложение после первого цикла</td></tr>
+        <tr><td>Юридические и медицинские риски</td><td>Оферта, согласия, партнёрские врачи, без медицинских обещаний</td></tr>
+      </table>
+      <div class="callout">
+        <p>Главный риск — не рынок, а пустой первый состав. Поэтому старт — 10 человек вручную.</p>
+        <span>Фокус</span>
+      </div>
+      <div class="footer"><span>Риски</span><span>17 / 20</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top">
+        <span><strong>Сборная ЮБ800</strong></span>
+        <span>17 · План</span>
+      </div>
+      <p class="kicker">12 месяцев</p>
+      <h2>От 10 участников<br>к устойчивой Сборной</h2>
+      <div class="quarters">
+        <div class="quarter"><h3>Q1</h3><p>Первый поток 10, второй 15–20. Сайт, бот, CRM live. Первые кейсы.</p><span class="target">10 → 25 участников</span></div>
+        <div class="quarter"><h3>Q2</h3><p>Третья группа, корпоративный пилот, личный кабинет, контент.</p><span class="target">30–40 участников</span></div>
+        <div class="quarter"><h3>Q3</h3><p>Годовая Сборная, рейтинг, командный зачёт, партнёрская сеть.</p><span class="target">50 участников</span></div>
+        <div class="quarter"><h3>Q4</h3><p>50–80 участников, 2–3 корпоративных клиента, прибыль.</p><span class="target">2,4 млн ₽+ прибыли</span></div>
+      </div>
+      <p class="small" style="margin-top: 14px;">Ориентир: 50 участников × 14 900 ₽ × 13 циклов = 9,685 млн ₽ выручки; после расходов и фикса — около 2,44 млн ₽. План, не гарантия.</p>
+      <div class="footer"><span>План</span><span>18 / 20</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top">
+        <span><strong>Сборная ЮБ800</strong></span>
+        <span>18 · Решение</span>
+      </div>
+      <p class="kicker">Что нужно решить</p>
+      <h2>Пять решений<br>для запуска</h2>
+      <div class="decisions">
+        <ol class="decision-list">
+          <li><span>01</span>Утвердить «Сборную» как категорию и один продукт</li>
+          <li><span>02</span>Подтвердить роль Юрия и состав штаба</li>
+          <li><span>03</span>Подтвердить базу и 3–5 партнёров</li>
+          <li><span>04</span>Запустить первый поток 10 человек</li>
+          <li><span>05</span>Выделить бюджет на digital и контент</li>
+        </ol>
+        <div class="budget-panel">
+          <h3>Ориентир бюджета запуска</h3>
+          <ul>
+            <li><span>Сайт, бот, CRM</span><span>0–100 тыс. ₽</span></li>
+            <li><span>Контент и съёмка</span><span>50–100 тыс. ₽</span></li>
+            <li><span>Открытая тренировка</span><span>30–50 тыс. ₽</span></li>
+            <li><span>Юрлицо, оферта, согласия</span><span>30–50 тыс. ₽</span></li>
+          </ul>
+          <p class="budget-total">150–300 тыс. ₽</p>
+        </div>
+      </div>
+      <div class="footer"><span>Дальше</span><span>19 / 20</span></div>
+    </section>
+
+    <section class="slide final">
+      <div class="top">
+        <span><strong>Сборная ЮБ800</strong></span>
+        <span>19 · Финал</span>
+      </div>
+      <p class="kicker">Первый состав · 10 человек</p>
+      <h2>Сборная<br><span class="accent">ЮБ800</span></h2>
+      <p class="final-sub">Не беговой клуб. Команда, которая тренируется как спортсмены и выступает.</p>
+      <div class="final-meta">
+        <span><strong>14 900 ₽</strong> · стартовый цикл</span>
+        <span><strong>24 ноября</strong> · старт</span>
+        <span><strong>run800.ru</strong></span>
+        <span><strong>@run800_bot</strong></span>
+      </div>
+      <div class="footer"><span>Спасибо</span><span>20 / 20</span></div>
+    </section>
+
+  </div>
+</body>
+</html>
