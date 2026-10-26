@@ -4,9 +4,7 @@
   }
 
   .nav,
-  .proof,
-  #base,
-  .team-coaches {
+  .proof {
     display: none !important;
   }
 
