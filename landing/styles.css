@@ -444,29 +444,10 @@ input {
 
 .hero-name {
   margin: 0 0 var(--space-4);
-  font-size: clamp(2rem, 3vw, 2.75rem);
+  font-size: clamp(1.9rem, 2.7vw, 2.4rem);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.04em;
-}
-
-.hero-product {
-  margin-top: var(--space-5);
-  padding-top: var(--space-5);
-  border-top: 1px solid rgba(249, 250, 251, 0.18);
-}
-
-.hero-product .eyebrow {
-  margin-bottom: var(--space-2);
-}
-
-.hero-product .lead {
-  max-width: 38ch;
-  font-size: clamp(1rem, 1.4vw, 1.125rem);
-}
-
-.hero-product .hero-actions {
-  margin-top: var(--space-5);
 }
 
 .h1-tablet-break {
@@ -478,6 +459,15 @@ input {
   color: var(--color-text-secondary);
   font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
   line-height: 1.65;
+}
+
+.hero-copy .hero-lead {
+  max-width: 38ch;
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+}
+
+.hero-copy .hero-actions {
+  margin-top: var(--space-5);
 }
 
 .hero-credentials {
@@ -496,6 +486,24 @@ input {
   font-size: var(--fs-base);
   line-height: 1.35;
   text-shadow: 0 1px var(--space-3) rgba(3, 7, 18, 0.65);
+}
+
+.hero-credentials-bottom {
+  position: absolute;
+  left: max(var(--page-pad), calc((100% - var(--container)) / 2 + var(--page-pad)));
+  bottom: clamp(var(--space-5), 3vw, var(--space-8));
+  z-index: 4;
+  margin-top: 0;
+}
+
+@media (max-width: 1199px) {
+  .hero-credentials-bottom {
+    position: static;
+    left: auto;
+    bottom: auto;
+    max-width: none;
+    margin: var(--space-5) var(--page-pad) var(--space-8);
+  }
 }
 
 .hero-credential strong {
