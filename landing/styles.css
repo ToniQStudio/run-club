@@ -782,6 +782,18 @@ input {
   margin-top: var(--space-6);
 }
 
+.cycle-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.cycle-actions .price {
+  margin: 0;
+}
+
 #cycle .team-copy .form-note {
   margin-top: var(--space-3);
 }
