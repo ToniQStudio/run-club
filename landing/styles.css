@@ -817,7 +817,13 @@ input {
 }
 
 .cycle-block {
-  margin-top: var(--space-12);
+  margin-top: var(--space-20);
+}
+
+@media (max-width: 767px) {
+  .cycle-block {
+    margin-top: var(--space-16);
+  }
 }
 
 .cycle-subhead {
