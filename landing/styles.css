@@ -2331,6 +2331,8 @@ a.channel-card:hover .channel-name {
 
 .lead-channels {
   margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
 }
 
 .lead-channel-grid {
