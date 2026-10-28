@@ -895,7 +895,7 @@ input {
 }
 
 .coach-grid-stage {
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-8);
 }
 
 .coach-grid-stage .coach-card h3,
