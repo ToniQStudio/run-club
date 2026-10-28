@@ -813,7 +813,7 @@ input {
 }
 
 .cycle-block {
-  margin-top: var(--space-20);
+  margin-top: var(--space-24);
 }
 
 @media (min-width: 768px) {
@@ -841,7 +841,7 @@ input {
 
 @media (max-width: 767px) {
   .cycle-block {
-    margin-top: var(--space-16);
+    margin-top: var(--space-20);
   }
 }
 
