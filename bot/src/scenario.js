@@ -19,12 +19,6 @@ export const FORMATS = {
     description: "8 групповых тренировок, чат клуба и тестирование.",
     contactOptional: false
   },
-  premium: {
-    label: "Премиум",
-    price: "40 000 ₽ / 4 недели",
-    description: "4 тренировки с Юрием за 4 недели, разбор, план и закрытый чат.",
-    contactOptional: false
-  },
   personal: {
     label: "Персональная тренировка",
     price: "5 000 ₽",

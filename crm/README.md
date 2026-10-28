@@ -65,7 +65,7 @@ Content-Type: application/json
 }
 ```
 
-`format` — `open`, `trial`, `club`, `premium`, `personal` или `request`. Для `format: "open"` контакт можно не передавать; `contact_optional` сохраняется в лиде как признак. Для платных форматов нужен телефон, email, Telegram ID или MAX ID — `contact_optional: true` их не заменяет.
+`format` — `open`, `trial`, `club`, `personal` или `request`. Для `format: "open"` контакт можно не передавать; `contact_optional` сохраняется в лиде как признак. Для платных форматов нужен телефон, email, Telegram ID или MAX ID — `contact_optional: true` их не заменяет.
 
 `contact` может быть телефоном или email. Для ботов можно передать отдельно `phone`, `email`, `telegram_id`, `telegram_username`, `max_id`.
 
