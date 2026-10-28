@@ -12,10 +12,6 @@
 
   var nameInput = document.getElementById("lead-name");
   var contactInput = document.getElementById("lead-contact");
-  var goalInput = document.getElementById("lead-goal");
-  var experienceInput = document.getElementById("lead-experience");
-  var limitsInput = document.getElementById("lead-limits");
-  var timeInput = document.getElementById("lead-time");
   var consentInput = document.getElementById("lead-consent");
   var companyInput = document.getElementById("lead-company");
   var submitButton = form.querySelector('button[type="submit"]');
@@ -329,13 +325,6 @@
       }
     });
 
-    var details = [
-      goalInput && goalInput.value ? "Цель: " + goalInput.value : "",
-      experienceInput && experienceInput.value ? "Опыт: " + experienceInput.value : "",
-      limitsInput && limitsInput.value.trim() ? "Ограничения: " + limitsInput.value.trim() : "",
-      timeInput && timeInput.value ? "Удобное время: " + timeInput.value : ""
-    ].filter(Boolean).join("\n");
-
     fetch(leadEndpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -349,7 +338,7 @@
         consent_version: consentVersion,
         source: source,
         page: window.location.pathname,
-        message: details,
+        message: "",
         utm: utm
       })
     })
