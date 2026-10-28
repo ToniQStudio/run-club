@@ -2480,11 +2480,6 @@ html.is-locked body {
   gap: var(--space-3) var(--space-5);
 }
 
-.footer-copyright {
-  color: var(--color-text-secondary);
-  font-size: 0.8125rem;
-}
-
 .footer-bottom {
   display: flex;
   flex-wrap: wrap;
