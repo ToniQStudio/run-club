@@ -897,7 +897,8 @@ input {
 }
 
 .partner-note {
-  max-width: 72ch;
+  max-width: none;
+  width: 100%;
   margin-top: var(--space-4);
   color: var(--color-text-secondary);
   font-size: var(--fs-sm);
