@@ -26,3 +26,6 @@ __pycache__/
 # Telegram bot runtime data
 /bot/.env
 /bot/data/
+
+# Presentation stays local only
+/deck/
