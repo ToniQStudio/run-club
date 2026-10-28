@@ -886,6 +886,24 @@ input {
   background: var(--color-accent);
 }
 
+.cycle-subsubhead {
+  margin: var(--space-10) 0 var(--space-4);
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.coach-grid-stage {
+  margin-bottom: var(--space-6);
+}
+
+.coach-grid-stage .coach-card h3,
+.coach-grid-stage .coach-role,
+.coach-grid-stage .coach-facts li {
+  hyphens: manual;
+}
+
 .cycle-year-note {
   max-width: 70ch;
   margin-top: var(--space-6);
@@ -1446,17 +1464,49 @@ input {
 
 /* Location */
 
-.competition-regular {
-  margin-top: var(--space-20);
-  padding-top: var(--space-10);
-  border-top: 1px solid var(--color-border);
+.section-regular {
+  position: relative;
+  overflow: hidden;
+  border-top: 0;
+  background-color: var(--color-bg);
+  background-image:
+    linear-gradient(90deg, rgba(3, 7, 18, 0.94) 0%, rgba(3, 7, 18, 0.84) 52%, rgba(3, 7, 18, 0.72) 100%),
+    url("assets/bg2.jpg");
+  background-image:
+    linear-gradient(90deg, rgba(3, 7, 18, 0.94) 0%, rgba(3, 7, 18, 0.84) 52%, rgba(3, 7, 18, 0.72) 100%),
+    image-set(
+      url("assets/bg2.webp") type("image/webp"),
+      url("assets/bg2.jpg") type("image/jpeg")
+    );
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-@media (max-width: 767px) {
-  .competition-regular {
-    margin-top: var(--space-16);
-    padding-top: var(--space-8);
-  }
+#competitions {
+  border-bottom: 0;
+}
+
+.section-support {
+  position: relative;
+  overflow: hidden;
+  border-top: 0;
+  background-color: var(--color-bg);
+  background-image:
+    linear-gradient(180deg, rgba(3, 7, 18, 0.84) 0%, rgba(3, 7, 18, 0.93) 100%),
+    url("assets/bg7.svg");
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.section-support > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.section-support .card {
+  background: var(--color-surface);
 }
 
 .location-grid {
