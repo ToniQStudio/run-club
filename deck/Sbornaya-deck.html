@@ -366,7 +366,7 @@
     .title-slide {
       padding: 54px 64px 44px;
       background:
-        linear-gradient(90deg, rgba(3, 7, 18, 0.97) 0%, rgba(3, 7, 18, 0.82) 44%, rgba(3, 7, 18, 0.3) 100%),
+        linear-gradient(90deg, rgba(3, 7, 18, 0.98) 0%, rgba(3, 7, 18, 0.94) 46%, rgba(3, 7, 18, 0.58) 70%, rgba(3, 7, 18, 0.24) 100%),
         url("../landing/assets/hero-card-16x9.jpg") center / cover no-repeat;
     }
 
@@ -394,12 +394,14 @@
     }
 
     .title-sub {
-      margin-top: 24px;
+      max-width: 420px;
+      margin-top: 20px;
       color: var(--text);
-      font-size: 31px;
+      font-size: 29px;
       font-weight: 600;
-      line-height: 1.1;
+      line-height: 1.12;
       letter-spacing: -0.03em;
+      text-shadow: 0 2px 22px rgba(3, 7, 18, 1), 0 1px 3px rgba(3, 7, 18, 1);
     }
 
     .title-meta {
@@ -1042,6 +1044,160 @@
       margin: 0;
     }
 
+    /* Business deck additions */
+    .flow {
+      display: grid;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .flow-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .flow-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+
+    .flow-step {
+      position: relative;
+      padding: 16px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: rgba(11, 18, 32, 0.82);
+    }
+
+    .flow-step h3 {
+      margin: 8px 0 6px;
+      font-size: 16px;
+    }
+
+    .flow-6 .flow-step h3 { font-size: 15px; }
+
+    .flow-step p {
+      font-size: 12.5px;
+      line-height: 1.35;
+    }
+
+    .flow-step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      top: 50%;
+      right: -12px;
+      z-index: 2;
+      color: var(--accent);
+      font-size: 16px;
+      transform: translateY(-50%);
+    }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .hours-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .hours-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .hours-row strong { color: var(--text); }
+    .hours-row span:last-child { color: var(--accent); font-weight: 700; white-space: nowrap; }
+
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .role-card {
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: rgba(11, 18, 32, 0.82);
+    }
+
+    .role-card h3 { margin: 8px 0 6px; font-size: 16px; }
+    .role-card p { font-size: 12.5px; line-height: 1.35; }
+
+    .two-col-note {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .note-panel {
+      padding: 18px 20px;
+      border-left: 2px solid var(--accent);
+      background: rgba(11, 18, 32, 0.8);
+    }
+
+    .note-panel p { font-size: 13px; line-height: 1.4; }
+    .note-panel h3 { margin-bottom: 8px; font-size: 17px; }
+
+    .mini-list {
+      display: grid;
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .mini-list li {
+      position: relative;
+      padding-left: 14px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.35;
+    }
+
+    .mini-list li::before {
+      content: "";
+      position: absolute;
+      top: 0.55em;
+      left: 0;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .stat {
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: rgba(11, 18, 32, 0.82);
+    }
+
+    .stat strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--accent);
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .stat span {
+      color: var(--muted-2);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
     @media print {
       html,
       body {
@@ -1066,217 +1222,139 @@
     <section class="slide title-slide">
       <div class="top">
         <span><strong>ЮБ800</strong> · Москва</span>
-        <span>Продающая презентация · 2026</span>
+        <span>Бизнес-модель · 2026</span>
       </div>
       <div class="title-lockup">
-        <p class="kicker">Первый состав · 10 человек</p>
+        <p class="kicker">Разговор с Юрием Борзаковским</p>
         <h1>Сборная<br><span>ЮБ800</span></h1>
-        <p class="title-sub">Не беговой клуб. Сборная.</p>
+        <p class="title-sub">Не беговой клуб. Система, команда и бизнес.</p>
         <div class="title-meta">
-          <span>Первый этап <strong>15 900 ₽</strong></span>
-          <span>4 недели</span>
-          <span>Москва</span>
+          <span>Этап <strong>15 900 ₽</strong></span>
+          <span>10 → 50 участников</span>
+          <span>2,2 млн ₽ прибыли на 50</span>
         </div>
-        <span class="title-badge">Тесты · тренировки · команда · старты</span>
+        <span class="title-badge">Сайт · CRM · Telegram · партнёры · сборы · старты</span>
       </div>
       <div class="watermark">800</div>
-      <div class="footer">
-        <span>run800.ru</span>
-        <span>01 / 20</span>
-      </div>
+      <div class="footer"><span>run800.ru</span><span>01 / 26</span></div>
     </section>
 
     <section class="slide">
-      <div class="top">
-        <span><strong>Сборная ЮБ800</strong></span>
-        <span>01 · Суть</span>
-      </div>
-      <p class="kicker">Один продукт. Одна команда</p>
-      <h2>Один продукт. Одна команда. Один результат.</h2>
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>02 · Суть</span></div>
+      <p class="kicker">Что мы строим</p>
+      <h2>Не клуб,<br>а сборная.</h2>
       <div class="grid-3">
-        <div class="card">
-          <p class="num">Что продаём</p>
-          <h3>Первый этап</h3>
-          <p>4 недели, 8 тренировок, диагностика и один тест в конце. <strong>15 900 ₽.</strong></p>
-        </div>
-        <div class="card">
-          <p class="num">Кому</p>
-          <h3>Амбициозным любителям</h3>
-          <p>5–21 км, личный рекорд и старты. Новичкам тоже можно — уровень не фильтр.</p>
-        </div>
         <div class="card accent-card">
-          <p class="num">Почему мы</p>
-          <h3>Методика и команда</h3>
-          <p>Система Юрия Борзаковского, тесты, старты и люди рядом.</p>
+          <p class="num">Продукт</p>
+          <h3>Этап за 15 900 ₽</h3>
+          <p>8 тренировок, тест в конце, разбор и план. Понятный вход без годовой предоплаты.</p>
+        </div>
+        <div class="card">
+          <p class="num">Команда</p>
+          <h3>Тренер + помощник</h3>
+          <p>На каждой тренировке. Не поток, а работа с техникой, нагрузкой и вниманием к человеку.</p>
+        </div>
+        <div class="card">
+          <p class="num">Система</p>
+          <h3>От сайта до старта</h3>
+          <p>Сайт, CRM, Telegram, партнёры, соревнования и сборы — один маршрут спортсмена.</p>
         </div>
       </div>
       <div class="callout">
-        <p>Не абонемент на пробежки — место в команде.</p>
-        <span>Сборная, а не клуб</span>
+        <p>Продаём не часы тренировок, а путь: от первого километра до старта в команде.</p>
+        <span>Позиция</span>
       </div>
-      <div class="footer"><span>Позиционирование</span><span>02 / 20</span></div>
+      <div class="footer"><span>Суть бизнеса</span><span>02 / 26</span></div>
     </section>
 
     <section class="slide">
-      <div class="top">
-        <span><strong>Сборная ЮБ800</strong></span>
-        <span>02 · Рынок</span>
-      </div>
-      <p class="kicker">Рынок вырос, предложения одинаковые</p>
-      <h2>Все продают тренировки.<br>Мы продаём команду.</h2>
-      <div class="compare">
-        <div class="compare-panel">
-          <h3>Что предлагает рынок</h3>
-          <ul>
-            <li>Массовые клубы: бесплатно или дёшево, 5–10 км, сообщество</li>
-            <li>Платные школы: <strong>6 900–19 900 ₽/мес</strong>, группы, марафон</li>
-            <li>«Бег для всех», процесс, а не результат</li>
-            <li>Разные дистанции — один и тот же формат</li>
-          </ul>
-        </div>
-        <div class="compare-panel lime">
-          <h3>Что предлагаем мы</h3>
-          <ul>
-            <li>Категория «клуб-сборная»: система, а не абонемент</li>
-            <li>Тесты под цель: скорость, выносливость, дистанция</li>
-            <li>Старты, командный зачёт и сезон</li>
-            <li>Методика олимпийского чемпиона</li>
-          </ul>
-        </div>
-      </div>
-      <div class="stat-row">
-        <div class="stat"><span class="mid-num">6 900–19 900 ₽</span><p>месяц у больших беговых школ</p></div>
-        <div class="stat"><span class="mid-num">5–21 км</span><p>массовый рынок любителей</p></div>
-        <div class="stat"><span class="mid-num">0</span><p>прямых конкурентов с позиционированием «клуб-сборная»</p></div>
-      </div>
-      <p class="small">Ориентиры: публичные тарифы I Love Supersport, RunUp, RunLab, DEVI Club, 2026. «0» — отсутствие прямого позиционирования, а не отсутствие конкурентов вообще.</p>
-      <div class="footer"><span>Возможность</span><span>03 / 20</span></div>
-    </section>
-
-    <section class="slide">
-      <div class="top">
-        <span><strong>Сборная ЮБ800</strong></span>
-        <span>03 · Позиционирование</span>
-      </div>
-      <p class="kicker">Не беговой клуб. Сборная</p>
-      <h2>Сборная — это формат,<br>а не вывеска.</h2>
-      <div class="grid-3">
-        <div class="card">
-          <p class="num">01 · Доступ</p>
-          <h3>Берём всех</h3>
-          <p>Тест определяет стартовый уровень и цель. Отбора по подготовке нет.</p>
-        </div>
-        <div class="card">
-          <p class="num">02 · Система</p>
-          <h3>Тренируем как спортсменов</h3>
-          <p>Тест → план → тренировки → повторный тест → старт. Без хаоса и случайных нагрузок.</p>
-        </div>
-        <div class="card accent-card">
-          <p class="num">03 · Команда</p>
-          <h3>Собираем команду</h3>
-          <p>Общий чат, тестовые дни, старты, командный зачёт и экипировка.</p>
-        </div>
-      </div>
-      <div class="callout">
-        <p>800 метров — фирменный тест скорости. 5, 10 и 21 км — дистанции, к которым готовим.</p>
-        <span>Один бренд</span>
-      </div>
-      <div class="footer"><span>Категория</span><span>04 / 20</span></div>
-    </section>
-
-    <section class="slide">
-      <div class="top">
-        <span><strong>Сборная ЮБ800</strong></span>
-        <span>04 · Продукт</span>
-      </div>
-      <p class="kicker">Первый шаг</p>
-      <h2>Первый этап: 4 недели</h2>
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>03 · Продукт</span></div>
+      <p class="kicker">Один продукт</p>
+      <h2>Восемь тренировок.<br>Один тест. Понятный план.</h2>
       <div class="product-layout">
         <div class="price-panel">
           <div>
-            <p class="num">Стоимость</p>
+            <p class="num">Стоимость этапа</p>
             <div class="big-num">15 900 ₽</div>
-            <p>8 тренировок · 2 теста · разбор</p>
+            <p>4 недели · группа 10–15 человек</p>
           </div>
           <div style="margin-top: 18px;">
             <p class="small">Аренда дорожки или манежа оплачивается отдельно.</p>
-            <p class="small" style="margin-top: 8px;">Первый состав — 10 человек. Старт 24 ноября.</p>
+            <p class="small" style="margin-top: 6px;">800 м — фирменный тест скорости. Готовим к 5–21 км.</p>
+            <p class="small" style="margin-top: 6px;">Первый состав — 10 человек.</p>
           </div>
         </div>
         <div>
           <p class="num" style="margin-bottom: 8px;">Что входит</p>
           <ul class="feature-list">
             <li>8 групповых тренировок</li>
-            <li>Входная диагностика</li>
-            <li>Финальный тест под цель</li>
+            <li>Тренер и помощник на каждой</li>
+            <li>Тестирование в конце этапа</li>
             <li>Видеоразбор техники</li>
-            <li>Письменный план на следующий этап</li>
-            <li>Один общий контакт с Юрием</li>
-            <li>Чат Сборной</li>
-            <li>Расписание стартов</li>
+            <li>План на следующий этап</li>
+            <li>Тренировка под руководством Юрия</li>
+            <li>Чат Сборной и расписание стартов</li>
           </ul>
         </div>
       </div>
-      <div class="footer"><span>Продукт №1</span><span>05 / 20</span></div>
+      <div class="callout">
+        <p>Один этап — 4 недели. Дальше следующий этап или годовая Сборная.</p>
+        <span>Продукт №1</span>
+      </div>
+      <div class="footer"><span>Продукт</span><span>03 / 26</span></div>
     </section>
 
     <section class="slide">
-      <div class="top">
-        <span><strong>Сборная ЮБ800</strong></span>
-        <span>05 · LTV</span>
-      </div>
-      <p class="kicker">Не разовая продажа</p>
-      <h2>От первого этапа — к сезону</h2>
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>04 · Лестница</span></div>
+      <p class="kicker">Один клиент — несколько продуктов</p>
+      <h2>Путь от 0<br>до 190 800 ₽.</h2>
       <div class="ladder">
         <div class="ladder-card">
           <p class="num">Вход</p>
           <h3>Открытая тренировка</h3>
-          <p>Бесплатно. Диагностический вход и знакомство.</p>
+          <p>Диагностика, мини-тест и разбор.</p>
           <span class="price">0 ₽</span>
           <span class="arrow">→</span>
         </div>
         <div class="ladder-card featured">
-          <p class="num">Первый продукт</p>
-          <h3>Первый этап</h3>
-          <p>4 недели, тесты, план и команда.</p>
+          <p class="num">Ядро</p>
+          <h3>Этап</h3>
+          <p>8 тренировок, тест, разбор и план.</p>
           <span class="price">15 900 ₽</span>
           <span class="arrow">→</span>
         </div>
         <div class="ladder-card">
-          <p class="num">Продолжение</p>
-          <h3>Этап Сборной</h3>
-          <p>Следующий 4-недельный этап без полной диагностики.</p>
-          <span class="price">15 900 ₽</span>
+          <p class="num">Удержание</p>
+          <h3>Годовая Сборная</h3>
+          <p>12 этапов + 1 в подарок.</p>
+          <span class="price">190 800 ₽</span>
           <span class="arrow">→</span>
         </div>
         <div class="ladder-card accent-card">
-          <p class="num">Удержание</p>
-          <h3>Годовая Сборная</h3>
-          <p>12 этапов + 1 в подарок. Предложение после первого этапа.</p>
-          <span class="price">190 800 ₽</span>
+          <p class="num">Премиум</p>
+          <h3>С Юрием</h3>
+          <p>4 недели, тренировка и разбор.</p>
+          <span class="price">39 900 ₽</span>
         </div>
       </div>
       <div class="callout">
-        <p>LTV растёт с 15 900 до 190 800 ₽ — без нового лида.</p>
-        <span>Удержание</span>
+        <p>Дополнительно: персоналка 5 000 ₽, Telegram-клуб, сборы и партнёрские продукты.</p>
+        <span>LTV</span>
       </div>
-      <div class="footer"><span>Экономика клиента</span><span>06 / 20</span></div>
+      <div class="footer"><span>Монетизация клиента</span><span>04 / 26</span></div>
     </section>
 
     <section class="slide">
-      <div class="top">
-        <span><strong>Сборная ЮБ800</strong></span>
-        <span>06 · Клиент</span>
-      </div>
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>05 · Аудитория</span></div>
       <p class="kicker">Кому это надо</p>
-      <h2>Новичкам, любителям,<br>спортсменам</h2>
+      <h2>Ядро — амбициозные любители.<br>Новичков не отсеиваем.</h2>
       <div class="grid-3">
         <div class="card">
           <p class="num">Новички</p>
           <h3>Первый километр</h3>
           <p>С нуля, без страха и сравнения. Техника, безопасная нагрузка, первый результат.</p>
         </div>
-        <div class="card">
+        <div class="card accent-card">
           <p class="num">Любители 5–21 км</p>
           <h3>Личный рекорд</h3>
           <p>Уже бегают, но нужна система: темп, объём, восстановление и старты.</p>
@@ -1284,23 +1362,20 @@
         <div class="card">
           <p class="num">Спортсмены</p>
           <h3>Снова в команде</h3>
-          <p>Вернуться к тренировкам и соревнованиям, почувствовать структуру и азарт.</p>
+          <p>Вернуться к тренировкам и соревнованиям, получить структуру и азарт.</p>
         </div>
       </div>
       <div class="callout">
-        <p><strong>Ядро — амбициозные любители 25–45.</strong> Новичков не отсеиваем: состав не регламентируем.</p>
-        <span>Берём всех</span>
+        <p>Один стандарт качества для всех. Состав не регламентируем, но группа — 10–15 человек.</p>
+        <span>Сегменты</span>
       </div>
-      <div class="footer"><span>Сегменты</span><span>07 / 20</span></div>
+      <div class="footer"><span>Клиент</span><span>05 / 26</span></div>
     </section>
 
     <section class="slide">
-      <div class="top">
-        <span><strong>Сборная ЮБ800</strong></span>
-        <span>07 · Ров</span>
-      </div>
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>06 · Юрий</span></div>
       <p class="kicker">Почему это сложно скопировать</p>
-      <h2>Юрий — не лицо,<br>а система.</h2>
+      <h2>Юрий задаёт систему,<br>а не просто присутствует.</h2>
       <div class="split-photo">
         <div>
           <ul class="stat-list">
@@ -1310,149 +1385,193 @@
             <li><strong>12</strong><span>раз чемпион России</span></li>
             <li><strong>6 лет</strong><span>Главный тренер сборной России</span></li>
           </ul>
-          <p class="small" style="margin-top: 14px;">Один из шести олимпийских чемпионов России в мужской лёгкой атлетике и единственный — в беговых дисциплинах.</p>
+          <p class="small" style="margin-top: 12px;">Олимпийский чемпион, рекордсмен и тренер. Не только имя на обложке.</p>
         </div>
         <div class="photo photo-yuri"></div>
       </div>
       <div class="callout">
-        <p>Задаёт методику, тесты и ключевые тренировки. Ежедневно с группой работает штаб — система не зависит от одного человека.</p>
+        <p>Методика, тесты, разбор и одна ключевая тренировка на этапе. Ежедневно с группой работает штаб.</p>
         <span>Автор методики</span>
       </div>
-      <div class="footer"><span>Уникальность</span><span>08 / 20</span></div>
+      <div class="footer"><span>Уникальность</span><span>06 / 26</span></div>
     </section>
 
     <section class="slide">
-      <div class="top">
-        <span><strong>Сборная ЮБ800</strong></span>
-        <span>08 · Команда</span>
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>07 · Стандарт</span></div>
+      <p class="kicker">Стандарт каждой тренировки</p>
+      <h2>Всегда тренер<br>и помощник.</h2>
+      <div class="grid-3">
+        <div class="card">
+          <p class="num">Качество</p>
+          <h3>Техника под контролем</h3>
+          <p>Тренер ведёт занятие, помощник видит детали и исправляет ошибки на месте.</p>
+        </div>
+        <div class="card">
+          <p class="num">Безопасность</p>
+          <h3>Страховка и нагрузка</h3>
+          <p>Разминка, ОФП, контроль самочувствия. Новичок не остаётся один.</p>
+        </div>
+        <div class="card accent-card">
+          <p class="num">Внимание</p>
+          <h3>10–15 человек, двое тренеров</h3>
+          <p>Не поток. Каждый получает обратную связь и место в группе.</p>
+        </div>
       </div>
+      <div class="stat-row">
+        <div class="stat"><strong>10–15</strong><span>человек в группе</span></div>
+        <div class="stat"><strong>7 000 ₽</strong><span>тренер + помощник за тренировку</span></div>
+        <div class="stat"><strong>56 000 ₽</strong><span>тренерский состав за этап</span></div>
+      </div>
+      <div class="callout">
+        <p>Помощник — не дубль тренера: страховка, техника, ОФП и вторая пара глаз.</p>
+        <span>Стандарт</span>
+      </div>
+      <div class="footer"><span>Тренировочный процесс</span><span>07 / 26</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>08 · Тренеры</span></div>
+      <p class="kicker">Как привлекаем тренеров</p>
+      <h2>Тренера собираем<br>под стандарт.</h2>
+      <div class="flow flow-5">
+        <div class="flow-step"><p class="num">01</p><h3>Рекомендация</h3><p>Личная сеть Юрия, штаба и партнёров.</p></div>
+        <div class="flow-step"><p class="num">02</p><h3>Тестовое занятие</h3><p>Смотрим, как работает с группой.</p></div>
+        <div class="flow-step"><p class="num">03</p><h3>Методика</h3><p>Разбор системы, тестов и планов.</p></div>
+        <div class="flow-step"><p class="num">04</p><h3>Две недели в паре</h3><p>Ведёт вместе с опытным тренером.</p></div>
+        <div class="flow-step"><p class="num">05</p><h3>Своя группа</h3><p>С обратной связью и видеоразбором.</p></div>
+      </div>
+      <div class="grid-3" style="margin-top: 16px;">
+        <div class="card"><p class="num">Профиль</p><h3>МС / КМС</h3><p>Образование, опыт с любителями, культура работы с людьми.</p></div>
+        <div class="card"><p class="num">Проверяем</p><h3>Технику и речь</h3><p>Умеет объяснить, показать и не перегрузить группу.</p></div>
+        <div class="card"><p class="num">Экономика</p><h3>5 000 ₽ / сессия</h3><p>Окупается при группе от 10 человек. Помощник — 2 000 ₽.</p></div>
+      </div>
+      <div class="callout">
+        <p>Один тренер и один помощник на 12–15 человек. На 4 группы — 8 человек в смене.</p>
+        <span>Масштабирование</span>
+      </div>
+      <div class="footer"><span>Команда</span><span>08 / 26</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>09 · Роли</span></div>
       <p class="kicker">Кто что делает</p>
-      <h2>Команда первого потока</h2>
+      <h2>Команда первого этапа.</h2>
       <table class="roles-table">
-        <tr><td>Юрий</td><td>Методика, тесты, ключевые тренировки, разборы, лицо Сборной</td><td>Не ведёт каждую тренировку</td></tr>
-        <tr><td>Главный тренер</td><td>Ежедневные тренировки, планы, обратная связь, работа с разными уровнями</td><td>Ключевая операционная роль</td></tr>
-        <tr><td>Помощник</td><td>ОФП, техника, страховка, помощь на тренировках</td><td>Можно совмещать с главным тренером на старте</td></tr>
-        <tr><td>Администратор</td><td>Заявки, расписание, оплаты, онбординг, удержание, чат</td><td>Первый поток можно вести вручную</td></tr>
-        <tr><td>Контент / SMM</td><td>Съёмка тестов и тренировок, кейсы, Telegram, сайт</td><td>Подрядчик или внутренний человек</td></tr>
-        <tr><td>Продажи / партнёры</td><td>Первые 10, корпоративные контакты, партнёрская сеть</td><td>На старте — собственник</td></tr>
-        <tr><td>Тех / CRM</td><td>Сайт, бот, CRM, аналитика, оплаты</td><td>Сейчас — внутренние силы</td></tr>
+        <tbody>
+        <tr><td>Юрий</td><td>Методика, тесты, одна тренировка, разбор, лицо Сборной</td><td>Не ежедневный тренер</td></tr>
+        <tr><td>Главный тренер</td><td>Ежедневные тренировки, планы, обратная связь, старты</td><td>Ключевая операционная роль</td></tr>
+        <tr><td>Помощник</td><td>Техника, ОФП, страховка, вторая пара глаз</td><td>На каждой тренировке</td></tr>
+        <tr><td>Администратор</td><td>Заявки, расписание, оплаты, онбординг, удержание</td><td>Можно вручную на пилоте</td></tr>
+        <tr><td>Контент / SMM</td><td>Съёмка, кейсы, Telegram, сайт</td><td>Подрядчик</td></tr>
+        <tr><td>Продажи / партнёры</td><td>Первые 10, партнёрская сеть, корпоративы</td><td>На старте — собственник</td></tr>
         <tr><td>Врач / физио / массаж</td><td>Допуск, профилактика, восстановление</td><td>Партнёры, не штат</td></tr>
-      </table>
-      <div class="callout">
-        <p>Минимальный состав первого потока: Юрий + главный тренер + администратор. Остальное — подрядчики.</p>
-        <span>Компактная команда</span>
-      </div>
-      <div class="footer"><span>Роли</span><span>09 / 20</span></div>
-    </section>
-
-    <section class="slide">
-      <div class="top">
-        <span><strong>Сборная ЮБ800</strong></span>
-        <span>09 · Юнит-экономика</span>
-      </div>
-      <p class="kicker">Один поток</p>
-      <h2>Экономика одного потока</h2>
-      <table class="money">
-        <thead><tr><th>Показатель</th><th>10 человек</th><th>12 человек</th><th>15 человек</th></tr></thead>
-        <tbody>
-          <tr><td>Выручка</td><td>159 000 ₽</td><td>190 800 ₽</td><td>238 500 ₽</td></tr>
-          <tr><td>Эквайринг + УСН 9%</td><td>−14 310 ₽</td><td>−17 172 ₽</td><td>−21 465 ₽</td></tr>
-          <tr><td>Тренер: 8 × 5 000 ₽</td><td>−40 000 ₽</td><td>−40 000 ₽</td><td>−40 000 ₽</td></tr>
-          <tr><td>Доход до доп. расходов</td><td>104 690 ₽</td><td>133 628 ₽</td><td>177 035 ₽</td></tr>
-          <tr><td>Юрий, тесты, маркетинг, админ</td><td>−45 000 ₽</td><td>−45 000 ₽</td><td>−45 000 ₽</td></tr>
-          <tr class="total"><td>Вклад за 4 недели</td><td>59 690 ₽</td><td>88 628 ₽</td><td>132 035 ₽</td></tr>
         </tbody>
       </table>
       <div class="callout">
-        <p>Аренда — pass-through. Налоги 9%. Тренер 5 000 ₽ за сессию. Доп. расходы 45 000 ₽: Юрий, тесты, маркетинг, админ.</p>
-        <span>Без фикс. расходов</span>
+        <p>Минимальный состав пилота: Юрий + тренер + помощник + администратор. Остальное — подрядчики.</p>
+        <span>Компактно</span>
       </div>
-      <div class="footer"><span>Модель, не гарантия</span><span>10 / 20</span></div>
+      <div class="footer"><span>Роли</span><span>09 / 26</span></div>
     </section>
 
     <section class="slide">
-      <div class="top">
-        <span><strong>Сборная ЮБ800</strong></span>
-        <span>10 · Масштаб</span>
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>10 · Время Юрия</span></div>
+      <p class="kicker">Сколько это занимает у Юрия</p>
+      <h2>10–12 часов на этап,<br>а не 40 в неделю.</h2>
+      <div class="hours-grid">
+        <div>
+          <p class="num" style="margin-bottom: 6px;">Один этап, одна группа</p>
+          <div class="hours-list">
+            <div class="hours-row"><span><strong>Одна тренировка</strong> с группой</span><span>2 часа</span></div>
+            <div class="hours-row"><span><strong>Тестирование</strong> и допуск</span><span>3 часа</span></div>
+            <div class="hours-row"><span><strong>Разбор</strong> и план</span><span>3 часа</span></div>
+            <div class="hours-row"><span><strong>Методика</strong> и штаб</span><span>2–4 часа</span></div>
+          </div>
+        </div>
+        <div class="stat-row" style="grid-template-columns: 1fr; margin-top: 0;">
+          <div class="stat"><strong>10–12 ч</strong><span>на этап · 1 группа</span></div>
+          <div class="stat"><strong>16–20 ч</strong><span>на этап · 4 группы</span></div>
+          <div class="stat"><strong>30–60 тыс. ₽</strong><span>за этап + 50% премиум</span></div>
+        </div>
       </div>
-      <p class="kicker">Что происходит при росте</p>
-      <h2>10 — пилот. 50 — бизнес.</h2>
-      <table class="money">
-        <thead><tr><th>Показатель за 4 недели</th><th>25 человек · 2 группы</th><th>50 человек · 4 группы</th></tr></thead>
-        <tbody>
-          <tr><td>Выручка</td><td>397 500 ₽</td><td>795 000 ₽</td></tr>
-          <tr><td>Налоги 9%</td><td>−35 775 ₽</td><td>−71 550 ₽</td></tr>
-          <tr><td>Тренеры</td><td>−80 000 ₽</td><td>−160 000 ₽</td></tr>
-          <tr><td>Вклад до доп. расходов</td><td>281 725 ₽</td><td>563 450 ₽</td></tr>
-          <tr><td>Доп. расходы</td><td>−90 000 ₽</td><td>−180 000 ₽</td></tr>
-          <tr><td>Вклад</td><td>191 725 ₽</td><td>383 450 ₽</td></tr>
-          <tr><td>Фиксированные расходы</td><td>−150 000 ₽</td><td>−150 000 ₽</td></tr>
-          <tr class="total"><td>Прибыль за 4 недели</td><td>41 725 ₽</td><td>233 450 ₽</td></tr>
-        </tbody>
-      </table>
       <div class="callout">
-        <p>За 13 этапов: <strong>25 человек</strong> — около 542 тыс. ₽ прибыли; <strong>50 человек</strong> — около 3,03 млн ₽.</p>
-        <span>Сценарий</span>
+        <p>Время Юрия — на методику, тесты и ключевые точки. Рутину ведёт штаб.</p>
+        <span>Роль</span>
       </div>
-      <p class="small">Фиксированные 150 000 ₽ за 4 недели — допущение из текущей модели (50 000 ₽ фикс + 100 000 ₽ директор). Это план, не гарантия.</p>
-      <div class="footer"><span>Масштаб</span><span>11 / 20</span></div>
+      <div class="footer"><span>Загрузка</span><span>10 / 26</span></div>
     </section>
 
     <section class="slide">
-      <div class="top">
-        <span><strong>Сборная ЮБ800</strong></span>
-        <span>11 · Доходы команды</span>
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>11 · Путь клиента</span></div>
+      <p class="kicker">От первого касания до оплаты</p>
+      <h2>Один управляемый путь.</h2>
+      <div class="flow flow-6">
+        <div class="flow-step"><p class="num">01</p><h3>Визит</h3><p>Сайт, QR, Telegram или MAX.</p></div>
+        <div class="flow-step"><p class="num">02</p><h3>Заявка</h3><p>Имя, контакт, согласие. Всё в CRM.</p></div>
+        <div class="flow-step"><p class="num">03</p><h3>Ответ</h3><p>В течение дня: цель, опыт, время.</p></div>
+        <div class="flow-step"><p class="num">04</p><h3>Диагностика</h3><p>Открытая тренировка или мини-тест.</p></div>
+        <div class="flow-step"><p class="num">05</p><h3>Оффер</h3><p>Этап 15 900 ₽, группа и расписание.</p></div>
+        <div class="flow-step"><p class="num">06</p><h3>Онбординг</h3><p>Оплата, чат, первая тренировка.</p></div>
       </div>
-      <p class="kicker">Кто сколько зарабатывает</p>
-      <h2>Модель вознаграждения</h2>
-      <table class="roles-table">
-        <tr><td>Юрий</td><td>20–30 тыс. ₽ за этап как методист и ключевые сессии; Private (будущий слой) — 50% от 39 900 ₽</td><td>Не оклад за каждую тренировку</td></tr>
-        <tr><td>Главный тренер</td><td>5 000 ₽ / сессия; 40 000 ₽ / этап / группа</td><td>4 группы — 160 000 ₽ / этап</td></tr>
-        <tr><td>Помощник</td><td>2 000–2 500 ₽ / сессия; 16–20 тыс. ₽ / этап / группа</td><td>Подключается по нагрузке</td></tr>
-        <tr><td>Администратор</td><td>30–50 тыс. ₽ / месяц на старте; 60–80 тыс. ₽ при 50 участниках</td><td>Заявки, оплаты, расписание, удержание</td></tr>
-        <tr><td>Контент / SMM</td><td>20–40 тыс. ₽ / месяц; 40–60 тыс. ₽ при 50</td><td>Съёмка, кейсы, каналы</td></tr>
-        <tr><td>Продажи / партнёры</td><td>5 000 ₽ за сделку или 10% первого этапа</td><td>На старте — собственник</td></tr>
-        <tr><td>Тех / CRM</td><td>0 сейчас; 30–60 тыс. ₽ / месяц позже</td><td>Сайт, бот, CRM, аналитика</td></tr>
-        <tr><td>Собственник</td><td>Остаток: на 10 — 20–50 тыс. ₽ до фикса (пилот); на 50 — 150–250 тыс. ₽ после фикса</td><td>Если совмещает роли — доход заменяет часть ставок</td></tr>
-      </table>
-      <p class="small">Это модель и диапазоны, а не обещание. Ставки фиксируем после первого потока; часть ролей на старте совмещается. На 10 участниках фиксированные расходы ещё не покрываются — это пилот, а не прибыльный бизнес.</p>
-      <div class="footer"><span>Доходы</span><span>12 / 20</span></div>
+      <div class="stat-row">
+        <div class="stat"><strong>1</strong><span>CRM для всех входов</span></div>
+        <div class="stat"><strong>1 день</strong><span>целевой ответ</span></div>
+        <div class="stat"><strong>6</strong><span>шагов до оплаты</span></div>
+      </div>
+      <div class="callout">
+        <p>Сайт, QR и мессенджеры попадают в один intake. Ни одна заявка не теряется.</p>
+        <span>Процесс</span>
+      </div>
+      <div class="footer"><span>Воронка</span><span>11 / 26</span></div>
     </section>
 
     <section class="slide">
-      <div class="top">
-        <span><strong>Сборная ЮБ800</strong></span>
-        <span>12 · Запуск</span>
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>12 · Digital</span></div>
+      <p class="kicker">Что уже работает</p>
+      <h2>Сайт — не макет.<br>Это вход в бизнес.</h2>
+      <div class="digital-grid">
+        <div class="digital-card"><span class="product-status status-live">Live</span><h3>run800.ru</h3><p>Домен, HTTPS, Caddy, статика на cloud.ru.</p></div>
+        <div class="digital-card"><span class="product-status status-live">Live</span><h3>Форма и CRM</h3><p>Заявка, согласие, источник, intake API.</p></div>
+        <div class="digital-card"><span class="product-status status-live">Live</span><h3>QR / join.html</h3><p>Быстрая запись на тренировку и этап.</p></div>
+        <div class="digital-card"><span class="product-status status-live">Live</span><h3>Telegram и MAX</h3><p>QR-коды, канал, группа, бот.</p></div>
+        <div class="digital-card"><span class="product-status status-local">Готово</span><h3>Сценарий бота</h3><p>Заявки, пропуска, расписание, staff-темы.</p></div>
+        <div class="digital-card"><span class="product-status status-todo">Далее</span><h3>Оплата и аналитика</h3><p>Онлайн-оплата, сквозная воронка, отчёты.</p></div>
       </div>
-      <p class="kicker">Как получаем первых 10</p>
-      <h2>Первый поток — вручную</h2>
+      <div class="callout">
+        <p>Сайт + CRM + мессенджеры = один контур. Без PWA, mini app и нативного приложения.</p>
+        <span>Принцип</span>
+      </div>
+      <div class="footer"><span>Цифровой контур</span><span>12 / 26</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>13 · Первые дни</span></div>
+      <p class="kicker">Что происходит после заявки</p>
+      <h2>Первые 7 дней решают,<br>дойдёт ли клиент до этапа.</h2>
       <div class="timeline">
-        <div class="timeline-card"><p class="timeline-date">до 15.11</p><h3>Подготовка</h3><p>База, партнёры, оффер, личные приглашения.</p></div>
-        <div class="timeline-card"><p class="timeline-date">21.11</p><h3>Открытая тренировка</h3><p>Диагностический вход, мини-тест, разбор.</p></div>
-        <div class="timeline-card"><p class="timeline-date">24.11</p><h3>Старт первого этапа</h3><p>10 человек, 4 недели, тесты и тренировки.</p></div>
-        <div class="timeline-card"><p class="timeline-date">20.12</p><h3>Финал</h3><p>Финальный тест, кейсы, контент, рекомендации.</p></div>
-        <div class="timeline-card"><p class="timeline-date">январь</p><h3>Второй поток</h3><p>15–20 человек, уже с доказательствами.</p></div>
+        <div class="timeline-card"><p class="timeline-date">День 0</p><h3>Заявка</h3><p>CRM, автоответ, задача администратору.</p></div>
+        <div class="timeline-card"><p class="timeline-date">День 1–2</p><h3>Контакт</h3><p>Цель, опыт, ограничения, удобное время.</p></div>
+        <div class="timeline-card"><p class="timeline-date">День 3–5</p><h3>Тренировка</h3><p>Открытая тренировка или диагностика.</p></div>
+        <div class="timeline-card"><p class="timeline-date">День 5–7</p><h3>Оффер</h3><p>Этап, группа, расписание, оплата.</p></div>
+        <div class="timeline-card"><p class="timeline-date">День 7</p><h3>Старт</h3><p>Чат, правила, первая тренировка.</p></div>
       </div>
       <div class="callout">
-        <p><strong>30–40 личных разговоров → 10 оплат.</strong> Каналы: личная сеть Юрия и команды, спортсмены, партнёры, Telegram, открытая тренировка.</p>
-        <span>Без рекламы</span>
+        <p>Цель — не продать в переписке, а довести до тренировки. Продажа происходит в зале.</p>
+        <span>Скрипт</span>
       </div>
-      <div class="footer"><span>Запуск</span><span>13 / 20</span></div>
+      <div class="footer"><span>Онбординг</span><span>13 / 26</span></div>
     </section>
 
     <section class="slide">
-      <div class="top">
-        <span><strong>Сборная ЮБ800</strong></span>
-        <span>13 · Воронка</span>
-      </div>
-      <p class="kicker">Что считаем</p>
-      <h2>Воронка первого потока</h2>
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>14 · Привлечение</span></div>
+      <p class="kicker">Первые 10 без рекламы</p>
+      <h2>Сначала руки.<br>Потом система.</h2>
       <div class="funnel">
         <div class="funnel-bars">
           <div class="funnel-bar"><span>Личные контакты</span><span>30–40</span></div>
           <div class="funnel-bar"><span>Открытая тренировка</span><span>15–20</span></div>
-          <div class="funnel-bar"><span>Оплата первого этапа</span><span>10</span></div>
-          <div class="funnel-bar"><span>Доходят до финала</span><span>7</span></div>
+          <div class="funnel-bar"><span>Оплата этапа</span><span>10</span></div>
+          <div class="funnel-bar"><span>Доходят до теста</span><span>7</span></div>
           <div class="funnel-bar"><span>Кейсы и рекомендации</span><span>3–5</span></div>
         </div>
         <div>
@@ -1462,135 +1581,254 @@
             <div class="metric"><strong>70%</strong><span>цель удержания</span></div>
             <div class="metric"><strong>10</strong><span>первый состав</span></div>
           </div>
-          <p class="small" style="margin-top: 16px;">Реклама — только после доказательства оффера. Сначала личные продажи, кейсы и контент.</p>
+          <p class="small" style="margin-top: 14px;">Каналы: личная сеть Юрия и команды, спортсмены, партнёры, Telegram, открытая тренировка.</p>
         </div>
       </div>
-      <div class="footer"><span>Метрики</span><span>14 / 20</span></div>
+      <div class="footer"><span>Воронка</span><span>14 / 26</span></div>
     </section>
 
     <section class="slide">
-      <div class="top">
-        <span><strong>Сборная ЮБ800</strong></span>
-        <span>14 · Цифра сейчас</span>
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>15 · Telegram</span></div>
+      <p class="kicker">Второй канал продаж</p>
+      <h2>Telegram — не блог,<br>а воронка.</h2>
+      <div class="funnel">
+        <div class="funnel-bars">
+          <div class="funnel-bar"><span>Подписчики канала</span><span>5 000</span></div>
+          <div class="funnel-bar"><span>Лид-магнит: тест / план</span><span>500</span></div>
+          <div class="funnel-bar"><span>Платный клуб 990 ₽/мес</span><span>100–150</span></div>
+          <div class="funnel-bar"><span>Этап Сборной</span><span>10–20</span></div>
+        </div>
+        <div>
+          <div class="metric-grid">
+            <div class="metric"><strong>99–148 тыс. ₽</strong><span>подписка в месяц</span></div>
+            <div class="metric"><strong>2–3%</strong><span>конверсия в платное</span></div>
+            <div class="metric"><strong>3</strong><span>источника дохода</span></div>
+            <div class="metric"><strong>12 мес</strong><span>горизонт</span></div>
+          </div>
+          <p class="small" style="margin-top: 14px;">Подписка, тренировочные планы и партнёрские интеграции. В базовый P&amp;L не заложено.</p>
+        </div>
       </div>
-      <p class="kicker">Что уже есть</p>
-      <h2>Цифровые продукты сегодня</h2>
-      <div class="digital-grid">
-        <div class="digital-card"><span class="product-status status-local">Локально</span><h3>Новый сайт</h3><p>Полная версия «Сборной» готова локально. На production пока старый сайт.</p></div>
-        <div class="digital-card"><span class="product-status status-live">Работает</span><h3>run800.ru</h3><p>Домен, HTTPS, Caddy, форма заявки и CRM-intake на VPS.</p></div>
-        <div class="digital-card"><span class="product-status status-mock">Тест</span><h3>CRM</h3><p>Единый intake, mock-режим, адаптеры Bitrix24 и EspoCRM, аудит согласий.</p></div>
-        <div class="digital-card"><span class="product-status status-local">Локально</span><h3>Telegram-бот</h3><p>Новый сценарий в коде; на VPS пока старый. Нужна переупаковка под Сборную.</p></div>
-        <div class="digital-card"><span class="product-status status-live">Работает</span><h3>Канал и группа</h3><p>@yb800run, @yb800club, staff-группа с темами «Заявки», «Расписание», «Контент», «Операционка».</p></div>
-        <div class="digital-card"><span class="product-status status-local">Локально</span><h3>QR / join.html</h3><p>Быстрая запись обновлена: открытая тренировка и первый этап.</p></div>
-      </div>
-      <p class="small">Для Сборной не нужно нативное приложение: сайт + Telegram/MAX + CRM закрывают вход, запись, оплату и коммуникацию.</p>
-      <div class="footer"><span>Цифра сейчас</span><span>15 / 20</span></div>
+      <div class="footer"><span>Медиа и подписка</span><span>15 / 26</span></div>
     </section>
 
     <section class="slide">
-      <div class="top">
-        <span><strong>Сборная ЮБ800</strong></span>
-        <span>15 · Digital roadmap</span>
-      </div>
-      <p class="kicker">Что будет</p>
-      <h2>Дорожная карта digital</h2>
-      <div class="roadmap">
-        <div class="phase"><p class="num">0–1 месяц</p><h3>Запуск</h3><p>Задеплоить сайт и бот, включить CRM live, аналитику, оплату или бронь.</p></div>
-        <div class="phase"><p class="num">1–3 месяца</p><h3>Личный кабинет</h3><p>Профиль, этап, посещения, паспорт тестов, план, напоминания, оплата.</p></div>
-        <div class="phase"><p class="num">3–6 месяцев</p><h3>Команда и данные</h3><p>Рейтинг, командный зачёт, библиотека контента, корпоративный кабинет.</p></div>
-        <div class="phase"><p class="num">6–12 месяцев</p><h3>Масштаб</h3><p>Годовая подписка, партнёрский API, мобильная веб-версия, отчёты для B2B.</p></div>
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>16 · Партнёры</span></div>
+      <p class="kicker">Экосистема вокруг тренировок</p>
+      <h2>Партнёры усиливают продукт,<br>но не входят в цену этапа.</h2>
+      <div class="grid-3">
+        <div class="card"><p class="num">Здоровье</p><h3>Медицина и физио</h3><p>Допуск, профилактика, реабилитация. Партнёрские приёмы — по желанию.</p></div>
+        <div class="card"><p class="num">Восстановление</p><h3>Массаж</h3><p>Восстановление после объёма и старта. Скидка участникам Сборной.</p></div>
+        <div class="card"><p class="num">Экипировка</p><h3>Обувь и одежда</h3><p>Примерка, тесты, клубный кит. Партнёр даёт бонус, клуб — трафик.</p></div>
+        <div class="card"><p class="num">Питание</p><h3>Нутрициология</h3><p>Питание под нагрузку и восстановление.</p></div>
+        <div class="card"><p class="num">Психология</p><h3>Настрой на старт</h3><p>Работа с волнением и мотивацией.</p></div>
+        <div class="card accent-card"><p class="num">База</p><h3>Дорожка и манеж</h3><p>Фиксированное окно. Аренда — отдельно, pass-through.</p></div>
       </div>
       <div class="callout">
-        <p>Без PWA, mini app и нативного приложения. Один веб-вход и мессенджеры.</p>
-        <span>Принцип</span>
+        <p>Модель: 10–15% с referral или фикс за размещение. Партнёрская выручка — upside, не база.</p>
+        <span>Партнёрская сеть</span>
       </div>
-      <div class="footer"><span>Цифра далее</span><span>16 / 20</span></div>
+      <div class="footer"><span>Партнёры</span><span>16 / 26</span></div>
     </section>
 
     <section class="slide">
-      <div class="top">
-        <span><strong>Сборная ЮБ800</strong></span>
-        <span>16 · Риски</span>
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>17 · Сборы</span></div>
+      <p class="kicker">Третий слой выручки</p>
+      <h2>Сборы и события<br>продаются отдельно.</h2>
+      <div class="grid-3">
+        <div class="card accent-card"><p class="num">Формат</p><h3>Выездные сборы</h3><p>2–4 дня, 15–25 человек, тренировки, тесты, восстановление.</p></div>
+        <div class="card"><p class="num">Цена</p><h3>15–25 тыс. ₽</h3><p>За участника. Площадка и проживание — партнёрские.</p></div>
+        <div class="card"><p class="num">Экономика</p><h3>30–40% маржи</h3><p>20 человек × 20 тыс. ₽ = 400 тыс. ₽ выручки, 120–160 тыс. ₽ маржи.</p></div>
       </div>
+      <div class="grid-2" style="margin-top: 14px;">
+        <div class="note-panel"><h3>Совместные сборы</h3><p>С брендами, клубами и партнёрами: делим аудиторию и расходы, собираем новый трафик.</p></div>
+        <div class="note-panel"><h3>Старты и мастер-классы</h3><p>Клубные выезды, техника, разбор обуви, подготовка к 10 км. Продают основной этап.</p></div>
+      </div>
+      <p class="small" style="margin-top: 12px;">Запускаем после 50 участников. В базовый P&amp;L не заложено.</p>
+      <div class="footer"><span>Дополнительная выручка</span><span>17 / 26</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>18 · Масштаб</span></div>
+      <p class="kicker">Что происходит при росте</p>
+      <h2>10 — пилот.<br>50 — бизнес.</h2>
+      <table class="money">
+        <thead><tr><th>Показатель</th><th>10 человек</th><th>25 человек</th><th>50 человек</th></tr></thead>
+        <tbody>
+          <tr><td>Групп</td><td>1</td><td>2</td><td>4</td></tr>
+          <tr><td>Выручка за этап</td><td>159 000 ₽</td><td>397 500 ₽</td><td>795 000 ₽</td></tr>
+          <tr><td>Тренеры</td><td>1</td><td>2</td><td>4</td></tr>
+          <tr><td>Помощники</td><td>1</td><td>2</td><td>4</td></tr>
+          <tr><td>Тренерский состав за этап</td><td>56 000 ₽</td><td>112 000 ₽</td><td>224 000 ₽</td></tr>
+          <tr class="total"><td>Модель</td><td>Пилот</td><td>Переход</td><td>Основной бизнес</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <p>50 участников — это 4 группы, 4 тренера и 4 помощника. Один стандарт качества.</p>
+        <span>Масштаб</span>
+      </div>
+      <div class="footer"><span>Рост</span><span>18 / 26</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>19 · Юнит-экономика</span></div>
+      <p class="kicker">Один этап</p>
+      <h2>От 159 000 ₽ выручки<br>до 43 690 ₽ вклада.</h2>
+      <table class="money">
+        <thead><tr><th>Показатель</th><th>10 человек</th><th>12 человек</th><th>15 человек</th></tr></thead>
+        <tbody>
+          <tr><td>Выручка</td><td>159 000 ₽</td><td>190 800 ₽</td><td>238 500 ₽</td></tr>
+          <tr><td>Эквайринг + УСН 9%</td><td>−14 310 ₽</td><td>−17 172 ₽</td><td>−21 465 ₽</td></tr>
+          <tr><td>Тренер + помощник: 8 × 7 000 ₽</td><td>−56 000 ₽</td><td>−56 000 ₽</td><td>−56 000 ₽</td></tr>
+          <tr><td>Юрий, тесты, маркетинг, админ</td><td>−45 000 ₽</td><td>−45 000 ₽</td><td>−45 000 ₽</td></tr>
+          <tr class="total"><td>Вклад за этап</td><td>43 690 ₽</td><td>72 628 ₽</td><td>116 035 ₽</td></tr>
+          <tr><td>Маржа</td><td>27%</td><td>38%</td><td>49%</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <p>Аренда — pass-through. Вклад 45 000 ₽: Юрий 30 000, тесты/маркетинг/админ 15 000.</p>
+        <span>Без фикс. расходов</span>
+      </div>
+      <div class="footer"><span>Модель, не гарантия</span><span>19 / 26</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>20 · Экономика масштаба</span></div>
+      <p class="kicker">Что остаётся клубу</p>
+      <h2>50 участников —<br>2,2 млн ₽ прибыли в год.</h2>
+      <table class="money">
+        <thead><tr><th>Показатель за этап</th><th>25 человек · 2 группы</th><th>50 человек · 4 группы</th></tr></thead>
+        <tbody>
+          <tr><td>Выручка</td><td>397 500 ₽</td><td>795 000 ₽</td></tr>
+          <tr><td>Налоги 9%</td><td>−35 775 ₽</td><td>−71 550 ₽</td></tr>
+          <tr><td>Тренеры + помощники</td><td>−112 000 ₽</td><td>−224 000 ₽</td></tr>
+          <tr><td>Юрий, тесты, маркетинг, админ</td><td>−90 000 ₽</td><td>−180 000 ₽</td></tr>
+          <tr><td>Фиксированные расходы</td><td>−50 000 ₽</td><td>−150 000 ₽</td></tr>
+          <tr class="total"><td>Прибыль за этап</td><td>109 725 ₽</td><td>169 450 ₽</td></tr>
+          <tr><td>За 13 этапов</td><td>1,43 млн ₽</td><td>2,20 млн ₽</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <p>Фикс на 50: директор 100 000 + операционные 50 000. Помощники уже в расходах.</p>
+        <span>План</span>
+      </div>
+      <div class="footer"><span>Прибыль</span><span>20 / 26</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>21 · Доходы команды</span></div>
+      <p class="kicker">Кто сколько зарабатывает</p>
+      <h2>Прозрачная модель<br>вознаграждения.</h2>
+      <table class="roles-table">
+        <tbody>
+        <tr><td>Юрий</td><td>30–60 тыс. ₽ за этап + 50% премиум</td><td>Методика, тесты, ключевые сессии</td></tr>
+        <tr><td>Главный тренер</td><td>5 000 ₽ / сессия · 40 000 ₽ / этап</td><td>8 тренировок в группе</td></tr>
+        <tr><td>Помощник</td><td>2 000 ₽ / сессия · 16 000 ₽ / этап</td><td>На каждой тренировке</td></tr>
+        <tr><td>Администратор</td><td>30–50 тыс. ₽ / месяц</td><td>Заявки, оплаты, расписание</td></tr>
+        <tr><td>Директор</td><td>100 тыс. ₽ / месяц с 50 участников</td><td>Операционка и рост</td></tr>
+        <tr><td>Контент / SMM</td><td>20–40 тыс. ₽ / месяц</td><td>Съёмка, кейсы, Telegram</td></tr>
+        <tr><td>Продажи</td><td>5 000 ₽ за сделку или 10% этапа</td><td>Первые 10 и партнёры</td></tr>
+        <tr><td>Собственник</td><td>Остаток — ~44 тыс. ₽ на 10, ~169 тыс. ₽ на 50 за этап</td><td>Может совмещать роли</td></tr>
+        </tbody>
+      </table>
+      <p class="small" style="margin-top: 8px;">Пилот 10 человек — проверка спроса, а не основной заработок. Ставки фиксируем после первого этапа.</p>
+      <div class="footer"><span>Команда и деньги</span><span>21 / 26</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>22 · План</span></div>
+      <p class="kicker">12 месяцев</p>
+      <h2>10 → 25 → 50 → 80.</h2>
+      <div class="quarters">
+        <div class="quarter"><h3>Q1</h3><p>Первый этап 10, второй 15–20. Сайт, CRM, первые кейсы.</p><span class="target">10 → 25</span></div>
+        <div class="quarter"><h3>Q2</h3><p>Третья группа, партнёры, контент, Telegram.</p><span class="target">30–40</span></div>
+        <div class="quarter"><h3>Q3</h3><p>50 участников, годовая Сборная, первые сборы.</p><span class="target">50</span></div>
+        <div class="quarter"><h3>Q4</h3><p>50–80 участников, корпоративы, прибыль.</p><span class="target">2,2–3,0 млн ₽</span></div>
+      </div>
+      <div class="callout">
+        <p>50 × 15 900 ₽ × 13 этапов = 10,3 млн ₽ выручки; 2,2 млн ₽ прибыли. План, не гарантия.</p>
+        <span>Горизонт</span>
+      </div>
+      <div class="footer"><span>Рост</span><span>22 / 26</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>23 · Запуск</span></div>
+      <p class="kicker">Ближайшие 90 дней</p>
+      <h2>Сайт готов.<br>Дальше — первые 10.</h2>
+      <div class="timeline">
+        <div class="timeline-card"><p class="timeline-date">до 15.11</p><h3>Подготовка</h3><p>База, партнёры, оффер, личные приглашения.</p></div>
+        <div class="timeline-card"><p class="timeline-date">21.11</p><h3>Открытая</h3><p>Диагностика, мини-тест, разбор.</p></div>
+        <div class="timeline-card"><p class="timeline-date">24.11</p><h3>Старт</h3><p>10 человек, 8 тренировок.</p></div>
+        <div class="timeline-card"><p class="timeline-date">20.12</p><h3>Тест</h3><p>Результат, кейсы, план.</p></div>
+        <div class="timeline-card"><p class="timeline-date">январь</p><h3>Второй этап</h3><p>15–20 человек, уже с доказательствами.</p></div>
+      </div>
+      <div class="callout">
+        <p>Сайт live, CRM intake live, бот готов, канал работает. Следующий слой — оплата и аналитика.</p>
+        <span>Статус</span>
+      </div>
+      <div class="footer"><span>Запуск</span><span>23 / 26</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>24 · Риски</span></div>
       <p class="kicker">Что может сломаться</p>
-      <h2>Риски и ответы</h2>
+      <h2>Риски и ответы.</h2>
       <table class="risk-table">
+        <tbody>
+        <tr><td>Первый состав не заполнится</td><td>30–40 личных разговоров, открытая тренировка, партнёры</td></tr>
         <tr><td>Зависимость от Юрия</td><td>Штаб, методика, ключевые сессии; Юрий не ежедневный тренер</td></tr>
-        <tr><td>Первый поток не заполнится</td><td>Ручной набор, личная сеть, партнёры, открытая тренировка</td></tr>
-        <tr><td>Нет своей базы</td><td>Партнёрская дорожка/манеж с фиксированным окном</td></tr>
+        <tr><td>Нет своей базы</td><td>Партнёрская дорожка или манеж с фиксированным окном</td></tr>
         <tr><td>Партнёры не подтверждены</td><td>Публикуем только подписанные условия; остальное — «формируется»</td></tr>
-        <tr><td>Низкое удержание</td><td>Тесты, план, команда, старты, второй этап, годовая опция</td></tr>
-        <tr><td>Кассовый разрыв</td><td>4-недельные этапы, предоплата, годовое предложение после первого этапа</td></tr>
-        <tr><td>Юридические и медицинские риски</td><td>Оферта, согласия, партнёрские врачи, без медицинских обещаний</td></tr>
+        <tr><td>Низкое удержание</td><td>Тест, план, команда, старты, следующий этап, годовая</td></tr>
+        <tr><td>Кассовый разрыв</td><td>Предоплата этапа, 4-недельный цикл, годовая после первого</td></tr>
+        <tr><td>Качество при росте</td><td>Тренер + помощник, видеоразбор, NPS, методика Юрия</td></tr>
+        </tbody>
       </table>
       <div class="callout">
         <p>Главный риск — не рынок, а пустой первый состав. Поэтому старт — 10 человек вручную.</p>
         <span>Фокус</span>
       </div>
-      <div class="footer"><span>Риски</span><span>17 / 20</span></div>
+      <div class="footer"><span>Риски</span><span>24 / 26</span></div>
     </section>
 
     <section class="slide">
-      <div class="top">
-        <span><strong>Сборная ЮБ800</strong></span>
-        <span>17 · План</span>
-      </div>
-      <p class="kicker">12 месяцев</p>
-      <h2>От 10 участников<br>к устойчивой Сборной</h2>
-      <div class="quarters">
-        <div class="quarter"><h3>Q1</h3><p>Первый поток 10, второй 15–20. Сайт, бот, CRM live. Первые кейсы.</p><span class="target">10 → 25 участников</span></div>
-        <div class="quarter"><h3>Q2</h3><p>Третья группа, корпоративный пилот, личный кабинет, контент.</p><span class="target">30–40 участников</span></div>
-        <div class="quarter"><h3>Q3</h3><p>Годовая Сборная, рейтинг, командный зачёт, партнёрская сеть.</p><span class="target">50 участников</span></div>
-        <div class="quarter"><h3>Q4</h3><p>50–80 участников, 2–3 корпоративных клиента, прибыль.</p><span class="target">3,0 млн ₽+ прибыли</span></div>
-      </div>
-      <p class="small" style="margin-top: 14px;">Ориентир: 50 участников × 15 900 ₽ × 13 этапов = 10,335 млн ₽ выручки; после расходов и фикса — около 3,03 млн ₽. План, не гарантия.</p>
-      <div class="footer"><span>План</span><span>18 / 20</span></div>
-    </section>
-
-    <section class="slide">
-      <div class="top">
-        <span><strong>Сборная ЮБ800</strong></span>
-        <span>18 · Решение</span>
-      </div>
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>25 · Решения</span></div>
       <p class="kicker">Что нужно решить</p>
-      <h2>Пять решений<br>для запуска</h2>
+      <h2>Пять решений<br>для запуска.</h2>
       <div class="decisions">
         <ol class="decision-list">
           <li><span>01</span>Утвердить «Сборную» как категорию и один продукт</li>
-          <li><span>02</span>Подтвердить роль Юрия и состав штаба</li>
+          <li><span>02</span>Подтвердить роль Юрия: 10–12 часов и 30–60 тыс. ₽ за этап</li>
           <li><span>03</span>Подтвердить базу и 3–5 партнёров</li>
-          <li><span>04</span>Запустить первый поток 10 человек</li>
-          <li><span>05</span>Выделить бюджет на digital и контент</li>
+          <li><span>04</span>Запустить первый этап на 10 человек</li>
+          <li><span>05</span>Выделить бюджет на запуск и контент</li>
         </ol>
         <div class="budget-panel">
-          <h3>Ориентир бюджета запуска</h3>
+          <h3>Бюджет запуска</h3>
           <ul>
-            <li><span>Сайт, бот, CRM</span><span>0–100 тыс. ₽</span></li>
             <li><span>Контент и съёмка</span><span>50–100 тыс. ₽</span></li>
             <li><span>Открытая тренировка</span><span>30–50 тыс. ₽</span></li>
             <li><span>Юрлицо, оферта, согласия</span><span>30–50 тыс. ₽</span></li>
+            <li><span>Партнёры и резерв</span><span>40–100 тыс. ₽</span></li>
           </ul>
           <p class="budget-total">150–300 тыс. ₽</p>
         </div>
       </div>
-      <div class="footer"><span>Дальше</span><span>19 / 20</span></div>
+      <div class="footer"><span>Дальше</span><span>25 / 26</span></div>
     </section>
 
     <section class="slide final">
-      <div class="top">
-        <span><strong>Сборная ЮБ800</strong></span>
-        <span>19 · Финал</span>
-      </div>
-      <p class="kicker">Первый состав · 10 человек</p>
+      <div class="top"><span><strong>Сборная ЮБ800</strong></span><span>26 · Финал</span></div>
+      <p class="kicker">Первый этап · 10 человек</p>
       <h2>Сборная<br><span class="accent">ЮБ800</span></h2>
-      <p class="final-sub">Не беговой клуб. Команда, которая тренируется как спортсмены и выступает.</p>
+      <p class="final-sub">Не беговой клуб. Команда, система и бизнес, который можно масштабировать.</p>
       <div class="final-meta">
-        <span><strong>15 900 ₽</strong> · первый этап</span>
-        <span><strong>24 ноября</strong> · старт</span>
+        <span><strong>15 900 ₽</strong> · этап</span>
+        <span><strong>10 → 50</strong> · участников</span>
+        <span><strong>2,2 млн ₽</strong> · прибыль на 50</span>
         <span><strong>run800.ru</strong></span>
-        <span><strong>@run800_bot</strong></span>
       </div>
-      <div class="footer"><span>Спасибо</span><span>20 / 20</span></div>
+      <div class="footer"><span>Спасибо</span><span>26 / 26</span></div>
     </section>
 
   </div>

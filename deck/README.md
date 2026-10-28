@@ -46,9 +46,29 @@
 
 Playwright установлен в `~/.config/opencode/ux-kit`.
 
-## «Сборная» — продающая презентация (26.10.2026)
+## «Сборная» — бизнес-презентация (28.10.2026)
 
-- `Sbornaya-deck.html` — 20 слайдов 16:9: позиционирование, продукт, аудитория, Юрий, команда, юнит-экономика, масштаб, доходы ролей, запуск, воронка, digital сейчас и roadmap, риски, план, решения.
-- `Sbornaya-deck.pdf` — PDF для отправки и печати, 20 страниц.
-- Экономика и цены — текущая модель: первый этап 15 900 ₽, 8 тренировок, 10–15 человек, аренда pass-through.
+- `Sbornaya-deck.html` — 26 слайдов 16:9: продукт, клиент, роль Юрия, тренер + помощник, найм тренеров, роли и доходы, путь клиента от сайта до оплаты, CRM и цифровой контур, Telegram-воронка, партнёры, сборы, масштаб, юнит-экономика, P&L, план на 12 месяцев, риски и решения.
+- `Sbornaya-deck.pdf` — PDF для отправки и печати, 26 страниц.
+- Формат — один тезис и ключевые цифры на слайд; детали остаются в устном комментарии.
+- Экономика: этап 15 900 ₽ / 8 тренировок / 10–15 человек; тренер 5 000 ₽ + помощник 2 000 ₽ за тренировку; налоги 9%; аренда pass-through.
+- 10 человек — пилот (вклад 43 690 ₽ за этап); 50 человек — 2,2 млн ₽ прибыли в год по плану.
+- Telegram, партнёры и сборы показаны как дополнительные потоки и не заложены в базовый P&L.
 - Это презентация-гипотеза: цифры плана не являются гарантией, ставки ролей фиксируются после первого потока.
+
+### Пересобрать PDF
+
+```bash
+cd deck
+NODE_PATH="$HOME/.config/opencode/ux-kit/node_modules" node - <<'JS'
+const { chromium } = require('playwright');
+(async()=>{
+  const browser = await chromium.launch();
+  const page = await browser.newPage({viewport:{width:1280,height:720}});
+  await page.goto('file://' + process.cwd() + '/Sbornaya-deck.html');
+  await page.evaluate(()=>document.fonts.ready);
+  await page.pdf({path:'Sbornaya-deck.pdf', width:'1280px', height:'720px', printBackground:true, margin:{top:'0',right:'0',bottom:'0',left:'0'}, preferCSSPageSize:true});
+  await browser.close();
+})();
+JS
+```
