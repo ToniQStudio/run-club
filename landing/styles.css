@@ -792,6 +792,7 @@ input {
 
 .cycle-actions .price {
   margin: 0;
+  color: var(--color-text-secondary);
 }
 
 @media (min-width: 1024px) {
