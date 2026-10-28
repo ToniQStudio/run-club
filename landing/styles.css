@@ -1850,65 +1850,38 @@ details p {
 }
 
 .join-grid {
-  display: grid;
-  gap: var(--space-6);
-  align-items: start;
+  display: block;
 }
 
-.join-copy .button {
+.join-copy {
+  max-width: 760px;
+}
+
+.join-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-6);
   margin-top: var(--space-6);
 }
 
-.join-steps,
-.join-qr {
-  padding: var(--space-5);
-  border: 1px solid rgba(249, 250, 251, 0.14);
-  border-radius: var(--radius-lg);
-  background: rgba(3, 7, 18, 0.88);
-}
-
 .join-qr .card-kicker {
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
 }
 
 .join-qr .channel-list {
-  gap: var(--space-3);
+  width: max-content;
+  max-width: 100%;
+  gap: var(--space-4);
 }
 
 .join-qr .channel-qr {
-  max-width: none;
-  width: 100%;
+  max-width: 152px;
+  width: 152px;
 }
 
 .join-qr .channel-name {
   font-size: var(--fs-sm);
-}
-
-#join .event-list {
-  gap: var(--space-3);
-  margin-top: var(--space-3);
-}
-
-#join .event-list li {
-  font-size: 1rem;
-  line-height: 1.45;
-}
-
-@media (min-width: 640px) and (max-width: 1023px) {
-  .join-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .join-copy {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (min-width: 1024px) {
-  .join-grid {
-    grid-template-columns: minmax(0, 1fr) 250px 250px;
-    gap: var(--space-6);
-  }
 }
 
 .join-copy .form-note {
