@@ -1028,6 +1028,11 @@ input {
   font-weight: 600;
 }
 
+.format-extra-muted {
+  color: var(--color-text-secondary);
+  font-weight: 400;
+}
+
 .format-notes {
   display: grid;
   gap: var(--space-4);
