@@ -1491,7 +1491,7 @@ input {
     url("assets/bg-run2.svg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 
 .section-support > .container {
