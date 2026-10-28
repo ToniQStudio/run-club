@@ -1859,14 +1859,10 @@ details p {
 
 .join-cta-row {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: flex-start;
-  gap: var(--space-6);
+  gap: var(--space-8);
   margin-top: var(--space-6);
-}
-
-.join-qr .card-kicker {
-  margin-bottom: var(--space-2);
 }
 
 .join-qr .channel-list {
