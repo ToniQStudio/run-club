@@ -1850,11 +1850,37 @@ details p {
 }
 
 .join-grid {
-  display: block;
+  display: grid;
+  gap: var(--space-8);
+  align-items: start;
 }
 
 .join-copy {
   max-width: 760px;
+}
+
+.join-steps {
+  padding: var(--space-6);
+  border: 1px solid rgba(249, 250, 251, 0.14);
+  border-radius: var(--radius-lg);
+  background: rgba(3, 7, 18, 0.88);
+}
+
+#join .event-list {
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+#join .event-list li {
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+@media (min-width: 1024px) {
+  .join-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+    gap: var(--space-12);
+  }
 }
 
 .join-cta-row {
