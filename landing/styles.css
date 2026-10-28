@@ -668,7 +668,7 @@ input {
 /* Proof */
 
 .proof {
-  padding-block: var(--space-16) var(--space-10);
+  padding-block: var(--space-16) var(--space-6);
   background: var(--color-surface);
 }
 
@@ -706,13 +706,6 @@ input {
   line-height: 1.35;
 }
 
-.proof-note {
-  grid-column: 1 / -1;
-  padding: 0;
-  background: var(--color-surface);
-  color: var(--color-text-secondary);
-  font-size: var(--fs-sm);
-}
 
 @media (min-width: 768px) {
   .proof-grid {
@@ -722,12 +715,7 @@ input {
 
   .proof-item {
     padding: 0 var(--space-6);
-  }
-
-  .proof-note {
-    padding: 0;
-  }
-}
+  }}
 
 /* Sections */
 
