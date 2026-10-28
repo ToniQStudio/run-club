@@ -481,13 +481,24 @@ input {
 }
 
 .hero-credential {
+  position: relative;
   margin: 0;
   padding-left: var(--space-3);
-  border-left: var(--border-medium) solid var(--color-accent);
   color: var(--color-white);
   font-size: var(--fs-base);
   line-height: 1.35;
   text-shadow: 0 1px var(--space-3) rgba(3, 7, 18, 0.65);
+}
+
+.hero-credential::before {
+  content: "";
+  position: absolute;
+  top: 0.49em;
+  left: 0;
+  width: var(--dot-sm);
+  height: var(--dot-sm);
+  border-radius: 50%;
+  background: var(--color-accent);
 }
 
 .hero-credentials-bottom {
@@ -509,6 +520,12 @@ input {
   letter-spacing: 0.1em;
   line-height: 1.35;
   text-shadow: 0 1px var(--space-2) rgba(3, 7, 18, 0.85);
+}
+
+.hero-credentials-bottom .hero-credential::before {
+  top: 0.5em;
+  width: 5px;
+  height: 5px;
 }
 
 .hero-credentials-bottom .hero-credential strong {
