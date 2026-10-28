@@ -287,6 +287,7 @@ input {
 @media (min-width: 960px) {
   .nav {
     display: flex;
+    margin-left: auto;
   }
 }
 
@@ -818,6 +819,32 @@ input {
 
 .cycle-block {
   margin-top: var(--space-20);
+}
+
+@media (min-width: 768px) {
+  #cycle .steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  #cycle .step p {
+    min-height: 4.35em;
+  }
+
+  #competitions .support-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  #competitions .card h3 {
+    font-size: 18px;
+  }
+
+  #competitions .card p:not(.card-kicker) {
+    min-height: 4.35em;
+  }
+}
+
+#competitions .section-lead {
+  margin-bottom: var(--space-6);
 }
 
 @media (max-width: 767px) {
