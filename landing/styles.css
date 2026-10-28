@@ -843,9 +843,6 @@ input {
   }
 }
 
-#competitions .section-lead {
-  margin-bottom: var(--space-6);
-}
 
 @media (max-width: 767px) {
   .cycle-block {
