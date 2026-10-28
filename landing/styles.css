@@ -794,6 +794,18 @@ input {
   margin: 0;
 }
 
+@media (min-width: 1024px) {
+  #cycle .team-copy {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+  }
+
+  #cycle .cycle-actions {
+    margin-top: auto;
+  }
+}
+
 #cycle .team-copy .form-note {
   margin-top: var(--space-3);
 }
