@@ -743,24 +743,13 @@ input {
 #cycle {
   position: relative;
   overflow: hidden;
-  background: var(--color-bg);
-}
-
-#cycle::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto;
-  z-index: 0;
-  aspect-ratio: 1471 / 1281;
+  background-color: var(--color-bg);
   background-image:
-    linear-gradient(rgba(3, 7, 18, 0.78), rgba(3, 7, 18, 0.9)),
-    url("assets/bg-run2.svg");
-  background-position: center;
+    linear-gradient(180deg, rgba(3, 7, 18, 0.84) 0%, rgba(3, 7, 18, 0.93) 100%),
+    url("assets/bg7.svg");
+  background-position: left top;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
-  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
-  pointer-events: none;
+  background-size: cover;
 }
 
 .team-coaches {
@@ -1498,9 +1487,9 @@ input {
   border-top: 0;
   background-color: var(--color-bg);
   background-image:
-    linear-gradient(180deg, rgba(3, 7, 18, 0.84) 0%, rgba(3, 7, 18, 0.93) 100%),
-    url("assets/bg7.svg");
-  background-position: left top;
+    linear-gradient(rgba(3, 7, 18, 0.8), rgba(3, 7, 18, 0.92)),
+    url("assets/bg-run2.svg");
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
