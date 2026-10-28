@@ -1829,7 +1829,7 @@ details p {
 .join-grid {
   display: grid;
   gap: var(--space-8);
-  align-items: start;
+  align-items: stretch;
 }
 
 .join-copy {
