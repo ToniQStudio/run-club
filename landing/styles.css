@@ -1639,6 +1639,19 @@ details p {
   color: rgba(249, 250, 251, 0.84);
 }
 
+.event-details {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 62ch;
+  margin-top: var(--space-4);
+}
+
+.event-details p {
+  color: rgba(249, 250, 251, 0.84);
+  font-size: var(--fs-base);
+  line-height: 1.55;
+}
+
 .signup-grid {
   display: grid;
   gap: var(--space-8);
@@ -1773,6 +1786,31 @@ details p {
 
 .join-copy .button {
   margin-top: var(--space-6);
+}
+
+#join .event-list {
+  gap: var(--space-4);
+}
+
+#join .event-list li {
+  font-size: 1.0625rem;
+  line-height: 1.45;
+}
+
+@media (min-width: 1024px) {
+  #join .join-grid {
+    align-items: stretch;
+  }
+
+  #join .join-copy {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #join .join-copy .button {
+    margin-top: auto;
+    align-self: flex-start;
+  }
 }
 
 .join-copy .form-note {
