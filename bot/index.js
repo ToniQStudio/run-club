@@ -14,7 +14,6 @@ import { escapeHtml, leadToManagerMessage, saveLead } from "./src/storage.js";
 const token = process.env.BOT_TOKEN;
 const managerChatId = process.env.MANAGER_CHAT_ID || "";
 const managerThreadId = process.env.MANAGER_THREAD_ID ? Number(process.env.MANAGER_THREAD_ID) : null;
-const staffChatId = process.env.STAFF_CHAT_ID || managerChatId;
 const privacyUrl = process.env.PRIVACY_URL || "https://run800.ru/privacy.html";
 const channelUrl = process.env.CHANNEL_URL || "https://t.me/yb800run";
 const chatUrl = process.env.CHAT_URL || "https://t.me/yb800club";
@@ -56,18 +55,11 @@ function startKeyboard() {
   return { inline_keyboard: rows };
 }
 
-function startOverKeyboard() {
-  return {
-    inline_keyboard: [[{ text: "Начать заново", callback_data: "restart" }]]
-  };
-}
-
 function consentKeyboard() {
   return {
     inline_keyboard: [
       [{ text: "Согласен", callback_data: "consent:yes" }],
-      [{ text: "Политика обработки данных", url: privacyUrl }],
-      [{ text: "Начать заново", callback_data: "restart" }]
+      [{ text: "Политика обработки данных", url: privacyUrl }]
     ]
   };
 }
@@ -86,10 +78,7 @@ function chatKeyboard() {
 
 function successKeyboard() {
   return {
-    inline_keyboard: [
-      [{ text: "Открыть чат", url: chatUrl }],
-      [{ text: "На главную", callback_data: "back:start" }]
-    ]
+    inline_keyboard: [[{ text: "Открыть чат", url: chatUrl }]]
   };
 }
 
@@ -173,7 +162,7 @@ async function showName(chatId, messageId) {
   }
 
   setSession(chatId, result.state);
-  await update(chatId, messageId, "Как вас зовут?", startOverKeyboard());
+  await update(chatId, messageId, "Как вас зовут?");
 }
 
 async function showConsent(chatId) {
@@ -473,17 +462,12 @@ async function main() {
   ];
 
   await bot
-    .setMyCommands(privateCommands, { scope: { type: "all_private_chats" } })
-    .catch((error) => console.warn(`setMyCommands failed: ${error.message}`));
+    .setMyCommands(privateCommands, { scope: { type: "default" } })
+    .catch((error) => console.warn(`setMyCommands (default) failed: ${error.message}`));
 
-  if (staffChatId) {
-    await bot
-      .setMyCommands(
-        [{ command: "id", description: "Показать chat_id" }],
-        { scope: { type: "chat", chat_id: Number(staffChatId) } }
-      )
-      .catch((error) => console.warn(`setMyCommands (staff) failed: ${error.message}`));
-  }
+  await bot
+    .setMyCommands(privateCommands, { scope: { type: "all_private_chats" } })
+    .catch((error) => console.warn(`setMyCommands (private) failed: ${error.message}`));
 
   console.log("run800 bot started");
   await poll();
