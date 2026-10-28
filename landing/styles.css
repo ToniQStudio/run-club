@@ -288,6 +288,7 @@ input {
   .nav {
     display: flex;
     margin-left: auto;
+    margin-right: var(--space-2);
   }
 }
 
@@ -2431,6 +2432,13 @@ html.is-locked body {
 }
 
 .footer-credit a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+
+.footer-credit a:hover,
+.footer-credit a:focus-visible {
+  color: var(--color-text);
   text-decoration: underline;
   text-underline-offset: var(--underline-sm);
 }
