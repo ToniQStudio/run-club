@@ -2,19 +2,12 @@ import { randomUUID } from "node:crypto";
 import path from "node:path";
 import { createTelegram } from "./src/telegram.js";
 import {
-  FORMATS,
   chooseFormat,
-  createPassId,
   createState,
-  formatDescription,
   formatLabel,
-  formatPrice,
-  isContactOptional,
   isReady,
   setConsent,
-  setContact,
-  setName,
-  summary
+  setName
 } from "./src/scenario.js";
 import { escapeHtml, leadToManagerMessage, saveLead } from "./src/storage.js";
 
@@ -27,14 +20,6 @@ const channelUrl = process.env.CHANNEL_URL || "https://t.me/yb800run";
 const chatUrl = process.env.CHAT_URL || "https://t.me/yb800club";
 const crmIntakeUrl = process.env.CRM_INTAKE_URL || "http://127.0.0.1:4174/api/leads";
 const dataDir = process.env.DATA_DIR || path.resolve(process.cwd(), "data");
-
-let qrcode = null;
-try {
-  const module = await import("qrcode");
-  qrcode = module.default || module;
-} catch {
-  console.warn("qrcode не установлен: пропуск будет без QR-картинки");
-}
 
 if (!token) {
   console.error("BOT_TOKEN is required");
@@ -61,23 +46,13 @@ function setSession(chatId, state) {
 }
 
 function startKeyboard() {
-  return {
-    inline_keyboard: [
-      [{ text: "Записаться на открытую тренировку", callback_data: "entry:open" }],
-      [{ text: "Форматы и цены", callback_data: "entry:formats" }],
-      [{ text: "Чат и знания", callback_data: "entry:chat" }]
-    ]
-  };
-}
-
-function formatKeyboard() {
-  const rows = Object.entries(FORMATS).map(([key, format]) => [
-    {
-      text: `${format.label} · ${format.price}`,
-      callback_data: `format:${key}`
-    }
-  ]);
-  rows.push([{ text: "Назад", callback_data: "back:start" }]);
+  const rows = [
+    [{ text: "Записаться в Сборную", callback_data: "entry:join" }],
+    [{ text: "Открыть чат", url: chatUrl }]
+  ];
+  if (channelUrl) {
+    rows.push([{ text: "Канал о беге", url: channelUrl }]);
+  }
   return { inline_keyboard: rows };
 }
 
@@ -97,31 +72,22 @@ function consentKeyboard() {
   };
 }
 
-function confirmKeyboard() {
-  return {
-    inline_keyboard: [
-      [{ text: "Отправить заявку", callback_data: "confirm:send" }],
-      [{ text: "Начать заново", callback_data: "restart" }]
-    ]
-  };
-}
-
 function chatKeyboard() {
   const rows = [];
+  if (chatUrl) {
+    rows.push([{ text: "Открыть чат", url: chatUrl }]);
+  }
   if (channelUrl) {
     rows.push([{ text: "Канал о беге", url: channelUrl }]);
   }
-  if (chatUrl) {
-    rows.push([{ text: "Чат клуба", url: chatUrl }]);
-  }
-  rows.push([{ text: "Назад", callback_data: "back:start" }]);
+  rows.push([{ text: "На главную", callback_data: "back:start" }]);
   return { inline_keyboard: rows };
 }
 
 function successKeyboard() {
   return {
     inline_keyboard: [
-      [{ text: "Чат и знания", callback_data: "entry:chat" }],
+      [{ text: "Открыть чат", url: chatUrl }],
       [{ text: "На главную", callback_data: "back:start" }]
     ]
   };
@@ -145,45 +111,37 @@ async function update(chatId, messageId, text, replyMarkup) {
 
 function welcomeText() {
   return [
-    "<b>ЮБ800</b> — беговой клуб Юрия Борзаковского.",
-    "Малая группа, система олимпийского чемпиона, Москва.",
-    "Открытая тренировка — 21 ноября, бесплатно.",
+    "<b>Сборная ЮБ800</b>",
+    "Это бот записи.",
     "",
-    "С чего начнём?"
+    "Можно сразу открыть чат команды или оставить заявку: имя и согласие.",
+    "Менеджер напишет в Telegram."
   ].join("\n");
 }
 
 function helpText() {
   return [
     "<b>Что делает бот</b>",
-    "Помогает записаться на открытую тренировку или оставить заявку в клуб.",
+    "Помогает оставить заявку в Сборную и открыть чат команды.",
     "",
-    "/start — главное меню",
+    "/start — главный экран",
     "/chat — чат и канал",
     "/help — эта справка",
     "",
-    "Данные обрабатываются по политике клуба."
+    "Данные обрабатываются по политике:",
+    privacyUrl
   ].join("\n");
 }
 
 function chatText() {
   return [
-    "<b>Чат и знания</b>",
+    "<b>Чат и канал</b>",
     "",
-    "Канал о беге — тренировки, питание, медицина:",
-    channelUrl,
+    "Чат команды:",
+    chatUrl,
     "",
-    "Чат клуба — вопросы и общение:",
-    chatUrl
-  ].join("\n");
-}
-
-function formatsText() {
-  return [
-    "<b>Форматы</b>",
-    "Можно начать с бесплатной открытой тренировки или выбрать клубный формат.",
-    "",
-    "Выберите, что вам ближе:"
+    "Канал о беге:",
+    channelUrl
   ].join("\n");
 }
 
@@ -202,19 +160,12 @@ async function showStart(chatId, messageId) {
   await update(chatId, messageId, welcomeText(), startKeyboard());
 }
 
-async function showFormats(chatId, messageId) {
-  const state = getSession(chatId);
-  state.step = "start";
-  setSession(chatId, state);
-  await update(chatId, messageId, formatsText(), formatKeyboard());
-}
-
 async function showChat(chatId, messageId) {
   await update(chatId, messageId, chatText(), chatKeyboard());
 }
 
-async function showName(chatId, messageId, formatKey) {
-  const result = chooseFormat(getSession(chatId), formatKey);
+async function showName(chatId, messageId) {
+  const result = chooseFormat(getSession(chatId), "stage");
 
   if (result.error) {
     await send(chatId, result.error);
@@ -222,58 +173,21 @@ async function showName(chatId, messageId, formatKey) {
   }
 
   setSession(chatId, result.state);
-  const text = [
-    `<b>${escapeHtml(formatLabel(formatKey))}</b> · ${escapeHtml(formatPrice(formatKey))}`,
-    escapeHtml(formatDescription(formatKey)),
-    "",
-    "Как вас зовут?"
-  ].join("\n");
-
-  await update(chatId, messageId, text, startOverKeyboard());
-}
-
-async function showContact(chatId) {
-  const state = getSession(chatId);
-  await send(
-    chatId,
-    `Приятно познакомиться, ${escapeHtml(state.name)}.\n\nОставьте телефон, email или @username — менеджер свяжется и поможет с оплатой.`,
-    startOverKeyboard()
-  );
+  await update(chatId, messageId, "Как вас зовут?", startOverKeyboard());
 }
 
 async function showConsent(chatId) {
   const state = getSession(chatId);
-  const contactLine = isContactOptional(state.format)
-    ? "Контакт не нужен: после согласия пришлём QR-пропуск в этот чат."
-    : `Контакт: ${escapeHtml(state.contact)}`;
-
   await send(
     chatId,
     [
-      `<b>${escapeHtml(formatLabel(state.format))}</b> · ${escapeHtml(formatPrice(state.format))}`,
-      escapeHtml(formatDescription(state.format)),
-      "",
-      contactLine,
+      `<b>${escapeHtml(formatLabel(state.format))}</b>`,
+      `Имя: ${escapeHtml(state.name)}`,
       "",
       "Осталось согласие на обработку персональных данных.",
-      "Нажмите «Согласен», чтобы продолжить."
+      "Нажмите «Согласен», чтобы отправить заявку."
     ].join("\n"),
     consentKeyboard()
-  );
-}
-
-async function showConfirm(chatId) {
-  const state = getSession(chatId);
-
-  if (!isReady(state)) {
-    await send(chatId, "Заявка заполнена не полностью. Начните заново: /start");
-    return;
-  }
-
-  await send(
-    chatId,
-    `<b>Проверьте заявку</b>\n\n${escapeHtml(summary(state))}\n\nВсё верно?`,
-    confirmKeyboard()
   );
 }
 
@@ -285,12 +199,11 @@ function buildLead(chatId, state, from) {
     telegramUserId: from.id,
     telegramUsername: from.username || "",
     source: state.source || "telegram",
-    format: state.format,
-    formatLabel: formatLabel(state.format),
+    format: "stage",
+    formatLabel: formatLabel("stage"),
     name: state.name,
-    contact: state.contact,
-    contactOptional: isContactOptional(state.format),
-    passId: state.passId || "",
+    contact: "",
+    contactOptional: true,
     consent: state.consent,
     consentAt: state.consentAt
   };
@@ -300,16 +213,16 @@ async function sendToCrm(lead) {
   const payload = {
     channel: "telegram",
     name: lead.name,
-    format: lead.format,
-    contact_optional: lead.contactOptional,
-    contact: lead.contact,
+    format: "stage",
+    contact_optional: true,
+    contact: "",
     telegram_id: String(lead.telegramUserId || ""),
     telegram_username: lead.telegramUsername || "",
     consent: true,
     consent_version: "2026-10-22",
     source: lead.source,
     page: "telegram",
-    external_id: lead.passId || "",
+    external_id: lead.id,
     notify: false
   };
 
@@ -363,58 +276,7 @@ async function persistLead(lead) {
   await notifyManager(lead);
 }
 
-async function issueOpenPass(chatId, from) {
-  const state = getSession(chatId);
-
-  if (!isReady(state)) {
-    await send(chatId, "Заявка заполнена не полностью. Начните заново: /start");
-    return;
-  }
-
-  state.passId = createPassId();
-  state.step = "sending";
-  setSession(chatId, state);
-
-  const lead = buildLead(chatId, state, from);
-
-  try {
-    await persistLead(lead);
-  } catch (error) {
-    console.error(`Lead save failed: ${error.message}`);
-    state.step = "confirm";
-    setSession(chatId, state);
-    await send(chatId, "Не удалось сохранить заявку. Попробуйте ещё раз или напишите менеджеру.");
-    return;
-  }
-
-  const caption = [
-    "<b>Вы записаны на открытую тренировку 21 ноября</b>",
-    "",
-    `Пропуск: <code>${escapeHtml(state.passId)}</code>`,
-    "Покажите QR на входе."
-  ].join("\n");
-
-  try {
-    if (qrcode) {
-      const photo = await qrcode.toBuffer(state.passId, {
-        type: "png",
-        width: 512,
-        margin: 2,
-        color: { dark: "#030712", light: "#ffffff" }
-      });
-      await bot.sendPhoto(chatId, photo, caption, successKeyboard());
-    } else {
-      await send(chatId, caption, successKeyboard());
-    }
-  } catch (error) {
-    console.error(`QR pass failed: ${error.message}`);
-    await send(chatId, caption, successKeyboard());
-  }
-
-  sessions.delete(chatId);
-}
-
-async function submitPaid(chatId, from) {
+async function submitStage(chatId, from) {
   const state = getSession(chatId);
 
   if (!isReady(state)) {
@@ -440,10 +302,10 @@ async function submitPaid(chatId, from) {
   await send(
     chatId,
     [
-      "<b>Заявка отправлена</b>",
+      "<b>Заявка принята</b>",
       "",
-      "Менеджер свяжется с вами, расскажет детали и поможет с оплатой.",
-      "Чат и канал клуба — ниже."
+      "Менеджер напишет вам в Telegram.",
+      "Чат команды можно открыть ниже."
     ].join("\n"),
     successKeyboard()
   );
@@ -471,23 +333,13 @@ async function handleCallback(query) {
     return;
   }
 
-  if (data === "entry:open") {
-    await showName(chatId, messageId, "open");
-    return;
-  }
-
-  if (data === "entry:formats") {
-    await showFormats(chatId, messageId);
+  if (data === "entry:join") {
+    await showName(chatId, messageId);
     return;
   }
 
   if (data === "entry:chat") {
     await showChat(chatId, messageId);
-    return;
-  }
-
-  if (data.startsWith("format:")) {
-    await showName(chatId, messageId, data.slice(7));
     return;
   }
 
@@ -500,17 +352,7 @@ async function handleCallback(query) {
     }
 
     setSession(chatId, result.state);
-
-    if (isContactOptional(result.state.format)) {
-      await issueOpenPass(chatId, query.from);
-    } else {
-      await showConfirm(chatId);
-    }
-    return;
-  }
-
-  if (data === "confirm:send") {
-    await submitPaid(chatId, query.from);
+    await submitStage(chatId, query.from);
     return;
   }
 
@@ -571,24 +413,6 @@ async function handleMessage(message) {
     }
 
     setSession(chatId, result.state);
-
-    if (isContactOptional(result.state.format)) {
-      await showConsent(chatId);
-    } else {
-      await showContact(chatId);
-    }
-    return;
-  }
-
-  if (state.step === "contact") {
-    const result = setContact(state, text);
-
-    if (result.error) {
-      await send(chatId, result.error);
-      return;
-    }
-
-    setSession(chatId, result.state);
     await showConsent(chatId);
     return;
   }
@@ -599,7 +423,7 @@ async function handleMessage(message) {
   }
 
   if (state.step === "confirm") {
-    await send(chatId, "Проверьте заявку и нажмите «Отправить заявку».");
+    await send(chatId, "Нажмите «Согласен» ещё раз, чтобы отправить заявку.");
     return;
   }
 
