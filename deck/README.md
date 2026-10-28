@@ -4,8 +4,8 @@
 
 ## Файлы
 
-- `Sbornaya-deck.html` — 20 слайдов 16:9.
-- `Sbornaya-deck.pdf` — PDF для показа и печати, 20 страниц.
+- `Sbornaya-deck.html` — 19 слайдов 16:9.
+- `Sbornaya-deck.pdf` — PDF для показа и печати, 19 страниц.
 
 ## Формат
 
