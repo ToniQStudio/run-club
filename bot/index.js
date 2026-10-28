@@ -83,7 +83,21 @@ function successKeyboard() {
 }
 
 async function send(chatId, text, replyMarkup) {
-  return bot.sendMessage(chatId, text, replyMarkup);
+  let lastError;
+
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    try {
+      return await bot.sendMessage(chatId, text, replyMarkup);
+    } catch (error) {
+      lastError = error;
+      console.error(`Send failed (attempt ${attempt}): ${error.message}`);
+      if (attempt < 3) {
+        await sleep(1000 * attempt);
+      }
+    }
+  }
+
+  throw lastError;
 }
 
 async function update(chatId, messageId, text, replyMarkup) {
@@ -407,7 +421,7 @@ async function handleMessage(message) {
   }
 
   if (state.step === "consent") {
-    await send(chatId, "Нажмите «Согласен» в сообщении выше или начните заново: /start");
+    await showConsent(chatId);
     return;
   }
 
