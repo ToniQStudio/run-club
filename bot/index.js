@@ -51,6 +51,8 @@ function setSession(chatId, state) {
 function startKeyboard() {
   const rows = [
     [{ text: "Записаться в Сборную", callback_data: "entry:join" }],
+    [{ text: "Ближайшая открытая тренировка", callback_data: "menu:event" }],
+    [{ text: "Этап и цена", callback_data: "menu:stage" }],
     [{ text: "Открыть чат", url: chatUrl }]
   ];
   if (channelUrl) {
@@ -414,6 +416,16 @@ async function handleCallback(query) {
 
   if (data === "entry:join") {
     await showName(chatId, messageId);
+    return;
+  }
+
+  if (data === "menu:event") {
+    await update(chatId, messageId, eventText(), eventKeyboard());
+    return;
+  }
+
+  if (data === "menu:stage") {
+    await update(chatId, messageId, stageText(), stageKeyboard());
     return;
   }
 
