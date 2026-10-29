@@ -15,7 +15,6 @@
   var consentInput = document.getElementById("lead-consent");
   var companyInput = document.getElementById("lead-company");
   var submitButton = form.querySelector('button[type="submit"]');
-  var againButton = document.getElementById("lead-again");
   var status = document.getElementById("lead-status");
   var nameError = document.getElementById("lead-name-error");
   var contactError = document.getElementById("lead-contact-error");
@@ -372,5 +371,4 @@
       });
   });
 
-  againButton.addEventListener("click", showForm);
 })();

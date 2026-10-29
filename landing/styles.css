@@ -2194,7 +2194,8 @@ a.channel-card:hover .channel-name {
   font-size: var(--fs-sm);
 }
 
-.lead-dialog.is-sent .lead-dialog-desc {
+.lead-dialog.is-sent .lead-dialog-desc,
+.lead-dialog.is-sent .lead-channels {
   display: none;
 }
 
