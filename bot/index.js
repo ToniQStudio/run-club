@@ -18,9 +18,6 @@ const managerThreadId = process.env.MANAGER_THREAD_ID ? Number(process.env.MANAG
 const privacyUrl = process.env.PRIVACY_URL || "https://run800.ru/privacy.html";
 const channelUrl = process.env.CHANNEL_URL || "https://t.me/yb800run";
 const chatUrl = process.env.CHAT_URL || "https://t.me/yb800club";
-const siteUrl = process.env.SITE_URL || "https://run800.ru";
-const eventUrl = `${siteUrl}/#event`;
-const stageUrl = `${siteUrl}/#cycle`;
 const crmIntakeUrl = process.env.CRM_INTAKE_URL || "http://127.0.0.1:4174/api/leads";
 const dataDir = process.env.DATA_DIR || path.resolve(process.cwd(), "data");
 
@@ -52,7 +49,6 @@ function startKeyboard() {
   const rows = [
     [{ text: "Записаться в Сборную", callback_data: "entry:join" }],
     [{ text: "Ближайшая открытая тренировка", callback_data: "menu:event" }],
-    [{ text: "Этап и цена", callback_data: "menu:stage" }],
     [{ text: "Открыть чат", url: chatUrl }]
   ];
   if (channelUrl) {
@@ -92,23 +88,8 @@ function eventKeyboard() {
   return {
     inline_keyboard: [
       [{ text: "Записаться", callback_data: "entry:join" }],
-      [{ text: "Подробнее на сайте", url: eventUrl }]
+      [{ text: "Открыть чат", url: chatUrl }]
     ]
-  };
-}
-
-function stageKeyboard() {
-  return {
-    inline_keyboard: [
-      [{ text: "Записаться", callback_data: "entry:join" }],
-      [{ text: "Подробнее на сайте", url: stageUrl }]
-    ]
-  };
-}
-
-function siteKeyboard() {
-  return {
-    inline_keyboard: [[{ text: "Открыть сайт", url: siteUrl }]]
   };
 }
 
@@ -176,9 +157,7 @@ function helpText() {
     "",
     "/start — главный экран",
     "/event — ближайшая открытая тренировка",
-    "/stage — этап и цена",
     "/chat — чат и канал",
-    "/site — сайт клуба",
     "/help — эта справка",
     "",
     "Данные обрабатываются по политике:",
@@ -206,23 +185,6 @@ function eventText() {
     "Бесплатно и без обязательств.",
     "Разминка, техника, мини-тест и разбор.",
     "Группа до 15 человек. Точку сбора объявим заранее."
-  ].join("\n");
-}
-
-function stageText() {
-  return [
-    "<b>Этап в Сборной</b>",
-    "8 тренировок · 15 900 ₽",
-    "",
-    "Две тренировки в неделю, тест в конце, разбор и план на следующий этап.",
-    "Аренда стадиона или манежа оплачивается отдельно."
-  ].join("\n");
-}
-
-function siteText() {
-  return [
-    "<b>Сайт клуба</b>",
-    siteUrl
   ].join("\n");
 }
 
@@ -424,11 +386,6 @@ async function handleCallback(query) {
     return;
   }
 
-  if (data === "menu:stage") {
-    await update(chatId, messageId, stageText(), stageKeyboard());
-    return;
-  }
-
   if (data === "entry:chat") {
     await showChat(chatId, messageId);
     return;
@@ -469,16 +426,6 @@ async function handleMessage(message) {
 
   if (text === "/event") {
     await send(chatId, eventText(), eventKeyboard());
-    return;
-  }
-
-  if (text === "/stage") {
-    await send(chatId, stageText(), stageKeyboard());
-    return;
-  }
-
-  if (text === "/site") {
-    await send(chatId, siteText(), siteKeyboard());
     return;
   }
 
@@ -567,9 +514,7 @@ async function main() {
   const privateCommands = [
     { command: "start", description: "Главное меню" },
     { command: "event", description: "Ближайшая открытая тренировка" },
-    { command: "stage", description: "Этап и цена" },
     { command: "chat", description: "Чат и канал" },
-    { command: "site", description: "Сайт клуба" },
     { command: "help", description: "Как работает бот" }
   ];
 
