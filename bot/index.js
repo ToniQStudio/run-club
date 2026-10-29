@@ -49,7 +49,7 @@ function startKeyboard() {
   const rows = [
     [{ text: "Записаться в Сборную", callback_data: "entry:join" }],
     [{ text: "Ближайшая открытая тренировка", callback_data: "menu:event" }],
-    [{ text: "Открыть чат", url: chatUrl }]
+    [{ text: "Чат участников Сборной", url: chatUrl }]
   ];
   if (channelUrl) {
     rows.push([{ text: "Канал о беге", url: channelUrl }]);
@@ -69,7 +69,7 @@ function consentKeyboard() {
 function chatKeyboard() {
   const rows = [];
   if (chatUrl) {
-    rows.push([{ text: "Открыть чат", url: chatUrl }]);
+    rows.push([{ text: "Чат участников Сборной", url: chatUrl }]);
   }
   if (channelUrl) {
     rows.push([{ text: "Канал о беге", url: channelUrl }]);
@@ -80,7 +80,7 @@ function chatKeyboard() {
 
 function successKeyboard() {
   return {
-    inline_keyboard: [[{ text: "Открыть чат", url: chatUrl }]]
+    inline_keyboard: [[{ text: "Чат участников Сборной", url: chatUrl }]]
   };
 }
 
@@ -88,8 +88,14 @@ function eventKeyboard() {
   return {
     inline_keyboard: [
       [{ text: "Записаться", callback_data: "entry:join" }],
-      [{ text: "Открыть чат", url: chatUrl }]
+      [{ text: "Чат участников Сборной", url: chatUrl }]
     ]
+  };
+}
+
+function channelKeyboard() {
+  return {
+    inline_keyboard: [[{ text: "Открыть канал", url: channelUrl }]]
   };
 }
 
@@ -156,8 +162,10 @@ function helpText() {
     "Помогает оставить заявку в Сборную и открыть чат команды.",
     "",
     "/start — главный экран",
+    "/join — записаться в Сборную",
     "/event — ближайшая открытая тренировка",
-    "/chat — чат и канал",
+    "/chat — чат участников",
+    "/channel — канал о беге",
     "/help — эта справка",
     "",
     "Данные обрабатываются по политике:",
@@ -173,6 +181,15 @@ function chatText() {
     chatUrl,
     "",
     "Канал о беге:",
+    channelUrl
+  ].join("\n");
+}
+
+function channelText() {
+  return [
+    "<b>Канал о беге</b>",
+    "Тренировки, старты и новости клуба.",
+    "",
     channelUrl
   ].join("\n");
 }
@@ -424,8 +441,19 @@ async function handleMessage(message) {
     return;
   }
 
+  if (text === "/join") {
+    setSession(chatId, createState());
+    await showName(chatId, null);
+    return;
+  }
+
   if (text === "/event") {
     await send(chatId, eventText(), eventKeyboard());
+    return;
+  }
+
+  if (text === "/channel") {
+    await send(chatId, channelText(), channelKeyboard());
     return;
   }
 
@@ -513,8 +541,10 @@ async function poll() {
 async function main() {
   const privateCommands = [
     { command: "start", description: "Главное меню" },
+    { command: "join", description: "Записаться в Сборную" },
     { command: "event", description: "Ближайшая открытая тренировка" },
-    { command: "chat", description: "Чат и канал" },
+    { command: "chat", description: "Чат участников Сборной" },
+    { command: "channel", description: "Канал о беге" },
     { command: "help", description: "Как работает бот" }
   ];
 
