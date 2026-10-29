@@ -1327,6 +1327,11 @@ input {
   }
 }
 
+.data-lead {
+  margin-bottom: var(--space-6);
+}
+
+
 /* Coaches */
 
 .coach-grid {
