@@ -143,10 +143,10 @@ function welcomeCaption() {
 async function sendWelcome(chatId) {
   try {
     const photo = await readFile(new URL("./assets/welcome.png", import.meta.url));
-    return await bot.sendPhoto(chatId, photo, welcomeCaption(), startKeyboard());
+    return await bot.sendPhoto(chatId, photo, "", startKeyboard());
   } catch (error) {
     console.error(`Welcome photo failed: ${error.message}`);
-    return send(chatId, welcomeText(), startKeyboard());
+    return send(chatId, "Нажмите «Записаться», чтобы оставить заявку.", startKeyboard());
   }
 }
 
@@ -217,6 +217,7 @@ async function start(chatId, source = "") {
   const state = createState();
   state.source = source;
   setSession(chatId, state);
+  await send(chatId, welcomeCaption());
   await sendWelcome(chatId);
   await sendEventTeaser(chatId);
 }
