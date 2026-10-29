@@ -80,7 +80,11 @@ function chatKeyboard() {
 
 function successKeyboard() {
   return {
-    inline_keyboard: [[{ text: "Чат участников Сборной", url: chatUrl }]]
+    inline_keyboard: [
+      [{ text: "Ближайшая открытая тренировка", callback_data: "menu:event" }],
+      [{ text: "Чат участников Сборной", url: chatUrl }],
+      [{ text: "Канал о беге", url: channelUrl }]
+    ]
   };
 }
 
