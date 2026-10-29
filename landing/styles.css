@@ -1328,7 +1328,7 @@ input {
 }
 
 .data-lead {
-  margin-bottom: clamp(var(--space-8), 4vw, var(--space-12));
+  margin-bottom: var(--space-8);
 }
 
 

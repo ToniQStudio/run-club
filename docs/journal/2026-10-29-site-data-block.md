@@ -35,3 +35,8 @@
 
 - `.data-lead` margin-bottom: `clamp(32px, 4vw, 48px)` — 48 px на десктопе, 32 px на мобильном (было 24 px).
 - Деплой `styles.css`; бэкап `/var/backups/run800-styles-20261029-113724.css`.
+
+## Итоговый отступ
+
+- `.data-lead` margin-bottom: `var(--space-8)` = 32 px на всех экранах (стандартный шаг).
+- Деплой `styles.css`; бэкап `/var/backups/run800-styles-20261029-113952.css`.
