@@ -19,6 +19,8 @@ const privacyUrl = process.env.PRIVACY_URL || "https://run800.ru/privacy.html";
 const channelUrl = process.env.CHANNEL_URL || "https://t.me/yb800run";
 const chatUrl = process.env.CHAT_URL || "https://t.me/yb800club";
 const crmIntakeUrl = process.env.CRM_INTAKE_URL || "http://127.0.0.1:4174/api/leads";
+const paymentUrl = process.env.PAYMENT_URL || "";
+const paymentPrice = process.env.PAYMENT_PRICE || "15 900 ₽";
 const dataDir = process.env.DATA_DIR || path.resolve(process.cwd(), "data");
 
 if (!token) {
@@ -75,13 +77,16 @@ function chatKeyboard() {
 }
 
 function successKeyboard() {
-  return {
-    inline_keyboard: [
-      [{ text: "Ближайшая открытая тренировка", callback_data: "menu:event" }],
-      [{ text: "Чат участников Сборной", url: chatUrl }],
-      [{ text: "Канал о беге", url: channelUrl }]
-    ]
-  };
+  const rows = [];
+  if (paymentUrl) {
+    rows.push([{ text: `Оплатить этап — ${paymentPrice}`, url: paymentUrl }]);
+  }
+  rows.push(
+    [{ text: "Ближайшая открытая тренировка", callback_data: "menu:event" }],
+    [{ text: "Чат участников Сборной", url: chatUrl }],
+    [{ text: "Канал о беге", url: channelUrl }]
+  );
+  return { inline_keyboard: rows };
 }
 
 function eventKeyboard() {
@@ -374,7 +379,9 @@ async function submitStage(chatId, from) {
     [
       "<b>Заявка принята</b>",
       "",
-      "Менеджер напишет вам в Telegram.",
+      paymentUrl
+        ? "Оплатить этап можно по кнопке ниже — на странице банка. Чек придёт после оплаты."
+        : "Менеджер напишет вам в Telegram, чтобы согласовать оплату этапа.",
       "Чат команды можно открыть ниже."
     ].join("\n"),
     successKeyboard()
