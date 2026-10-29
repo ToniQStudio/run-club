@@ -138,10 +138,7 @@ function welcomeText() {
 }
 
 function welcomeCaption() {
-  return [
-    "<b>Добро пожаловать в Сборную ЮБ800</b>",
-    "Оставьте заявку — или сразу откройте чат команды."
-  ].join("\n");
+  return "<b>Добро пожаловать в Сборную ЮБ800</b>";
 }
 
 async function sendWelcome(chatId) {
