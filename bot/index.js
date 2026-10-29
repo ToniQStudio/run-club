@@ -18,6 +18,9 @@ const managerThreadId = process.env.MANAGER_THREAD_ID ? Number(process.env.MANAG
 const privacyUrl = process.env.PRIVACY_URL || "https://run800.ru/privacy.html";
 const channelUrl = process.env.CHANNEL_URL || "https://t.me/yb800run";
 const chatUrl = process.env.CHAT_URL || "https://t.me/yb800club";
+const siteUrl = process.env.SITE_URL || "https://run800.ru";
+const eventUrl = `${siteUrl}/#event`;
+const stageUrl = `${siteUrl}/#cycle`;
 const crmIntakeUrl = process.env.CRM_INTAKE_URL || "http://127.0.0.1:4174/api/leads";
 const dataDir = process.env.DATA_DIR || path.resolve(process.cwd(), "data");
 
@@ -80,6 +83,30 @@ function chatKeyboard() {
 function successKeyboard() {
   return {
     inline_keyboard: [[{ text: "Открыть чат", url: chatUrl }]]
+  };
+}
+
+function eventKeyboard() {
+  return {
+    inline_keyboard: [
+      [{ text: "Записаться", callback_data: "entry:join" }],
+      [{ text: "Подробнее на сайте", url: eventUrl }]
+    ]
+  };
+}
+
+function stageKeyboard() {
+  return {
+    inline_keyboard: [
+      [{ text: "Записаться", callback_data: "entry:join" }],
+      [{ text: "Подробнее на сайте", url: stageUrl }]
+    ]
+  };
+}
+
+function siteKeyboard() {
+  return {
+    inline_keyboard: [[{ text: "Открыть сайт", url: siteUrl }]]
   };
 }
 
@@ -146,7 +173,10 @@ function helpText() {
     "Помогает оставить заявку в Сборную и открыть чат команды.",
     "",
     "/start — главный экран",
+    "/event — ближайшая открытая тренировка",
+    "/stage — этап и цена",
     "/chat — чат и канал",
+    "/site — сайт клуба",
     "/help — эта справка",
     "",
     "Данные обрабатываются по политике:",
@@ -163,6 +193,34 @@ function chatText() {
     "",
     "Канал о беге:",
     channelUrl
+  ].join("\n");
+}
+
+function eventText() {
+  return [
+    "<b>Ближайшая открытая тренировка</b>",
+    "21 ноября · Москва",
+    "",
+    "Бесплатно и без обязательств.",
+    "Разминка, техника, мини-тест и разбор.",
+    "Группа до 15 человек. Точку сбора объявим заранее."
+  ].join("\n");
+}
+
+function stageText() {
+  return [
+    "<b>Этап в Сборной</b>",
+    "8 тренировок · 15 900 ₽",
+    "",
+    "Две тренировки в неделю, тест в конце, разбор и план на следующий этап.",
+    "Аренда стадиона или манежа оплачивается отдельно."
+  ].join("\n");
+}
+
+function siteText() {
+  return [
+    "<b>Сайт клуба</b>",
+    siteUrl
   ].join("\n");
 }
 
@@ -397,6 +455,21 @@ async function handleMessage(message) {
     return;
   }
 
+  if (text === "/event") {
+    await send(chatId, eventText(), eventKeyboard());
+    return;
+  }
+
+  if (text === "/stage") {
+    await send(chatId, stageText(), stageKeyboard());
+    return;
+  }
+
+  if (text === "/site") {
+    await send(chatId, siteText(), siteKeyboard());
+    return;
+  }
+
   if (text === "/chat") {
     await showChat(chatId);
     return;
@@ -481,7 +554,10 @@ async function poll() {
 async function main() {
   const privateCommands = [
     { command: "start", description: "Главное меню" },
+    { command: "event", description: "Ближайшая открытая тренировка" },
+    { command: "stage", description: "Этап и цена" },
     { command: "chat", description: "Чат и канал" },
+    { command: "site", description: "Сайт клуба" },
     { command: "help", description: "Как работает бот" }
   ];
 
