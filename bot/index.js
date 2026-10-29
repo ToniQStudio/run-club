@@ -46,15 +46,12 @@ function setSession(chatId, state) {
 }
 
 function startKeyboard() {
-  const rows = [
-    [{ text: "Записаться в Сборную", callback_data: "entry:join" }],
-    [{ text: "Ближайшая открытая тренировка", callback_data: "menu:event" }],
-    [{ text: "Чат участников Сборной", url: chatUrl }]
-  ];
-  if (channelUrl) {
-    rows.push([{ text: "Канал о беге", url: channelUrl }]);
-  }
-  return { inline_keyboard: rows };
+  return {
+    inline_keyboard: [
+      [{ text: "Записаться в Сборную", callback_data: "entry:join" }],
+      [{ text: "Ближайшая открытая тренировка", callback_data: "menu:event" }]
+    ]
+  };
 }
 
 function consentKeyboard() {
@@ -90,10 +87,7 @@ function successKeyboard() {
 
 function eventKeyboard() {
   return {
-    inline_keyboard: [
-      [{ text: "Записаться", callback_data: "entry:join" }],
-      [{ text: "Чат участников Сборной", url: chatUrl }]
-    ]
+    inline_keyboard: [[{ text: "Записаться", callback_data: "entry:join" }]]
   };
 }
 
@@ -168,8 +162,6 @@ function helpText() {
     "/start — главный экран",
     "/join — записаться в Сборную",
     "/event — ближайшая открытая тренировка",
-    "/chat — чат участников",
-    "/channel — канал о беге",
     "/help — эта справка",
     "",
     "Данные обрабатываются по политике:",
@@ -545,9 +537,7 @@ async function poll() {
 async function main() {
   const privateCommands = [
     { command: "join", description: "Записаться в Сборную" },
-    { command: "event", description: "Ближайшая открытая тренировка" },
-    { command: "chat", description: "Чат участников Сборной" },
-    { command: "channel", description: "Канал о беге" }
+    { command: "event", description: "Ближайшая открытая тренировка" }
   ];
 
   await bot
