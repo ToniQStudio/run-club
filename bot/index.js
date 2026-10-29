@@ -48,8 +48,8 @@ function setSession(chatId, state) {
 function startKeyboard() {
   return {
     inline_keyboard: [
-      [{ text: "Записаться в Сборную", callback_data: "entry:join" }],
-      [{ text: "Ближайшая открытая тренировка", callback_data: "menu:event" }]
+      [{ text: "🏃 ЗАПИСАТЬСЯ В СБОРНУЮ", callback_data: "entry:join" }],
+      [{ text: "Открытая тренировка 21 ноября", callback_data: "menu:event" }]
     ]
   };
 }
@@ -87,7 +87,7 @@ function successKeyboard() {
 
 function eventKeyboard() {
   return {
-    inline_keyboard: [[{ text: "Записаться", callback_data: "entry:join" }]]
+    inline_keyboard: [[{ text: "🏃 ЗАПИСАТЬСЯ", callback_data: "entry:join" }]]
   };
 }
 
