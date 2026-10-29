@@ -49,7 +49,7 @@ function startKeyboard() {
   return {
     inline_keyboard: [
       [{ text: "🏃 ЗАПИСАТЬСЯ В СБОРНУЮ", callback_data: "entry:join" }],
-      [{ text: "Открытая тренировка 21 ноября", callback_data: "menu:event" }]
+      [{ text: "Ближайшая открытая тренировка", callback_data: "menu:event" }]
     ]
   };
 }
@@ -537,7 +537,9 @@ async function poll() {
 async function main() {
   const privateCommands = [
     { command: "join", description: "Записаться в Сборную" },
-    { command: "event", description: "Ближайшая открытая тренировка" }
+    { command: "event", description: "Ближайшая открытая тренировка" },
+    { command: "chat", description: "Чат участников Сборной" },
+    { command: "channel", description: "Канал о беге" }
   ];
 
   await bot
