@@ -540,12 +540,10 @@ async function poll() {
 
 async function main() {
   const privateCommands = [
-    { command: "start", description: "Главное меню" },
     { command: "join", description: "Записаться в Сборную" },
     { command: "event", description: "Ближайшая открытая тренировка" },
     { command: "chat", description: "Чат участников Сборной" },
-    { command: "channel", description: "Канал о беге" },
-    { command: "help", description: "Как работает бот" }
+    { command: "channel", description: "Канал о беге" }
   ];
 
   await bot
