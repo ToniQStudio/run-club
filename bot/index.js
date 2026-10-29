@@ -388,14 +388,6 @@ async function handleMessage(message) {
     return;
   }
 
-  if (text === "/id") {
-    await send(
-      chatId,
-      `chat_id: <code>${chatId}</code>\nuser_id: <code>${message.from.id}</code>`
-    );
-    return;
-  }
-
   if (message.chat.type !== "private") {
     return;
   }
