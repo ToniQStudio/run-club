@@ -48,8 +48,7 @@ function setSession(chatId, state) {
 function startKeyboard() {
   return {
     inline_keyboard: [
-      [{ text: "🏃 ЗАПИСАТЬСЯ В СБОРНУЮ", callback_data: "entry:join" }],
-      [{ text: "Ближайшая открытая тренировка", callback_data: "menu:event" }]
+      [{ text: "🏃 ЗАПИСАТЬСЯ В СБОРНУЮ", callback_data: "entry:join" }]
     ]
   };
 }
@@ -151,6 +150,22 @@ async function sendWelcome(chatId) {
   }
 }
 
+function eventTeaserKeyboard() {
+  return {
+    inline_keyboard: [[{ text: "Ближайшая открытая тренировка", callback_data: "menu:event" }]]
+  };
+}
+
+async function sendEventTeaser(chatId) {
+  try {
+    const photo = await readFile(new URL("./assets/event-teaser.png", import.meta.url));
+    return await bot.sendPhoto(chatId, photo, "", eventTeaserKeyboard());
+  } catch (error) {
+    console.error(`Event teaser failed: ${error.message}`);
+    return send(chatId, "Ближайшая открытая тренировка — 21 ноября, Москва", eventTeaserKeyboard());
+  }
+}
+
 function helpText() {
   return [
     "<b>Что делает бот</b>",
@@ -203,6 +218,7 @@ async function start(chatId, source = "") {
   state.source = source;
   setSession(chatId, state);
   await sendWelcome(chatId);
+  await sendEventTeaser(chatId);
 }
 
 async function showStart(chatId, messageId) {
