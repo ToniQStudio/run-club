@@ -49,7 +49,7 @@ def glyph_paths(text, font_path, cap_height, tracking=0):
 
 
 DESC, DESC_WIDTH = glyph_paths(
-    "БЕГОВОЙ КЛУБ ЮРИЯ БОРЗАКОВСКОГО", ARIAL, 10, 2.2
+    "СБОРНАЯ ЮРИЯ БОРЗАКОВСКОГО", ARIAL, 10, 2.2
 )
 
 
@@ -84,7 +84,7 @@ def wordmark(main, accent):
 
 def horizontal(main, accent, desc_color, bg=None):
     bg_rect = f'<rect width="520" height="160" fill="{bg}"/>' if bg else ""
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="520" height="160" viewBox="0 0 520 160" role="img" aria-label="ЮБ800 — беговой клуб Юрия Борзаковского">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="520" height="160" viewBox="0 0 520 160" role="img" aria-label="ЮБ800 — Сборная Юрия Борзаковского">
 {bg_rect}
 <g transform="translate(8 8)">{wordmark(main, accent)}</g>
 <g transform="translate(8 132)"><path d="{DESC}" fill="{desc_color}"/></g>
@@ -101,7 +101,7 @@ def compact(main, accent, bg=None):
 
 def stacked(main, accent, desc_color, bg=None):
     bg_rect = f'<rect width="320" height="270" fill="{bg}"/>' if bg else ""
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="320" height="270" viewBox="0 0 320 270" role="img" aria-label="ЮБ800 — беговой клуб Юрия Борзаковского">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="320" height="270" viewBox="0 0 320 270" role="img" aria-label="ЮБ800 — Сборная Юрия Борзаковского">
 {bg_rect}
 <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16">
   <g transform="translate(48 8)">{yu_b(main)}</g>
