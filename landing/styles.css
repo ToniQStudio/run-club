@@ -2417,6 +2417,13 @@ html.is-locked body {
   color: var(--color-text-secondary);
 }
 
+.legal p + p,
+.legal p + ul,
+.legal ul + p {
+  margin-top: var(--space-3);
+}
+
+
 .legal ul {
   padding-left: var(--space-5);
 }
