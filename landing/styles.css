@@ -2503,25 +2503,25 @@ html.is-locked body {
 }
 
 .footer-nav a,
+.footer-privacy {
+  color: var(--color-text-secondary);
+  font-size: var(--fs-sm);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
 .footer-legal-links {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2) var(--space-4);
 }
 
-
-.footer-privacy {
-  color: var(--color-text-secondary);
-  font-size: var(--fs-sm);
-  text-decoration: none;
-}
-
 .footer-nav a:hover,
+.footer-nav a:focus-visible,
 .footer-privacy:hover,
 .footer-privacy:focus-visible {
-  color: var(--color-text);
-  text-decoration: underline;
-  text-underline-offset: var(--underline-sm);
+  color: var(--color-accent);
+  text-decoration: none;
 }
 
 .footer-legal p {
