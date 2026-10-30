@@ -65,7 +65,7 @@
 
 - `00_brief.md`, `01_market.md`, `02_concept.md`, `03_monetization.md`, `04_unit-economics.md`;
 - `05_digital.md`, `06_launch.md`, `07_legal.md`, `08_partners.md`, `09_content.md`;
-- `10_research/` — term sheet, one-pager, сценарий встречи, сообщения, структура договора, скрипты продаж, бренд, бенчмарк Zamesin.
+- `10_research/` — term sheet, one-pager, сценарий встречи, сообщения, структура договора, скрипты продаж, бренд, бенчмарк Zamesin (книжный клуб).
 
 ### Лендинг
 
