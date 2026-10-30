@@ -2443,6 +2443,10 @@ html.is-locked body {
   font-size: var(--fs-2xl);
 }
 
+.legal .doc-forms-list {
+  padding-left: 0;
+}
+
 .doc-forms-list {
   display: grid;
   gap: var(--space-3);
