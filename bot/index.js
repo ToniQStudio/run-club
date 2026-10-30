@@ -404,7 +404,7 @@ async function submitStage(chatId, from) {
     successKeyboard(lead.id)
   );
 
-  if (paymentUrl) {
+  if (paymentUrl && process.env.PAYMENT_SHOW_QR === "true") {
     await sendPaymentQr(chatId);
   }
 
