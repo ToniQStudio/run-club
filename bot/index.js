@@ -10,7 +10,7 @@ import {
   setConsent,
   setName
 } from "./src/scenario.js";
-import { escapeHtml, leadToManagerMessage, saveLead } from "./src/storage.js";
+import { escapeHtml, leadToManagerMessage, saveLead, savePaymentClaim } from "./src/storage.js";
 
 const token = process.env.BOT_TOKEN;
 const managerChatId = process.env.MANAGER_CHAT_ID || "";
@@ -76,10 +76,13 @@ function chatKeyboard() {
   return { inline_keyboard: rows };
 }
 
-function successKeyboard() {
+function successKeyboard(leadId) {
   const rows = [];
   if (paymentUrl) {
     rows.push([{ text: `Оплатить этап — ${paymentPrice}`, url: paymentUrl }]);
+    if (leadId) {
+      rows.push([{ text: "Я оплатил", callback_data: `payment:claim:${leadId}` }]);
+    }
   }
   rows.push(
     [{ text: "Ближайшая открытая тренировка", callback_data: "menu:event" }],
@@ -87,6 +90,20 @@ function successKeyboard() {
     [{ text: "Канал о беге", url: channelUrl }]
   );
   return { inline_keyboard: rows };
+}
+
+async function sendPaymentQr(chatId) {
+  try {
+    const photo = await readFile(new URL("./assets/payment-qr.png", import.meta.url));
+    return await bot.sendPhoto(
+      chatId,
+      photo,
+      `QR для оплаты этапа — ${paymentPrice}. Введите сумму вручную.`
+    );
+  } catch (error) {
+    console.error(`Payment QR failed: ${error.message}`);
+    return null;
+  }
 }
 
 function eventKeyboard() {
@@ -380,12 +397,16 @@ async function submitStage(chatId, from) {
       "<b>Заявка принята</b>",
       "",
       paymentUrl
-        ? "Оплатить этап можно по кнопке ниже — на странице банка. Чек придёт после оплаты."
+        ? `Оплатить этап — ${paymentPrice}. На странице банка введите сумму вручную. После оплаты нажмите «Я оплатил».`
         : "Менеджер напишет вам в Telegram, чтобы согласовать оплату этапа.",
       "Чат команды можно открыть ниже."
     ].join("\n"),
-    successKeyboard()
+    successKeyboard(lead.id)
   );
+
+  if (paymentUrl) {
+    await sendPaymentQr(chatId);
+  }
 
   sessions.delete(chatId);
 }
@@ -407,6 +428,38 @@ async function handleCallback(query) {
 
   if (data === "restart" || data === "back:start") {
     await start(chatId, getSession(chatId).source || "");
+    return;
+  }
+
+  if (data.startsWith("payment:claim:")) {
+    const leadId = data.slice("payment:claim:".length);
+    const username = query.from?.username ? `@${query.from.username}` : "не указан";
+    const userId = query.from?.id || "неизвестен";
+    const claim = {
+      leadId,
+      telegramUserId: userId,
+      telegramUsername: query.from?.username || "",
+      createdAt: new Date().toISOString()
+    };
+
+    await savePaymentClaim(claim, dataDir).catch((error) => {
+      console.error(`Payment claim save failed: ${error.message}`);
+    });
+
+    if (managerChatId) {
+      const text = [
+        "<b>Заявка на оплату</b>",
+        `Заявка: <code>${escapeHtml(leadId)}</code>`,
+        `Telegram: ${escapeHtml(username)} · <code>${escapeHtml(userId)}</code>`,
+        `Проверьте поступление ${escapeHtml(paymentPrice)} и выпустите чек.`
+      ].join("\n");
+
+      await bot
+        .sendMessage(managerChatId, text, null, { messageThreadId: managerThreadId })
+        .catch((error) => console.error(`Payment claim notify failed: ${error.message}`));
+    }
+
+    await send(chatId, "Спасибо! Проверяем оплату. Чек пришлём после подтверждения.");
     return;
   }
 

@@ -20,6 +20,18 @@ export async function saveLead(lead, dataDir) {
   return file;
 }
 
+export async function savePaymentClaim(claim, dataDir) {
+  const directory = dataDir || path.resolve(process.cwd(), "data");
+  const file = path.join(directory, "payment-claims.ndjson");
+
+  await mkdir(directory, { recursive: true, mode: 0o700 });
+  await chmod(directory, 0o700).catch(() => {});
+  await appendFile(file, `${JSON.stringify(claim)}\n`, { encoding: "utf8", mode: 0o600 });
+  await chmod(file, 0o600).catch(() => {});
+
+  return file;
+}
+
 export function leadToManagerMessage(lead) {
   const username = lead.telegramUsername ? `@${escapeHtml(lead.telegramUsername)}` : "не указан";
   const contact = lead.contact ? escapeHtml(lead.contact) : "не оставлен";
