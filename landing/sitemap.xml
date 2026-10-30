@@ -6,6 +6,11 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://run800.ru/documents.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://run800.ru/offer.html</loc>
     <lastmod>2026-10-30</lastmod>
     <priority>0.3</priority>
