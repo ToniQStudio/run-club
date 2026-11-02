@@ -235,10 +235,43 @@ function eventText() {
   ].join("\n");
 }
 
-async function start(chatId, source = "") {
+async function notifyPaymentClaim(chatId, from) {
+  if (!managerChatId) {
+    console.warn(`Payment claim from ${chatId} without manager notification`);
+    return;
+  }
+
+  const username = from?.username ? `@${escapeHtml(from.username)}` : "не указан";
+  const text = [
+    "<b>Заявка на оплату</b>",
+    `Telegram: ${username} · <code>${escapeHtml(from?.id || chatId)}</code>`,
+    "Проверьте поступление 15 900 ₽ и выпустите чек."
+  ].join("\n");
+
+  await bot
+    .sendMessage(managerChatId, text, null, { messageThreadId: managerThreadId })
+    .catch((error) => console.error(`Payment claim notify failed: ${error.message}`));
+}
+
+async function start(chatId, source = "", from = null) {
   const state = createState();
   state.source = source;
   setSession(chatId, state);
+
+  if (source === "paid") {
+    await send(
+      chatId,
+      [
+        "<b>Спасибо!</b>",
+        "Проверяем оплату этапа.",
+        "Чек НПД придёт после подтверждения."
+      ].join("\n"),
+      chatKeyboard()
+    );
+    await notifyPaymentClaim(chatId, from);
+    return;
+  }
+
   await send(chatId, welcomeCaption());
   await sendWelcome(chatId);
   await sendEventTeaser(chatId);
@@ -427,7 +460,7 @@ async function handleCallback(query) {
   }
 
   if (data === "restart" || data === "back:start") {
-    await start(chatId, getSession(chatId).source || "");
+    await start(chatId, getSession(chatId).source || "", query.from);
     return;
   }
 
@@ -541,7 +574,7 @@ async function handleMessage(message) {
   const startMatch = text.match(/^\/start(?:\s+(.+))?$/);
 
   if (startMatch) {
-    await start(chatId, (startMatch[1] || "").trim());
+    await start(chatId, (startMatch[1] || "").trim(), message.from);
     return;
   }
 
