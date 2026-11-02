@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Оплата этапа — Сборная ЮБ800</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Тестовая страница оплаты этапа Сборной ЮБ800.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/jost.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .pay-page { background: var(--color-bg); min-height: 100vh; }
+    .pay-header { border-bottom: 1px solid var(--color-border); }
+    .pay-header .header-inner { min-height: 76px; }
+    .pay-main { padding: 40px 0 64px; }
+    .pay-wrap { max-width: 1040px; margin: 0 auto; }
+    .pay-kicker { color: var(--color-accent); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 12px; }
+    .pay-title { font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1; letter-spacing: -.05em; margin: 0 0 12px; }
+    .pay-lead { color: var(--color-text-secondary); font-size: 18px; max-width: 620px; margin: 0 0 24px; }
+    .pay-test { display: inline-flex; gap: 8px; align-items: center; padding: 8px 12px; border: 1px solid #7a5c00; border-radius: 8px; background: #2a2100; color: #ffd84d; font-size: 12px; margin-bottom: 32px; }
+    .pay-grid { display: grid; gap: 20px; }
+    .pay-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 14px; padding: 24px; }
+    .pay-card h2 { font-size: 18px; margin: 0 0 8px; }
+    .pay-card p { color: var(--color-text-secondary); font-size: 14px; line-height: 1.5; margin: 0 0 14px; }
+    .pay-step { display: inline-flex; width: 26px; height: 26px; align-items: center; justify-content: center; border-radius: 50%; background: var(--color-accent); color: #030712; font-size: 11px; font-weight: 800; margin-right: 8px; vertical-align: 2px; }
+    .pay-value { font-size: 22px; font-weight: 700; letter-spacing: -.02em; margin: 8px 0 14px; color: var(--color-text); }
+    .pay-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pay-copy, .pay-download, .pay-paid { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; border-radius: 8px; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; text-decoration: none; }
+    .pay-copy, .pay-download { border: 1px solid var(--color-border); background: transparent; color: var(--color-text); }
+    .pay-copy:hover, .pay-download:hover { border-color: var(--color-accent); color: var(--color-accent); }
+    .pay-paid { border: 1px solid var(--color-accent); background: var(--color-accent); color: #030712; }
+    .pay-qr { text-align: center; }
+    .pay-qr img { width: 100%; max-width: 260px; height: auto; display: block; margin: 0 auto 12px; background: #fff; border-radius: 10px; padding: 10px; }
+    .pay-qr-note { font-size: 12px; color: var(--color-text-secondary); line-height: 1.4; }
+    .pay-details { display: grid; gap: 8px; margin: 0 0 14px; }
+    .pay-details div { display: flex; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--color-border); padding-bottom: 8px; font-size: 13px; }
+    .pay-details dt { color: var(--color-text-secondary); }
+    .pay-details dd { margin: 0; text-align: right; font-weight: 600; }
+    .pay-toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(20px); opacity: 0; background: var(--color-accent); color: #030712; padding: 10px 16px; border-radius: 8px; font-size: 14px; font-weight: 700; transition: .2s ease; pointer-events: none; z-index: 10; }
+    .pay-toast.is-visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .pay-note { color: var(--color-text-secondary); font-size: 13px; line-height: 1.5; }
+    .pay-footer { border-top: 1px solid var(--color-border); padding: 24px 0; color: var(--color-text-secondary); font-size: 12px; }
+    .pay-footer .container { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
+    .pay-footer a { color: var(--color-text-secondary); text-decoration: none; }
+    .pay-footer a:hover { color: var(--color-accent); }
+    @media (min-width: 860px) {
+      .pay-grid { grid-template-columns: 1.25fr .75fr; align-items: start; }
+      .pay-card { padding: 28px; }
+    }
+  </style>
+</head>
+<body class="pay-page">
+  <a class="skip-link" href="#main">Перейти к&nbsp;содержанию</a>
+
+  <header class="site-header pay-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="assets/logo.svg" alt="Сборная ЮБ800" width="209" height="73">
+      </a>
+      <a class="button button-small button-secondary" href="index.html">На&nbsp;главную</a>
+    </div>
+  </header>
+
+  <main id="main" class="pay-main">
+    <div class="container pay-wrap">
+      <p class="pay-kicker">Оплата этапа</p>
+      <h1 class="pay-title">15 900 ₽</h1>
+      <p class="pay-lead">Сборная ЮБ800 · 8 тренировок, тест и&nbsp;разбор. Оплата переводом по&nbsp;СБП или по&nbsp;реквизитам.</p>
+      <p class="pay-test">Тестовая страница. Реквизиты вымышленные, не&nbsp;переводите деньги.</p>
+
+      <div class="pay-grid">
+        <div>
+          <section class="pay-card" aria-labelledby="sbp-title" style="margin-bottom: 20px;">
+            <h2 id="sbp-title"><span class="pay-step">1</span>Перевод по&nbsp;СБП</h2>
+            <p>Откройте приложение своего банка → перевод по&nbsp;СБП → вставьте номер → сумма 15&nbsp;900&nbsp;₽.</p>
+            <div class="pay-value">+7 900 000-00-00</div>
+            <div class="pay-actions">
+              <button class="pay-copy" type="button" data-copy="+79000000000">Скопировать номер</button>
+            </div>
+            <p class="pay-note" style="margin-top: 14px;">Подойдёт любой банк. Комиссию за&nbsp;перевод уточните в&nbsp;своём банке.</p>
+          </section>
+
+          <section class="pay-card" aria-labelledby="details-title" style="margin-bottom: 20px;">
+            <h2 id="details-title"><span class="pay-step">2</span>Или по&nbsp;реквизитам</h2>
+            <p>Если удобнее перевод по&nbsp;реквизитам, используйте данные ниже.</p>
+            <dl class="pay-details">
+              <div><dt>Получатель</dt><dd>Тестовый получатель</dd></div>
+              <div><dt>Счёт</dt><dd>40817 810 1 0000 0000000</dd></div>
+              <div><dt>Банк</dt><dd>АО «Альфа-Банк»</dd></div>
+              <div><dt>БИК</dt><dd>044525593</dd></div>
+              <div><dt>Корсчёт</dt><dd>30101810200000000593</dd></div>
+            </dl>
+            <div class="pay-actions">
+              <button class="pay-copy" type="button" data-copy="Получатель: Тестовый получатель. Счёт: 40817810100000000000. Банк: АО «Альфа-Банк». БИК: 044525593. Корсчёт: 30101810200000000593.">Скопировать реквизиты</button>
+            </div>
+          </section>
+
+          <section class="pay-card" aria-labelledby="paid-title">
+            <h2 id="paid-title"><span class="pay-step">3</span>После оплаты</h2>
+            <p>Нажмите «Я оплатил» — менеджер проверит поступление и&nbsp;вышлет чек НПД.</p>
+            <div class="pay-actions">
+              <button class="pay-paid" type="button" id="paid-button">Я оплатил</button>
+            </div>
+            <p class="pay-note" id="paid-status" style="margin-top: 12px;" role="status" aria-live="polite"></p>
+          </section>
+        </div>
+
+        <aside class="pay-card pay-qr" aria-labelledby="qr-title">
+          <h2 id="qr-title">QR для оплаты</h2>
+          <img src="assets/pay-test-qr.png" alt="Тестовый QR-код для оплаты этапа" width="520" height="520">
+          <a class="pay-download" href="assets/pay-test-qr.png" download="sbornaya-pay-test-qr.png">Скачать QR</a>
+          <p class="pay-qr-note" style="margin-top: 12px;">QR удобен, если открыть страницу на&nbsp;компьютере или втором телефоне. На&nbsp;телефоне используйте номер выше.</p>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="pay-footer">
+    <div class="container">
+      <span>Сборная ЮБ800 · тестовая оплата</span>
+      <span><a href="documents.html#offer">Оферта</a> · <a href="documents.html#privacy">Политика</a></span>
+    </div>
+  </footer>
+
+  <div class="pay-toast" id="pay-toast" role="status" aria-live="polite"></div>
+  <script>
+    (function () {
+      var toast = document.getElementById("pay-toast");
+      var timer;
+      function showToast(text) {
+        toast.textContent = text;
+        toast.classList.add("is-visible");
+        clearTimeout(timer);
+        timer = setTimeout(function () { toast.classList.remove("is-visible"); }, 2200);
+      }
+      Array.prototype.forEach.call(document.querySelectorAll("[data-copy]"), function (button) {
+        button.addEventListener("click", function () {
+          var value = button.getAttribute("data-copy");
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(value).then(function () { showToast("Скопировано"); }, function () { showToast("Не удалось скопировать"); });
+          } else {
+            showToast("Скопируйте вручную");
+          }
+        });
+      });
+      document.getElementById("paid-button").addEventListener("click", function () {
+        document.getElementById("paid-status").textContent = "Тест: заявка об оплате не отправлена. На реальной странице здесь появится подтверждение.";
+        showToast("Это тестовая страница");
+      });
+    })();
+  </script>
+</body>
+</html>
