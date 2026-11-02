@@ -1841,6 +1841,24 @@ details p {
   max-width: 760px;
 }
 
+.join-pay-link {
+  margin-top: var(--space-5);
+  color: var(--color-text-secondary);
+  font-size: var(--fs-sm);
+}
+
+.join-pay-link a {
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.join-pay-link a:hover,
+.join-pay-link a:focus-visible {
+  border-bottom-color: currentColor;
+}
+
+
 .join-steps {
   padding: var(--space-6);
   border: 1px solid rgba(249, 250, 251, 0.14);

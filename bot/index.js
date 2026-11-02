@@ -6,6 +6,7 @@ import {
   chooseFormat,
   createState,
   formatLabel,
+  isEmail,
   isReady,
   setConsent,
   setName
@@ -235,7 +236,7 @@ function eventText() {
   ].join("\n");
 }
 
-async function notifyPaymentClaim(chatId, from) {
+async function notifyPaymentClaim(chatId, from, receiptEmail = "") {
   if (!managerChatId) {
     console.warn(`Payment claim from ${chatId} without manager notification`);
     return;
@@ -245,6 +246,7 @@ async function notifyPaymentClaim(chatId, from) {
   const text = [
     "<b>Заявка на оплату</b>",
     `Telegram: ${username} · <code>${escapeHtml(from?.id || chatId)}</code>`,
+    receiptEmail ? `Почта для чека: ${escapeHtml(receiptEmail)}` : "Почта для чека: не указана",
     "Проверьте поступление 15 900 ₽ и выпустите чек."
   ].join("\n");
 
@@ -259,16 +261,15 @@ async function start(chatId, source = "", from = null) {
   setSession(chatId, state);
 
   if (source === "paid") {
+    state.step = "paid_email";
+    setSession(chatId, state);
     await send(
       chatId,
       [
         "<b>Спасибо!</b>",
-        "Проверяем оплату этапа.",
-        "Чек НПД придёт после подтверждения."
-      ].join("\n"),
-      chatKeyboard()
+        "Пришлите email для чека одним сообщением — чек НПД придёт на эту почту после подтверждения оплаты."
+      ].join("\n")
     );
-    await notifyPaymentClaim(chatId, from);
     return;
   }
 
@@ -579,6 +580,28 @@ async function handleMessage(message) {
   }
 
   const state = getSession(chatId);
+
+  if (state.step === "paid_email") {
+    if (!isEmail(text)) {
+      await send(chatId, "Похоже на опечатку. Пришлите email, например name@mail.ru.");
+      return;
+    }
+
+    state.receiptEmail = text;
+    state.step = "paid_done";
+    setSession(chatId, state);
+    await notifyPaymentClaim(chatId, message.from, text);
+    await send(
+      chatId,
+      [
+        "<b>Спасибо!</b>",
+        "Проверяем оплату этапа.",
+        `Чек НПД придёт на ${escapeHtml(text)} после подтверждения.`
+      ].join("\n"),
+      chatKeyboard()
+    );
+    return;
+  }
 
   if (state.step === "name") {
     const result = setName(state, text);
