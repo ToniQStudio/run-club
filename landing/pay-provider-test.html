@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Оплата этапа — Сборная ЮБ800</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Тестовая страница оплаты этапа Сборной ЮБ800 через платёжного провайдера.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/jost.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .checkout-page { background: var(--color-bg); min-height: 100vh; }
+    .checkout-header { border-bottom: 1px solid var(--color-border); }
+    .checkout-header .header-inner { min-height: 76px; }
+    .checkout-main { padding: 44px 0 72px; }
+    .checkout-kicker { color: var(--color-accent); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 12px; }
+    .checkout-title { font-size: clamp(2.75rem, 8vw, 4.75rem); line-height: 1; letter-spacing: -.055em; margin: 0 0 12px; }
+    .checkout-lead { color: var(--color-text-secondary); font-size: 18px; line-height: 1.5; max-width: 560px; margin: 0 0 24px; }
+    .checkout-test { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid #7a5c00; border-radius: 8px; background: #2a2100; color: #ffd84d; font-size: 12px; margin-bottom: 28px; }
+    .checkout-grid { display: grid; gap: 20px; align-items: start; }
+    .checkout-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 14px; padding: 24px; }
+    .checkout-card h2 { font-size: 20px; margin: 0 0 6px; }
+    .checkout-card > p { color: var(--color-text-secondary); font-size: 14px; line-height: 1.5; margin: 0 0 18px; }
+    .checkout-form { display: grid; gap: 14px; }
+    .checkout-field { display: grid; gap: 6px; }
+    .checkout-field label { font-size: 13px; font-weight: 600; }
+    .checkout-field input { width: 100%; min-height: 48px; padding: 12px 14px; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-bg); color: var(--color-text); font: inherit; font-size: 15px; }
+    .checkout-field input:focus { outline: 2px solid var(--color-accent); outline-offset: 1px; border-color: transparent; }
+    .checkout-field input[aria-invalid="true"] { border-color: #ff6b6b; }
+    .checkout-error { color: #ff8b8b; font-size: 12px; min-height: 16px; }
+    .checkout-consent { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--color-text-secondary); line-height: 1.45; }
+    .checkout-consent input { width: 18px; height: 18px; margin-top: 1px; flex: none; accent-color: var(--color-accent); }
+    .checkout-consent a { color: var(--color-accent); }
+    .checkout-submit { width: 100%; min-height: 54px; border: 0; border-radius: 8px; background: var(--color-accent); color: #030712; font: inherit; font-size: 17px; font-weight: 800; cursor: pointer; }
+    .checkout-submit:hover { filter: brightness(.95); }
+    .checkout-submit:disabled { opacity: .6; cursor: wait; }
+    .checkout-note { color: var(--color-text-secondary); font-size: 12px; line-height: 1.45; margin: 12px 0 0; }
+    .checkout-status { margin: 14px 0 0; padding: 12px 14px; border-radius: 8px; background: rgba(204,255,0,.08); border: 1px solid rgba(204,255,0,.35); color: var(--color-text); font-size: 14px; line-height: 1.5; display: none; }
+    .checkout-status.is-visible { display: block; }
+    .order-title { font-size: 20px; margin: 0 0 14px; }
+    .order-list { display: grid; gap: 10px; margin: 0 0 18px; padding: 0; list-style: none; font-size: 14px; color: var(--color-text-secondary); }
+    .order-list li { display: flex; gap: 8px; }
+    .order-list li::before { content: "·"; color: var(--color-accent); font-weight: 800; }
+    .order-total { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid var(--color-border); padding-top: 14px; font-size: 15px; }
+    .order-total strong { font-size: 22px; color: var(--color-accent); letter-spacing: -.02em; }
+    .order-provider { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--color-border); color: var(--color-text-secondary); font-size: 12px; line-height: 1.5; }
+    .checkout-footer { border-top: 1px solid var(--color-border); padding: 24px 0; color: var(--color-text-secondary); font-size: 12px; }
+    .checkout-footer .container { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
+    .checkout-footer a { color: var(--color-text-secondary); text-decoration: none; }
+    .checkout-footer a:hover { color: var(--color-accent); }
+    @media (min-width: 900px) {
+      .checkout-grid { grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr); }
+      .checkout-card { padding: 28px; }
+      .order-card { position: sticky; top: 20px; }
+    }
+  </style>
+</head>
+<body class="checkout-page">
+  <a class="skip-link" href="#main">Перейти к&nbsp;содержанию</a>
+
+  <header class="site-header checkout-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="assets/logo.svg" alt="Сборная ЮБ800" width="209" height="73">
+      </a>
+      <a class="button button-small button-secondary" href="index.html">На&nbsp;главную</a>
+    </div>
+  </header>
+
+  <main id="main" class="checkout-main">
+    <div class="container">
+      <p class="checkout-kicker">Оплата этапа</p>
+      <h1 class="checkout-title">15 900 ₽</h1>
+      <p class="checkout-lead">8 тренировок, тест 800 м и&nbsp;разбор. Оплата проходит на&nbsp;стороне платёжного провайдера.</p>
+      <p class="checkout-test">Тестовая страница. Платёж не&nbsp;проводится.</p>
+
+      <div class="checkout-grid">
+        <section class="checkout-card" aria-labelledby="form-title">
+          <h2 id="form-title">Данные для оплаты</h2>
+          <p>Оставьте имя и&nbsp;контакт — после возврата с&nbsp;оплаты мы&nbsp;свяжем вас с&nbsp;заявкой.</p>
+
+          <form class="checkout-form" id="checkout-form" novalidate>
+            <div class="checkout-field">
+              <label for="checkout-name">Имя</label>
+              <input id="checkout-name" name="name" type="text" autocomplete="name" required minlength="2" maxlength="80" aria-describedby="checkout-name-error">
+              <p class="checkout-error" id="checkout-name-error" role="alert"></p>
+            </div>
+
+            <div class="checkout-field">
+              <label for="checkout-contact">Телефон или почта</label>
+              <input id="checkout-contact" name="contact" type="text" autocomplete="email" required maxlength="120" aria-describedby="checkout-contact-error">
+              <p class="checkout-error" id="checkout-contact-error" role="alert"></p>
+            </div>
+
+            <label class="checkout-consent">
+              <input id="checkout-consent" name="consent" type="checkbox" required aria-describedby="checkout-consent-error">
+              <span>Согласен на&nbsp;обработку данных по&nbsp;<a href="documents.html#privacy">политике</a> и&nbsp;с&nbsp;<a href="documents.html#offer">офертой</a></span>
+            </label>
+            <p class="checkout-error" id="checkout-consent-error" role="alert"></p>
+
+            <button class="checkout-submit" type="submit" id="checkout-submit">Перейти к оплате — 15 900 ₽</button>
+            <p class="checkout-note">Данные карты вводятся на&nbsp;странице провайдера. Сборная их&nbsp;не&nbsp;получает и&nbsp;не&nbsp;хранит.</p>
+            <p class="checkout-status" id="checkout-status" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <aside class="checkout-card order-card" aria-labelledby="order-title">
+          <h2 id="order-title" class="order-title">Этап 800</h2>
+          <ul class="order-list">
+            <li>8 тренировок: скорость, техника, выносливость, ОФП</li>
+            <li>Тест 800 м в конце этапа</li>
+            <li>Видеоразбор и обратная связь</li>
+            <li>План на следующий этап</li>
+            <li>Чат команды и поддержка</li>
+          </ul>
+          <div class="order-total">
+            <span>Итого</span>
+            <strong>15 900 ₽</strong>
+          </div>
+          <p class="order-provider">Оплата через платёжного провайдера: карты РФ и&nbsp;СБП. Чек НПД придёт после подтверждения оплаты.</p>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="checkout-footer">
+    <div class="container">
+      <span>Сборная ЮБ800 · тестовая оплата</span>
+      <span><a href="documents.html#offer">Оферта</a> · <a href="documents.html#privacy">Политика</a></span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById("checkout-form");
+      var nameInput = document.getElementById("checkout-name");
+      var contactInput = document.getElementById("checkout-contact");
+      var consentInput = document.getElementById("checkout-consent");
+      var nameError = document.getElementById("checkout-name-error");
+      var contactError = document.getElementById("checkout-contact-error");
+      var consentError = document.getElementById("checkout-consent-error");
+      var status = document.getElementById("checkout-status");
+      var submit = document.getElementById("checkout-submit");
+
+      // После подключения Prodamus сюда ставится ссылка на оплату.
+      var providerUrl = "";
+
+      function isContact(value) {
+        var text = String(value || "").trim();
+        var digits = text.replace(/\D/g, "");
+        var phone = digits.length >= 10 && digits.length <= 15 && /^[+\d][\d\s\-()]*$/.test(text);
+        var email = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(text);
+        return phone || email;
+      }
+
+      function clearErrors() {
+        nameError.textContent = "";
+        contactError.textContent = "";
+        consentError.textContent = "";
+        nameInput.removeAttribute("aria-invalid");
+        contactInput.removeAttribute("aria-invalid");
+      }
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        clearErrors();
+        var valid = true;
+
+        if (nameInput.value.trim().length < 2) {
+          nameError.textContent = "Напишите имя — хотя бы две буквы.";
+          nameInput.setAttribute("aria-invalid", "true");
+          valid = false;
+        }
+
+        if (!isContact(contactInput.value)) {
+          contactError.textContent = "Оставьте телефон или почту.";
+          contactInput.setAttribute("aria-invalid", "true");
+          valid = false;
+        }
+
+        if (!consentInput.checked) {
+          consentError.textContent = "Без согласия оплата невозможна.";
+          valid = false;
+        }
+
+        if (!valid) {
+          (nameError.textContent ? nameInput : contactError.textContent ? contactInput : consentInput).focus();
+          return;
+        }
+
+        if (providerUrl) {
+          submit.disabled = true;
+          submit.textContent = "Переходим к оплате…";
+          window.location.href = providerUrl;
+          return;
+        }
+
+        status.textContent = "Тест: здесь будет переход на платёжную страницу провайдера. Сейчас оплата не проводится.";
+        status.classList.add("is-visible");
+      });
+    })();
+  </script>
+</body>
+</html>
