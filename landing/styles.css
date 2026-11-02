@@ -1841,21 +1841,35 @@ details p {
   max-width: 760px;
 }
 
-.join-pay-link {
-  margin-top: var(--space-5);
-  color: var(--color-text-secondary);
-  font-size: var(--fs-sm);
+.hero-pay-link {
+  margin: var(--space-4) 0 0;
 }
 
-.join-pay-link a {
-  color: var(--color-accent);
+.hero-pay-link a {
+  color: rgba(249, 250, 251, 0.72);
+  font-size: var(--fs-sm);
   text-decoration: none;
   border-bottom: 1px solid transparent;
 }
 
-.join-pay-link a:hover,
-.join-pay-link a:focus-visible {
+.hero-pay-link a:hover,
+.hero-pay-link a:focus-visible {
+  color: var(--color-accent);
   border-bottom-color: currentColor;
+}
+
+.join-pay-row {
+  margin-top: var(--space-5);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+}
+
+.join-pay-row p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--fs-sm);
 }
 
 

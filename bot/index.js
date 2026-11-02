@@ -21,6 +21,7 @@ const channelUrl = process.env.CHANNEL_URL || "https://t.me/yb800run";
 const chatUrl = process.env.CHAT_URL || "https://t.me/yb800club";
 const crmIntakeUrl = process.env.CRM_INTAKE_URL || "http://127.0.0.1:4174/api/leads";
 const paymentUrl = process.env.PAYMENT_URL || "";
+const payPageUrl = process.env.PAY_URL || "https://run800.ru/pay.html";
 const paymentPrice = process.env.PAYMENT_PRICE || "15 900 ₽";
 const dataDir = process.env.DATA_DIR || path.resolve(process.cwd(), "data");
 
@@ -84,6 +85,8 @@ function successKeyboard(leadId) {
     if (leadId) {
       rows.push([{ text: "Я оплатил", callback_data: `payment:claim:${leadId}` }]);
     }
+  } else {
+    rows.push([{ text: `Оплатить этап — ${paymentPrice}`, url: payPageUrl }]);
   }
   rows.push(
     [{ text: "Ближайшая открытая тренировка", callback_data: "menu:event" }],
@@ -196,6 +199,7 @@ function helpText() {
     "",
     "/start — главный экран",
     "/join — записаться в Сборную",
+    "/pay — оплатить этап",
     "/event — ближайшая открытая тренировка",
     "/help — эта справка",
     "",
@@ -223,6 +227,21 @@ function channelText() {
     "",
     channelUrl
   ].join("\n");
+}
+
+function payText() {
+  return [
+    "<b>Оплата этапа</b>",
+    `${paymentPrice} · 8 тренировок, тест и разбор.`,
+    "",
+    "На странице оплаты: перевод по СБП, реквизиты или QR. После оплаты нажмите «Я оплатил»."
+  ].join("\n");
+}
+
+function payKeyboard() {
+  return {
+    inline_keyboard: [[{ text: `Оплатить этап — ${paymentPrice}`, url: payPageUrl }]]
+  };
 }
 
 function eventText() {
@@ -432,7 +451,7 @@ async function submitStage(chatId, from) {
       "",
       paymentUrl
         ? `Оплатить этап — ${paymentPrice}. На странице банка введите сумму вручную. После оплаты нажмите «Я оплатил».`
-        : "Менеджер напишет вам в Telegram, чтобы согласовать оплату этапа.",
+        : `Оплатить этап — ${paymentPrice} можно на странице оплаты. Кнопка ниже.`,
       "Чат команды можно открыть ниже."
     ].join("\n"),
     successKeyboard(lead.id)
@@ -548,6 +567,11 @@ async function handleMessage(message) {
   if (text === "/join") {
     setSession(chatId, createState());
     await showName(chatId, null);
+    return;
+  }
+
+  if (text === "/pay") {
+    await send(chatId, payText(), payKeyboard());
     return;
   }
 
@@ -667,6 +691,7 @@ async function poll() {
 async function main() {
   const privateCommands = [
     { command: "join", description: "Записаться в Сборную" },
+    { command: "pay", description: "Оплатить этап" },
     { command: "event", description: "Ближайшая открытая тренировка" },
     { command: "chat", description: "Чат участников Сборной" },
     { command: "channel", description: "Канал о беге" }
