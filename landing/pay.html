@@ -40,6 +40,35 @@
     .pay-details dd { margin: 0; text-align: right; font-weight: 600; }
     .pay-paid-card { border-color: var(--color-accent); }
     .pay-note { color: var(--color-text-secondary); font-size: 12px; line-height: 1.5; }
+.pay-qr-method-grid {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+}
+
+.pay-qr-image {
+  text-align: center;
+}
+
+.pay-qr-image img {
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  display: block;
+  margin: 0 auto var(--space-3);
+  padding: 10px;
+  border-radius: 10px;
+  background: #fff;
+}
+
+@media (min-width: 700px) {
+  .pay-qr-method-grid {
+    grid-template-columns: 240px minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+
     .pay-toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(20px); opacity: 0; background: var(--color-accent); color: #030712; padding: 10px 16px; border-radius: 8px; font-size: 14px; font-weight: 700; transition: .2s ease; pointer-events: none; z-index: 10; }
     .pay-toast.is-visible { opacity: 1; transform: translateX(-50%) translateY(0); }
     .pay-footer { border-top: 1px solid var(--color-border); padding: 24px 0; color: var(--color-text-secondary); font-size: 12px; }
@@ -81,9 +110,12 @@
               <button class="pay-button pay-button-secondary" type="button" data-copy="+79687084070">Скопировать номер</button>
             </div>
             <ol class="pay-steps">
-              <li>Скопируйте номер и откройте приложение своего банка.</li>
-              <li>Выберите перевод по СБП и вставьте номер.</li>
-              <li>Введите сумму 15 900 ₽ и подтвердите.</li>
+              <li>Нажмите «Скопировать номер».</li>
+              <li>Откройте приложение своего банка.</li>
+              <li>Выберите «Перевод по СБП» или «Перевод по номеру телефона».</li>
+              <li>Вставьте номер и проверьте получателя: Антон М.</li>
+              <li>Введите сумму 15 900 ₽ и подтвердите перевод.</li>
+              <li>Вернитесь на эту страницу и нажмите «Я оплатил».</li>
             </ol>
             <p class="pay-note" style="margin-top: 14px;">Подойдёт любой банк. Комиссию за&nbsp;перевод уточните в&nbsp;своём банке.</p>
           </section>
@@ -103,10 +135,36 @@
             </div>
           </section>
 
+        
+
+          <section class="pay-card pay-qr-method" aria-labelledby="qr-method-title" style="margin-bottom: 20px;">
+            <h2 id="qr-method-title"><span class="pay-step">3</span>Оплата по QR</h2>
+            <p>QR содержит реквизиты счёта: получатель, номер счёта, банк и БИК. Сумму нужно ввести вручную.</p>
+            <div class="pay-qr-method-grid">
+              <div class="pay-qr-image">
+                <img src="assets/pay-qr-bank.png" alt="QR-код с реквизитами счёта для оплаты этапа" width="520" height="520">
+                <a class="pay-button pay-button-secondary" href="assets/pay-qr-bank.png" download="sbornaya-pay-qr.png">Скачать QR</a>
+              </div>
+              <div>
+                <ol class="pay-steps">
+                  <li>Откройте приложение своего банка — не камеру телефона.</li>
+                  <li>Найдите «Оплата по QR», «Сканировать QR» или «Платежи по QR».</li>
+                  <li>Наведите камеру банка на QR-код.</li>
+                  <li>Проверьте получателя: Миньков Антон Валерьевич, счёт и БИК.</li>
+                  <li>Введите сумму 15 900 ₽.</li>
+                  <li>Подтвердите перевод.</li>
+                  <li>Вернитесь на эту страницу и нажмите «Я оплатил».</li>
+                </ol>
+                <p class="pay-note">Не все банки поддерживают QR с реквизитами. Если банк не распознал код — используйте перевод по номеру телефона выше.</p>
+              </div>
+            </div>
+          </section>
+
         </div>
 
+
         <aside class="pay-card pay-paid-card" aria-labelledby="paid-title">
-          <h2 id="paid-title"><span class="pay-step">3</span>После оплаты</h2>
+          <h2 id="paid-title"><span class="pay-step">4</span>После оплаты</h2>
           <p>Нажмите «Я оплатил» — бот попросит email для чека. Чек НПД придёт на&nbsp;эту почту после подтверждения оплаты.</p>
           <div class="pay-actions">
             <a class="pay-button pay-button-primary" href="https://t.me/run800_bot?start=paid" target="_blank" rel="noopener">Я оплатил</a>
