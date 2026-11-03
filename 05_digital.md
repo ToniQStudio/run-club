@@ -18,7 +18,7 @@ CRM и приём заявок: все каналы (сайт, Telegram, MAX) п
 |---|---|---|
 | Лендинг | Tilda или Carrd | 5–10 тыс. ₽ |
 | Каналы и чат | Telegram, MAX (max.ru; бот после запуска) | 0 |
-| Запись и оплата | Tilda + ЮKassa/CloudPayments | 3% с платежа |
+| Запись и оплата | `run800.ru` + перевод по СБП, сверка вручную | 0 |
 | Расписание | Google Calendar + закреп в чате | 0 |
 | CRM | Notion или Google Sheets | 0 |
 | Анкета здоровья | Google Forms | 0 |
