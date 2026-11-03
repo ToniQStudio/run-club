@@ -49,7 +49,7 @@
     @media (min-width: 900px) {
       .pay-grid { grid-template-columns: minmax(0, 1.2fr) minmax(300px, .8fr); }
       .pay-card { padding: 28px; }
-      .pay-qr-card { position: sticky; top: 20px; }
+      .pay-paid-card { position: sticky; top: 20px; }
     }
   </style>
 </head>
@@ -103,21 +103,15 @@
             </div>
           </section>
 
-          <section class="pay-card pay-paid-card" aria-labelledby="paid-title">
-            <h2 id="paid-title"><span class="pay-step">3</span>После оплаты</h2>
-            <p>Нажмите «Я оплатил» — бот попросит email для чека. Чек НПД придёт на&nbsp;эту почту после подтверждения оплаты.</p>
-            <div class="pay-actions">
-              <a class="pay-button pay-button-primary" href="https://t.me/run800_bot?start=paid" target="_blank" rel="noopener">Я оплатил</a>
-            </div>
-            <p class="pay-note" style="margin-top: 14px;">Если оплачивали с&nbsp;другого аккаунта, напишите в&nbsp;чат команды: <a href="https://t.me/yb800club" target="_blank" rel="noopener">t.me/yb800club</a>.</p>
-          </section>
         </div>
 
-        <aside class="pay-card pay-qr-card pay-qr" aria-labelledby="qr-title">
-          <h2 id="qr-title">QR для приложения банка</h2>
-          <img src="assets/pay-qr-bank.png" alt="QR-код с реквизитами для оплаты этапа в приложении банка" width="520" height="520">
-          <a class="pay-button pay-button-secondary" href="assets/pay-qr-bank.png" download="sbornaya-pay-qr.png">Скачать QR</a>
-          <p class="pay-qr-note" style="margin-top: 12px;">Откройте приложение банка → СБП или «Платежи» → «Сканировать QR». Камера телефона покажет только реквизиты, это нормально.</p>
+        <aside class="pay-card pay-paid-card" aria-labelledby="paid-title">
+          <h2 id="paid-title"><span class="pay-step">3</span>После оплаты</h2>
+          <p>Нажмите «Я оплатил» — бот попросит email для чека. Чек НПД придёт на&nbsp;эту почту после подтверждения оплаты.</p>
+          <div class="pay-actions">
+            <a class="pay-button pay-button-primary" href="https://t.me/run800_bot?start=paid" target="_blank" rel="noopener">Я оплатил</a>
+          </div>
+          <p class="pay-note" style="margin-top: 14px;">Если оплачивали с&nbsp;другого аккаунта, напишите в&nbsp;чат команды: <a href="https://t.me/yb800club" target="_blank" rel="noopener">t.me/yb800club</a>.</p>
         </aside>
       </div>
     </div>
