@@ -532,6 +532,7 @@
             var id = String(result.data.id || "");
             orderId = id;
             var shortId = id.slice(0, 8).toUpperCase();
+            if (window.trackGoal) { window.trackGoal("pay_order_created", { order: shortId }); }
             orderLabel.textContent = "Заказ ЮБ800-" + shortId;
             orderLabel.hidden = false;
             intake.hidden = true;
@@ -568,6 +569,7 @@
             }
             claim.hidden = true;
             done.hidden = false;
+            if (window.trackGoal) { window.trackGoal("pay_claimed"); }
           })
           .catch(function (error) {
             claim.disabled = false;
@@ -577,5 +579,6 @@
       });
     })();
   </script>
+  <script src="assets/metrica.js" data-counter="" defer></script>
 </body>
 </html>

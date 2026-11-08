@@ -35,12 +35,13 @@
   var consentVersion = form.getAttribute("data-consent-version") || "2026-10-22";
 
   function track(event, params) {
+    if (typeof window.trackGoal === "function") {
+      window.trackGoal(event, params);
+      return;
+    }
     var payload = Object.assign({ event: event }, params || {});
     if (Array.isArray(window.dataLayer)) {
       window.dataLayer.push(payload);
-    }
-    if (window.yaCounter && typeof window.yaCounter.reachGoal === "function") {
-      window.yaCounter.reachGoal(event, payload);
     }
   }
 
