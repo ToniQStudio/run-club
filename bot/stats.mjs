@@ -144,8 +144,11 @@ async function main() {
     `Чат ${chatName || "—"}: <b>${chatMembers ?? "—"}</b> (сутки ${formatDelta(chatDay)}, 7 дней ${formatDelta(chatWeek)})`
   ];
 
-  if (typeof channelMembers === "number" && channelMembers < 500) {
-    lines.push(`До встроенной статистики канала: ${500 - channelMembers} подписчиков.`);
+  if (typeof channelMembers === "number" && channelMembers < 50) {
+    lines.push(`До статистики канала: ${50 - channelMembers} подписчиков (порог Telegram — 50).`);
+  }
+  if (typeof chatMembers === "number" && chatMembers < 500) {
+    lines.push(`До статистики чата: ${500 - chatMembers} участников (порог Telegram — 500).`);
   }
 
   const text = lines.join("\n");
