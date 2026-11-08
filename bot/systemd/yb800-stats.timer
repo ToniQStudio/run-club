@@ -1,0 +1,10 @@
+[Unit]
+Description=Ежедневный снимок статистики Telegram ЮБ800
+
+[Timer]
+OnCalendar=*-*-* 10:00:00 Europe/Moscow
+Persistent=true
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target
