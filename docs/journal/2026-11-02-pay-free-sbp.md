@@ -126,3 +126,9 @@
 - Проект контент-завода: `/opt/run800-content-factory` на VPS `78.17.16.208`, Docker (`bot`, `scheduler`, `api`), конфиг `/opt/run800-content-factory/.env.light` (root, 600), `PUBLISH_DRY_RUN=false`, черновики в 18:30 МСК.
 - Опубликован закреп «Сборная ЮБ800 — что это и как попасть»: https://t.me/yb800run/9. Закрепление тихое, без уведомления подписчикам.
 - `@run800_bot` в канале не состоит; его зона — чат и staff-группа.
+
+## Яндекс.Метрика подключена
+
+- Счётчик `114133973` на `run800.ru`: главная, `pay.html`, `join.html`, `documents.html`; загрузка через `assets/metrica.js` (data-counter).
+- Цели-события: `form_submit`, `pay_open`, `telegram_open`, `pay_order_created`, `pay_claimed`. Дополнительно код отправляет `form_open`.
+- Проверено на production: все события уходят как `goal://run800.ru/...`; API заявок при проверке мокался, тестовых лидов в CRM не создавалось.
