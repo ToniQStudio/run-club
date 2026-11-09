@@ -188,7 +188,7 @@ async function sendEventTeaser(chatId) {
     return await bot.sendPhoto(chatId, photo, "", eventTeaserKeyboard());
   } catch (error) {
     console.error(`Event teaser failed: ${error.message}`);
-    return send(chatId, "Ближайшая открытая тренировка — 21 ноября, Москва", eventTeaserKeyboard());
+    return send(chatId, "Ближайшая открытая тренировка — 19 декабря, Москва", eventTeaserKeyboard());
   }
 }
 
@@ -247,7 +247,7 @@ function payKeyboard() {
 function eventText() {
   return [
     "<b>Ближайшая открытая тренировка</b>",
-    "21 ноября · Москва",
+    "19 декабря · Москва",
     "",
     "Бесплатно и без обязательств.",
     "Разминка, техника, мини-тест и разбор.",
