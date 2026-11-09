@@ -174,3 +174,10 @@
 - Новый username: `@run_media`, название «RUN - О беге».
 - Обновлены: QR и ссылка на сайте, `CHANNEL_URL` в боте, `TELEGRAM_CHANNEL_ID` контент-завода, документы.
 - Проверено на production: QR декодируется в `https://t.me/run_media`.
+
+## Бот-редакция переехал на @run_factory_bot
+
+- Новый бот: `@run_factory_bot`, имя «RUN - Редакция», id 9119290570.
+- Токен заменён в `/opt/run800-content-factory/.env.light`, бэкап `.env.light.bak-20261109-token`, контейнеры перезапущены.
+- Бот на связи: в логе `Run polling for bot @run_factory_bot`, первый апдейт от владельца обработан.
+- Осталось: добавить нового бота админом канала `@run_media` с правами публикации и закрепления. Пока админом остаётся старый `@run800_factory_bot`.
