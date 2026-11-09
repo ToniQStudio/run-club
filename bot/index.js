@@ -223,7 +223,7 @@ function chatText() {
 function channelText() {
   return [
     "<b>Канал о беге</b>",
-    "Тренировки, старты и новости клуба.",
+    "Тренировки, старты и новости команды.",
     "",
     channelUrl
   ].join("\n");
