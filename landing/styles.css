@@ -1875,14 +1875,15 @@ details p {
 }
 
 .join-qr .channel-list {
-  width: max-content;
-  max-width: 100%;
-  gap: var(--space-4);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  max-width: 400px;
+  gap: var(--space-3);
 }
 
 .join-qr .channel-qr {
-  max-width: 152px;
-  width: 152px;
+  width: 100%;
+  max-width: 120px;
 }
 
 .join-qr .channel-name {
