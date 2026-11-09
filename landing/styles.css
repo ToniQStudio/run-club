@@ -2880,13 +2880,13 @@ html.is-locked body {
 
 .join-note {
   margin-top: var(--space-4);
-  color: var(--color-text-tertiary);
+  color: var(--color-text-secondary);
   font-size: var(--fs-sm);
 }
 
 .join-legal {
   margin-top: var(--space-6);
-  color: var(--color-text-tertiary);
+  color: var(--color-text-secondary);
   font-size: var(--fs-xs);
   text-align: center;
 }
