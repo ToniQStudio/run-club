@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><style>
+@font-face{font-family:Jost;src:url("file:///Users/user/Desktop/AI/_Work%20projects/run-club/landing/assets/fonts/jost.woff2") format("woff2");font-weight:100 900}
+*{margin:0;box-sizing:border-box}
+body{background:#111}
+.card{position:relative;overflow:hidden;background:#030712;color:#F9FAFB;font-family:Jost,sans-serif;padding:80px 76px;display:flex;flex-direction:column}
+.card::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(30,90,168,.20) 0 2px,transparent 2px 96px);pointer-events:none}
+.card>*{position:relative}
+.kicker{font-size:24px;letter-spacing:.22em;text-transform:uppercase;color:#CCFF00;font-weight:700}
+.mid{margin:auto 0}
+.foot{margin-top:0;display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:56px}
+.foot img{height:64px;width:auto}
+.site{font-size:26px;color:#9AA4B2;font-weight:500}
+.rule{width:96px;height:8px;background:#CCFF00;margin:40px 0}
+.ghost{position:absolute;font-weight:700;color:transparent;line-height:.75;pointer-events:none}
+/* quote */
+#quote{width:1080px;height:1350px}
+#quote .text{font-size:86px;line-height:1.06;font-weight:600;letter-spacing:-.02em;max-width:900px}
+#quote .sub{font-size:30px;color:#9AA4B2;margin-top:40px;line-height:1.35;max-width:720px}
+/* fact */
+#fact{width:1080px;height:1350px}
+#fact .big{font-size:400px;line-height:.86;font-weight:700;color:#CCFF00;letter-spacing:-.04em}
+#fact .cap{font-size:64px;font-weight:600;line-height:1.1;margin-top:16px;max-width:860px}
+#fact .note{font-size:30px;color:#9AA4B2;margin-top:28px;max-width:700px;line-height:1.35}
+/* announce */
+#announce{width:1280px;height:720px;padding:56px 64px}
+#announce .left{max-width:900px}
+#announce .date{font-size:96px;font-weight:700;letter-spacing:-.03em;line-height:.95;margin-top:22px;white-space:nowrap}
+#announce .what{font-size:38px;font-weight:500;margin-top:14px}
+#announce .where{font-size:25px;color:#9AA4B2;margin-top:10px}
+#announce .badge{margin-top:22px;display:inline-flex;align-items:center;background:#CCFF00;color:#1A2400;font-weight:700;font-size:23px;padding:10px 20px;border-radius:999px}
+#announce .cta-line{margin-top:auto;font-size:26px;color:#9AA4B2;font-weight:500}
+#announce .foot{padding-top:14px}
+#announce .foot img{height:54px}
+/* story */
+#story{width:1080px;height:1920px;padding:110px 84px}
+#story .top{font-size:30px;letter-spacing:.2em;text-transform:uppercase;color:#CCFF00;font-weight:700}
+#story .date{font-size:180px;line-height:.9;font-weight:700;letter-spacing:-.04em;margin-top:36px}
+#story .what{font-size:58px;font-weight:600;line-height:1.05;margin-top:24px}
+#story .where{font-size:38px;color:#9AA4B2;margin-top:20px}
+#story .bottom{margin-top:auto}
+#story .cta{background:#CCFF00;color:#1A2400;font-weight:700;font-size:40px;padding:28px 34px;border-radius:18px;text-align:center}
+#story .hint{font-size:26px;color:#9AA4B2;margin-top:18px;text-align:center}
+</style></head><body>
+
+<div class="card" id="quote">
+  <p class="kicker">Сборная ЮБ800</p>
+  <div class="mid">
+    <div class="text">Не «бегайте больше».<br>Бегайте по плану.</div>
+    <div class="rule"></div>
+    <p class="sub">8 тренировок, тестирование и разбор — этап, после которого видно прогресс.</p>
+  </div>
+  <div class="ghost" style="font-size:600px;right:-60px;bottom:90px;stroke:none;-webkit-text-stroke:2px rgba(255,255,255,.07)">800</div>
+  <div class="foot"><img src="file:///Users/user/Desktop/AI/_Work%20projects/run-club/brand/logo-wordmark-dark.svg"><span class="site">run800.ru</span></div>
+</div>
+
+<div class="card" id="fact">
+  <p class="kicker">Сборная ЮБ800</p>
+  <div class="mid">
+    <div class="big">8</div>
+    <div class="cap">тренировок в одном этапе</div>
+    <div class="note">Два раза в неделю, малая группа, план под ваш уровень.</div>
+  </div>
+  <div class="foot"><img src="file:///Users/user/Desktop/AI/_Work%20projects/run-club/brand/logo-wordmark-dark.svg"><span class="site">run800.ru</span></div>
+</div>
+
+<div class="card" id="announce">
+  <div class="left">
+    <p class="kicker">Ближайшая открытая тренировка</p>
+    <div class="date">19 декабря</div>
+    <div class="what">Открытая тренировка в Москве</div>
+    <div class="where">Группа до 15 человек · для новичков и опытных</div>
+    <div class="badge">Бесплатно · без обязательств</div>
+  </div>
+  <div class="ghost" style="font-size:340px;right:10px;bottom:150px;-webkit-text-stroke:2px rgba(204,255,0,.14)">800</div>
+  <p class="cta-line">Записаться: run800.ru · бот @run800_bot</p>
+  <div class="foot"><img src="file:///Users/user/Desktop/AI/_Work%20projects/run-club/brand/logo-wordmark-dark.svg"><span class="site">run800.ru</span></div>
+</div>
+
+<div class="card" id="story">
+  <p class="top">Сборная ЮБ800</p>
+  <div class="date">19<br>декабря</div>
+  <div class="what">Открытая тренировка в Москве</div>
+  <div class="where">Бесплатно · для новичков и опытных</div>
+  <div class="ghost" style="font-size:540px;right:-60px;bottom:360px;-webkit-text-stroke:2px rgba(255,255,255,.05)">800</div>
+  <div class="bottom">
+    <div class="cta">Записаться → run800.ru</div>
+    <div class="hint">или в боте @run800_bot</div>
+  </div>
+</div>
+
+</body></html>

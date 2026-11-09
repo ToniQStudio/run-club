@@ -1,0 +1,34 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><style>
+@font-face{font-family:Jost;src:url("file:///Users/user/Desktop/AI/_Work%20projects/run-club/landing/assets/fonts/jost.woff2") format("woff2");font-weight:100 900}
+*{margin:0;box-sizing:border-box}
+body{background:#111}
+.card{position:relative;width:1080px;height:1350px;background:#030712;color:#F9FAFB;font-family:Jost,sans-serif;overflow:hidden;display:flex;flex-direction:column}
+.photo{position:absolute;inset:0}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo.empty{display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(135deg,#0B1220 0 24px,#0F172A 24px 48px);border:3px dashed rgba(204,255,0,.35)}
+.photo.empty span{font-size:34px;color:rgba(249,250,251,.55);letter-spacing:.1em;text-transform:uppercase}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,7,18,.15) 0%,rgba(3,7,18,.55) 55%,rgba(3,7,18,.94) 100%)}
+.content{position:relative;margin-top:auto;padding:72px 76px}
+.kicker{font-size:24px;letter-spacing:.22em;text-transform:uppercase;color:#CCFF00;font-weight:700}
+.title{font-size:72px;line-height:1.03;font-weight:600;letter-spacing:-.02em;margin-top:18px;max-width:900px}
+.note{font-size:30px;color:#C9D0D9;margin-top:20px;max-width:760px;line-height:1.35}
+.foot{display:flex;align-items:center;justify-content:space-between;margin-top:36px}
+.foot img{height:56px;width:auto}
+.site{font-size:24px;color:#9AA4B2}
+</style></head><body>
+<!--
+  Шаблон карточки с фото, 1080×1350.
+  Вставьте картинку: <img src="file:///путь/к/фото.jpg" alt="">
+  Без картинки показывается пунктирная зона — это заготовка.
+-->
+<div class="card" id="photo-card">
+  <div class="photo empty"><span>Фото 4:5</span></div>
+  <div class="shade"></div>
+  <div class="content">
+    <p class="kicker">Сборная ЮБ800</p>
+    <div class="title">Заголовок карточки</div>
+    <div class="note">Одна мысль и одна цифра. Не больше двух строк текста.</div>
+    <div class="foot"><img src="file:///Users/user/Desktop/AI/_Work%20projects/run-club/brand/logo-wordmark-dark.svg"><span class="site">run800.ru</span></div>
+  </div>
+</div>
+</body></html>
