@@ -1875,10 +1875,10 @@ details p {
 }
 
 .join-qr .channel-list {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   width: 100%;
-  max-width: 400px;
-  gap: var(--space-3);
+  max-width: 300px;
+  gap: var(--space-4);
 }
 
 .join-qr .channel-qr {
@@ -2322,7 +2322,8 @@ a.channel-card:hover .channel-name {
 
 .lead-channel-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 200px);
+  justify-content: center;
   gap: var(--space-5);
 }
 
