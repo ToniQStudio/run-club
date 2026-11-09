@@ -168,3 +168,9 @@
 - Добавлено удаление заявки: `POST /crm/leads/:id/delete` с CSRF и подтверждением; после удаления редирект на `/crm?saved=deleted`.
 - Изменения внесены в production CRM (`/opt/run800-crm`): `server.mjs`, `store.mjs`, `ui.mjs`. Бэкапы: `*.bak-20261109`.
 - Проверено локально на копии CRM: создание лида, смена статуса оплаты, запись в историю, claim, удаление. На production проверен рендер страницы заявки и списка.
+
+## Канал переименован в @run_media
+
+- Новый username: `@run_media`, название «RUN - О беге».
+- Обновлены: QR и ссылка на сайте, `CHANNEL_URL` в боте, `TELEGRAM_CHANNEL_ID` контент-завода, документы.
+- Проверено на production: QR декодируется в `https://t.me/run_media`.
